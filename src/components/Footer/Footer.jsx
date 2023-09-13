@@ -5,60 +5,83 @@ export default function Footer() {
     <div className="footer-container">
       <div className="footer">
         <div className="footer-brand-slide">
-          <div className="sect-smuse"></div>
+          <div className="sect-smuse">
+            <div>Chấp nhận thanh toán</div>
+            <ul>
+              <li>
+                <img src="././img/momo.jpg" alt="" />
+              </li>
+              <li>
+                <img src="././img/payment-mastercard.png" alt="" />
+              </li>
+              <li>
+                <img src="././img/payment-visa.png" alt="" />
+              </li>
+              <li>
+                <img src="././img/napas-40.png" alt="" />
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="footer-policy">
           <div className="content-policy row">
-            <div className="cgv-vietnam col-3">
-              <h3>CGV Việt Nam</h3>
+            <div className="cgv-vietnam p-lg-0 col-12 col-lg-3 col-sm-6">
+              <h3>Cinema Việt Nam</h3>
               <ul>
                 <li>
-                   Giới Thiệu
+                  <i className="fa-solid fa-angles-right"></i> Giới Thiệu
                 </li>
                 <li>
-                   Tiện Ích Online
+                   <i className="fa-solid fa-angles-right"></i> Tiện Ích Online
                 </li>
                 <li>
-                   Thẻ Quà Tặng
+                   <i className="fa-solid fa-angles-right"></i> Thẻ Quà Tặng
                 </li>
                 <li>
-                   Tuyển Dụng
+                   <i className="fa-solid fa-angles-right"></i> Tuyển Dụng
                 </li>
                 <li>
-                   Liên Hệ Quảng Cáo CGV
+                   <i className="fa-solid fa-angles-right"></i> Liên Hệ Quảng Cáo
                 </li>
               </ul>
             </div>
-            <div className="cgv-policy col-3">
+            <div className="cgv-policy p-lg-0 col-12 col-lg-3 col-sm-6">
               <h3>Điều khoản sử dụng</h3>
               <ul>
                 <li>
-                   Điều Khoản Chung
+                   <i className="fa-solid fa-angles-right"></i> Điều Khoản Chung
                 </li>
                 <li>
-                   Điều Khoản Giao Dịch
+                   <i className="fa-solid fa-angles-right"></i> Điều Khoản Giao Dịch
                 </li>
                 <li>
-                   Chính Sách Thanh Toán
+                   <i className="fa-solid fa-angles-right"></i> Chính Sách Thanh Toán
                 </li>
                 <li>
-                   Chính Sách Bảo Mật
+                   <i className="fa-solid fa-angles-right"></i> Chính Sách Bảo Mật
                 </li>
                 <li>
-                   Câu Hỏi Thường Gặp
+                   <i className="fa-solid fa-angles-right"></i> Câu Hỏi Thường Gặp
                 </li>
               </ul>
             </div>
-            <div className="follow-us col-3">
+            <div className="follow-us p-lg-0 col-12 col-lg-3 col-sm-6">
               <h3>Kết nối với chúng tôi</h3>
-              <ul className="d-flex">
-                <li className="follow-fb" ></li>
-                <li className="follow-fb"></li>
-                <li className="follow-instagram"></li>
-                <li className="follow-zalo"></li>
+              <div className="footer_social">
+                <span><i className="fa-brands fa-facebook-f" /></span>
+                <span><i className="fa-brands fa-linkedin-in" /></span>
+                <span><i className="fa-brands fa-twitter" /></span>
+                <span><i className="fa-brands fa-google-plus-g" /></span>
+              </div>
+            </div>
+            <div className="customer-cgv p-lg-0 col-12 col-lg-3 col-sm-6">
+              <h3>Chăm sóc khách hàng</h3>
+              <ul>
+                <li> <i className="fa-solid fa-angles-right"></i> Hotline: 1900 9999</li>
+                <li> <i className="fa-solid fa-angles-right"></i> Giờ làm việc: 8:00 - 17:00</li>
+                <li> <i className="fa-solid fa-angles-right"></i> Email hỗ trợ: hoidap@abc.vn</li>
               </ul>
             </div>
-            <div className="customer-cgv col-3"></div>
           </div>
         </div>
         <div className="footer-address"></div>
