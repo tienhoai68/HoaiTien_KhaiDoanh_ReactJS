@@ -4,7 +4,7 @@ export default function Navbar() {
     return (
         <div className='page-header'>
             <div className='page-header-container'>
-                <nav className="navbar navbar-expand-lg navbar-light ">
+                <nav  className="navbar navbar-expand-lg navbar-light p-lg-0">
                     <a className="navbar-brand logo" href="#">
                     <img src="././img/cgvlogo.png" alt="logo" />
                     </a>
