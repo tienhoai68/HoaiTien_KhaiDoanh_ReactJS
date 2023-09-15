@@ -5,10 +5,12 @@ import Footer from '../../components/Footer/Footer'
 import "./HomeLayout.scss"
 export default function HomeLayout() {
   return (
-    <div className='wrapper'>
+    <div style={{background: "#fdfcf0"}} className=''>
+    <div className=' wrapper'>
       <Header/>
       <Outlet/>
       <Footer/>
+    </div>
     </div>
   )
 }

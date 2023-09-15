@@ -23,8 +23,8 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="footer-policy">
-          <div className="content-policy row">
+        <div className="footer-policy container ">
+          <div className="content-policy  row">
             <div className="cgv-vietnam p-lg-0 col-12 col-lg-3 col-sm-6">
               <h3>Cinema Việt Nam</h3>
               <ul>

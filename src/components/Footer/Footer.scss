@@ -2,13 +2,13 @@
     width: 100%;
     padding-top: 30px;
     .sect-smuse {
-        margin: 7px auto;
-        width: 980px;
+        // margin: 7px auto;
+        // width: 980px;
         display: block;
         height: 28px;
         white-space: nowrap;
         position: absolute;
-        top: -7px;
+        top: 0;
         text-align: center;
         width: 100%;
         // margin: 7px auto;
@@ -37,15 +37,15 @@
 
     .footer-policy {
         width: 100%;
-        padding: 20px 0px;
+        // padding: 20px 0px;
         border-bottom: 2px solid #222;
         overflow: hidden;
         display: block;
     }
 
     .content-policy {
-        margin: 0px auto;
-        width: 980px;
+        // margin: 0px auto;
+        // width: 980px;
         padding: 0 !important;
 
         h3 {
