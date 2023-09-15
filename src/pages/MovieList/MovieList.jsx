@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./MovieList.scss";
+import "./ResponsiveMovieList.scss"
 import { movieService } from "../../services/movie";
 export default function MovieList() {
   const [movieList, setMovieList] = useState([]);
@@ -17,26 +18,28 @@ export default function MovieList() {
   const renderMovieList = () => {
     return movieList.map((element) => {
       return (
-        <div className="col-6 col-md-6 col-lg-4">
+        <div key={element.maPhim} className="col-10 col-sm-8 col-md-6 col-lg-4">
           <div className="main ">
             <div className="movie-img">
               <img src={element.hinhAnh} alt="" className="back-img" />
               <img src={element.hinhAnh} alt="" className="movie-cover " />
               <i className="fa fa-play"></i>
             </div>
+            <div>
             <h6 className="mb-0">{element.tenPhim}</h6>
             <img src="././img/rating.png" alt="" className="rating" />
+            </div>
             <div className="ticket-head text-center">
-              <div className="ticket-container">
+              <div className="ticket-container mx-auto ">
                 <div className="ticket__content">
                   <h4 className="ticket__movie-title">{element.tenPhim}</h4>
                   <p className="ticket__movie-slogan">
                     {element.moTa}
                   </p>
                   {/* <button className="ticket__buy-btn">Buy now</button> */}
-                  <div className="mb-lg-4"> 
-                  <button className="btn btn-warning mr-lg-2">Chi Tiết</button>
-                  <button className="btn btn-danger ">Đặt vé</button>
+                  <div className="mb-3 mb-lg-4 button-group"> 
+                  <button className="button_default btn_details mr-2">Chi Tiết</button>
+                  <button className="button_default btn_ticket ">Đặt vé</button>
                   </div>
                 </div>
               </div>
@@ -66,13 +69,13 @@ export default function MovieList() {
   };
 
   return (
-    <div className="main-movie">
+    <div className="main-movie container">
       <div className="title-movie">
         <div className="page-title category-title">
           <h1>Phim Đang Chiếu</h1>
         </div>
         <div className="py-5">
-          <div className="row">
+          <div className="row justify-content-center">
             {renderMovieList()}
           </div>
           {/* <div className="col-md-4">
