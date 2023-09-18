@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Header.scss"
 import IntroHeader from './components/IntroHeader'
+import { NavLink } from 'react-router-dom'
 export default function Header() {
   return (
     <div className="mtw_banner_top" >
@@ -36,8 +37,8 @@ export default function Header() {
           </button>
           <div className="navbar-collapse collapse" id="ftco-nav">
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item active"><a href="index.html" className="nav-link">Trang chủ</a></li>
-              <li className="nav-item"><a href="about.html" className="nav-link">Phim Đang Chiếu</a></li>
+              <li className="nav-item active"><NavLink to="/" className="nav-link">Trang chủ</NavLink></li>
+              <li className="nav-item"><NavLink to="/movie-list" className="nav-link">Phim Đang Chiếu</NavLink></li>
               <li className="nav-item"><a href="candidates.html" className="nav-link">Canditates</a></li>
               <li className="nav-item"><a href="blog.html" className="nav-link">Blog</a></li>
               <li className="nav-item"><a href="contact.html" className="nav-link">Contact</a></li>
