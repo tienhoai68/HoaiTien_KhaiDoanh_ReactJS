@@ -13,7 +13,6 @@
     ;
 
     nav.navbar.navbar-expand-lg.navbar-light {
-        // width: 980px;
         margin: 0px auto;
     }
 
@@ -26,12 +25,13 @@
         top: 59%;
     }
 
-    .logo {
+    .logo  {
         display: block;
         min-width: 100px;
         min-height: 44px;
-        text-align: center;
-        margin-top: 32px;
+        img {
+            width: 276px;
+        }
     }
 
     .dropdown-menu.show {
@@ -91,6 +91,5 @@
             top: 15px;
         }
     }
+    
 }
-
-;
