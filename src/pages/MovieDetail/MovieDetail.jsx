@@ -33,7 +33,7 @@ export default function MovieDetail() {
             <div className='film-item-type'>
               <div className='icon-2d'></div>
             </div>
-            <p>Mô tả : {detail.moTa}</p>
+            <p>Mô tả: {detail.moTa}</p>
             <div className='film-overview'>
               <span className='l-title'>Đánh giá:</span>
               <span className='l-comment'></span>
@@ -44,7 +44,6 @@ export default function MovieDetail() {
             </div>
             <div className='film-item-btn'>
               <button className='trailler-btn'>TRAILER</button>
-              <button className='cart-btn'>MUA VÉ</button>
             </div>
           </div>
         </div>

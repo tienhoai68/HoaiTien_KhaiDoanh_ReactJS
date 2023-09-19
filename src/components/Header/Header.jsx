@@ -43,8 +43,8 @@ export default function Header() {
               <li className="nav-item"><a href="candidates.html" className="nav-link">Canditates</a></li>
               <li className="nav-item"><a href="blog.html" className="nav-link">Blog</a></li>
               <li className="nav-item"><a href="contact.html" className="nav-link">Contact</a></li>
-              <li className="nav-item cta mr-md-1"><a href="new-post.html" className="nav-link">Post a Job</a></li>
-              <li className="nav-item cta cta-colored"><a href="job-post.html" className="nav-link">Want a Job</a></li>
+              <li className="nav-item cta mr-md-1"><button href="" className="btn btn-warning nav-link">Register</button></li>
+              <li className="nav-item cta cta-colored"><button href="" className="btn btn-danger nav-link">Login</button></li>
             </ul>
           </div>
         </div>
