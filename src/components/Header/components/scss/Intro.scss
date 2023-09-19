@@ -1,7 +1,7 @@
 .page-header {
     width: 100%;
     margin: 0 auto;
-    background: url(../../../../public/img/bg-top.png) repeat-x scroll left bottom transparent;
+    background: url(../../../../../public/img/bg-top.png) repeat-x scroll left bottom transparent;
     background-size: 10px 135px;
     height: 135px;
 
@@ -25,34 +25,36 @@
         top: 59%;
     }
 
-    .logo  {
+    .logo {
         display: block;
         min-width: 100px;
         min-height: 44px;
+
         img {
             width: 276px;
         }
     }
 
-    .dropdown-menu.show {
-        background: url(../../../../public/img/bg_menu_hover.png) repeat scroll center center rgba(0, 0, 0, 0);
-        left: 0;
-        padding: 3px;
-        position: absolute;
-        min-width: 190px;
+    // .dropdown-menu.show {
+    //     background: url(../../../../public/img/bg_menu_hover.png) repeat scroll center center rgba(0, 0, 0, 0);
+    //     background: url(../../../../../public/img/bg_menu_hover.png) repeat scroll center center rgba(0, 0, 0, 0);
+    //     left: 0;
+    //     padding: 3px;
+    //     position: absolute;
+    //     min-width: 190px;
 
-        .dropdown-item {
-            color: #fff;
-            transition: all 0.3s;
-        }
+    //     .dropdown-item {
+    //         color: #fff;
+    //         transition: all 0.3s;
+    //     }
 
-        .dropdown-item:focus,
-        .dropdown-item:hover {
-            color: red;
-            text-decoration: none;
-            background-color: transparent;
-        }
-    }
+    //     .dropdown-item:focus,
+    //     .dropdown-item:hover {
+    //         color: red;
+    //         text-decoration: none;
+    //         background-color: transparent;
+    //     }
+    // }
 
     .navbar-nav {
         display: flex;
@@ -91,5 +93,5 @@
             top: 15px;
         }
     }
-    
+
 }

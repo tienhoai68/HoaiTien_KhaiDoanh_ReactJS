@@ -10,19 +10,19 @@ export default function Router() {
   const routing = useRoutes([
     {
       path: "/",
-      element: <HomeLayout/>,
+      element: <HomeLayout />,
       children: [
         {
           path: "/",
-          element: <Home/>,
+          element: <Home />,
         },
         {
-          path: "/movie-detail",
-          element: <MovieDetail/>
+          path: "/movie-detail/:movieId",
+          element: <MovieDetail />
         },
         {
           path: "/movie-list",
-          element: <MovieList/>
+          element: <MovieList />
         }
       ]
     }

@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./MovieList.scss";
 import "./ResponsiveMovieList.scss"
 import { movieService } from "../../services/movie";
+import { useNavigate } from "react-router";
 export default function MovieList() {
   const [movieList, setMovieList] = useState([]);
+  
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchMovieList();
@@ -12,7 +15,6 @@ export default function MovieList() {
   const fetchMovieList = async () => {
     const result = await movieService.fecthMovieListApi();
     setMovieList(result.data.content);
-    console.log(result.data.content);
   };
 
   const renderMovieList = () => {
@@ -26,8 +28,8 @@ export default function MovieList() {
               <i className="fa fa-play"></i>
             </div>
             <div>
-            <h6 className="mb-0">{element.tenPhim}</h6>
-            <img src="././img/rating.png" alt="" className="rating" />
+              <h6 className="mb-0">{element.tenPhim}</h6>
+              <img src="././img/rating.png" alt="" className="rating" />
             </div>
             <div className="ticket-head text-center">
               <div className="ticket-container mx-auto ">
@@ -36,33 +38,14 @@ export default function MovieList() {
                   <p className="ticket__movie-slogan">
                     {element.moTa}
                   </p>
-                  {/* <button className="ticket__buy-btn">Buy now</button> */}
-                  <div className="mb-3 mb-lg-4 button-group"> 
-                  <button className="button_default btn_details mr-2">Chi Tiết</button>
-                  <button className="button_default btn_ticket ">Đặt vé</button>
+                  <div className="mb-3 mb-lg-4 button-group">
+                    <button onClick={() => navigate(`/movie-detail/${element.maPhim}`)} className="button_default btn_details mr-2">Chi Tiết</button>
+                    <button className="button_default btn_ticket ">Đặt vé</button>
                   </div>
                 </div>
               </div>
-              {/* <button className="mr-1 btn btn-success">Chi Tiết</button>
-              <button className="btn btn-danger">Đặt vé</button> */}
             </div>
           </div>
-          {/* <div className="card mb-4">
-            <img
-              className="card-img-top card-img"
-              src={element.hinhAnh}
-              alt="..."
-            />
-            <div style={{ background: "#fdfcf0" }} className="card-body">
-              <h2 style={{ fontSize: 20 }} className="card-title text-center">
-                {element.tenPhim}
-              </h2>
-              <button className="btn btn-success ">
-                <i class="fa-regular fa-thumbs-up"></i> Like: {element.danhGia}
-              </button>
-              <button className="btn btn-danger ml-lg-2">Đặt vé</button>
-            </div>
-          </div> */}
         </div>
       );
     });
