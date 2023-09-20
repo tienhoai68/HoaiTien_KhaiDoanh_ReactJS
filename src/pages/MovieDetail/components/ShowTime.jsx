@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { cinemaService } from "../../../services/cinema";
 import { Link, useParams } from "react-router-dom";
 import "./ShowTime.scss";
+import { formatDate } from "../../../utils/formatDate";
 
 export default function ShowTime() {
   const params = useParams();
@@ -18,9 +19,8 @@ export default function ShowTime() {
       return (
         <a
           key={element.maHeThongRap}
-          className={`nav-link mb-3 p-3 shadow " id="v-pills-home-tab ${
-            idx === 0 && "active"
-          }`}
+          className={`nav-link mb-3 p-3 shadow " id="v-pills-home-tab ${idx === 0 && "active"
+            }`}
           data-toggle="pill"
           href={`#${element.maHeThongRap}`}
           role="tab"
@@ -41,9 +41,8 @@ export default function ShowTime() {
     return showTime.map((element, idx) => {
       return (
         <div
-          className={`nav-showtime tab-pane fade show p-3 ${
-            idx === 0 && "active"
-          }`}
+          className={`nav-showtime tab-pane fade show p-3 ${idx === 0 && "active"
+            }`}
           id={element.maHeThongRap}
           key={element.maHeThongRap}
           role="tabpanel"
@@ -65,12 +64,12 @@ export default function ShowTime() {
                   {element.lichChieuPhim.map((element) => {
                     return (
                       <div className="row">
-                        <div key={element.maRap} className="col-3">
+                        <div key={element.maRap} className="col-4">
                           <Link
                             className=" calendar-movie"
                             to={`/booking/${element.maLichChieu}`}
                           >
-                            {element.ngayChieuGioChieu}
+                            {formatDate(element.ngayChieuGioChieu)}
                           </Link>
                         </div>
                       </div>

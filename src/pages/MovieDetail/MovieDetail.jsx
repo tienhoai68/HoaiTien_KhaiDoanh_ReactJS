@@ -3,6 +3,7 @@ import "./movieDetail.scss"
 import { movieService } from '../../services/movie';
 import { useParams } from 'react-router';
 import ShowTime from './components/ShowTime';
+import { formatDate } from '../../utils/formatDate';
 export default function MovieDetail() {
   const param = useParams();
   const [detail, setDetail] = useState({});
@@ -28,7 +29,7 @@ export default function MovieDetail() {
             <h3>{detail.tenPhim}</h3>
             <div className='film-overview'>
               <span className='l-title'>Khởi chiếu: </span>
-              <span className='l-value'>Từ {detail.ngayKhoiChieu}</span>
+              <span className='l-value'>{formatDate(detail.ngayKhoiChieu)}</span>
             </div>
             <div className='film-item-type'>
               <div className='icon-2d'></div>
