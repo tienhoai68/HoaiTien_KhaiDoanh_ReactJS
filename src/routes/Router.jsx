@@ -4,6 +4,7 @@ import Home from '../pages/Home/Home'
 import HomeLayout from '../layouts/HomeLayout/HomeLayout'
 import MovieDetail from '../pages/MovieDetail/MovieDetail'
 import MovieList from '../pages/MovieList/MovieList'
+import Booking from '../pages/Booking/Booking'
 
 export default function Router() {
 
@@ -23,6 +24,10 @@ export default function Router() {
         {
           path: "/movie-list",
           element: <MovieList />
+        },
+        {
+          path: "/booking/:bookingId",
+          element: <Booking />
         }
       ]
     }
