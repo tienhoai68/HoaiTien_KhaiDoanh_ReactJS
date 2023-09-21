@@ -6,6 +6,14 @@ import MovieDetail from '../pages/MovieDetail/MovieDetail'
 import MovieList from '../pages/MovieList/MovieList'
 import Booking from '../pages/Booking/Booking'
 
+import AdminLayout from '../layouts/AdminLayout/AdminLayout'
+import AdminHome from '../pages/AdminHome/AdminHome'
+import AdminUsers from "../pages/AdminUser/AdminUsers"
+import AdminFilm from '../pages/AdminFilm/AdminFilm'
+import AddnewFilm from '../pages/AdminFilmAddnew/AddnewFilm'
+import EditFilm from '../pages/AdminFilmEdit/EditFilm'
+import Login from '../components/Login/Login'
+
 export default function Router() {
 
   const routing = useRoutes([
@@ -30,6 +38,37 @@ export default function Router() {
           element: <Booking />
         }
       ]
+    },
+    {
+      path: "/admin",
+      element: <AdminLayout />,
+      children: [
+        {
+          path: "/admin",
+          element: <AdminHome />,
+        },
+        {
+          path: "/admin/user",
+          element: <AdminUsers />
+        },
+        {
+          path: "/admin/films",
+          element: <AdminFilm />,
+        },
+        {
+          path: "/admin/films/addnew",
+          element: <AddnewFilm />,
+        },
+        {
+          path: "/admin/films/edit",
+          element: <EditFilm />
+        },
+
+      ]
+    },
+    {
+      path: "/login",
+      element: <Login />
     }
   ])
   return routing;
