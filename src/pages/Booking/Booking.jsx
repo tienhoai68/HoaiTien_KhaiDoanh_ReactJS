@@ -27,13 +27,26 @@ export default function Booking() {
 
   const renderChairList = () => {
     return chairList.map((element, index) => {
+      let className = "chair";
+      if (element.loaiGhe === "Vip") {
+        className = "button-vip"
+      }
+      if (element.dangChon) {
+        className = "button-success"
+      }
       return (
         <React.Fragment key={element.maGhe}>
-          <button className="mr-1 mb-1 chair btn">{element.tenGhe}</button>
+          <button onClick={() => handleSelectedChair(element)} disabled={element.daDat} className={`mr-1 mb-1 ${className} btn`}>{element.tenGhe}</button>
           {(index + 1) % 16 === 0 && <br />}
         </React.Fragment>
       )
     })
+  }
+  const handleSelectedChair = (chair) => {
+    const data = [...chairList];
+    const index = data.findIndex((element) => element.maGhe === chair.maGhe);
+    data[index].dangChon = !data[index].dangChon;
+    setChairList(data);
   }
 
 
@@ -52,7 +65,8 @@ export default function Booking() {
                   <ul className="seat_w3ls text-center">
                     <li className="smallBox greenBox">Selected Seat</li>
                     <li className="smallBox redBox">Reserved Seat</li>
-                    <li className="smallBox emptyBox">Empty Seat</li>
+                    <li className="smallBox emptyBox">normal Seat</li>
+                    <li className="smallBox vipBox">Vip Seat</li>
                   </ul>
                 </div>
               </div>

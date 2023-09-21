@@ -68,6 +68,12 @@ li.smallBox {
   opacity: 0.65;
 }
 
+.vipBox::before {
+  content: "";
+  background-color: rgb(167, 71, 167) !important;
+  opacity: 0.65;
+}
+
 .emptyBox::before {
   content: "";
   box-shadow: inset 0px 2px 3px 0px rgb(255, 152, 0), 0px 1px 0px 0px rgba(255, 255, 255, .8);
@@ -142,6 +148,14 @@ input[type=checkbox]:before {
   color: #fff !important;
 }
 
+.button-vip {
+  width: 36px;
+  height: 36px;
+  padding: 0 !important;
+  background-color: rgb(167, 71, 167) !important;
+  color: #fff !important;
+}
+
 .title_td {
   color: #fff;
   font-weight: 800;
@@ -149,7 +163,7 @@ input[type=checkbox]:before {
 
 .btn.disabled,
 .btn:disabled {
-  opacity: .65;
+  opacity: 0.8;
   background-color: red !important;
   color: #fff;
 }
