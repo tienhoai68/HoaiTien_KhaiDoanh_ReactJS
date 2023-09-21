@@ -1,4 +1,8 @@
 import React from "react";
+import momo from "../../assets/img/momo.jpg"
+import masterCard from "../../assets/img/payment-mastercard.png"
+import visa from "../../assets/img/payment-visa.png"
+import napas from "../../assets/img/napas-40.png"
 import "./Footer.scss";
 export default function Footer() {
   return (
@@ -9,16 +13,16 @@ export default function Footer() {
             <div>Chấp nhận thanh toán</div>
             <ul>
               <li>
-                <img src="././img/momo.jpg" alt="" />
+                <img src={momo} alt="" />
               </li>
               <li>
-                <img src="././img/payment-mastercard.png" alt="" />
+                <img src={masterCard} alt="" />
               </li>
               <li>
-                <img src="././img/payment-visa.png" alt="" />
+                <img src={visa} alt="" />
               </li>
               <li>
-                <img src="././img/napas-40.png" alt="" />
+                <img src={napas} alt="" />
               </li>
             </ul>
           </div>
