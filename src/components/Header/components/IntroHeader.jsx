@@ -26,10 +26,6 @@ export default function IntroHeader() {
                         </div>
                     </div>
                 </nav>
-
-
-
-
             </div>
         </div>
     )

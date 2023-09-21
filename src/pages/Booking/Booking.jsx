@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import "./Booking.scss"
-import { useParams } from 'react-router-dom'
-import { ticketService } from '../../services/ticket';
+import React, { useEffect, useState } from "react";
+import "./Booking.scss";
+import { useParams } from "react-router-dom";
+import { ticketService } from "../../services/ticket";
+import { element } from "prop-types";
+import { filter, sumBy } from "lodash";
 
 export default function Booking() {
   const params = useParams();
@@ -15,48 +17,77 @@ export default function Booking() {
 
   const fetchTicketDetail = async () => {
     const result = await ticketService.fetchTicketDetailApi(params.bookingId);
-    console.log(result);
     setTicketDetail(result.data.content.thongTinPhim);
-    setChairList(result.data.content.danhSachGhe.map((element) => {
-      return {
-        ...element,
-        dangChon: false,
-      }
-    }));
-  }
+    setChairList(
+      result.data.content.danhSachGhe.map((element) => {
+        return {
+          ...element,
+          dangChon: false,
+        };
+      })
+    );
+  };
 
   const renderChairList = () => {
     return chairList.map((element, index) => {
       let className = "chair";
       if (element.loaiGhe === "Vip") {
-        className = "button-vip"
+        className = "button-vip";
       }
       if (element.dangChon) {
-        className = "button-success"
+        className = "button-success";
       }
       return (
         <React.Fragment key={element.maGhe}>
-          <button onClick={() => handleSelectedChair(element)} disabled={element.daDat} className={`mr-1 mb-1 ${className} btn`}>{element.tenGhe}</button>
+          <button
+            onClick={() => handleSelectedChair(element)}
+            disabled={element.daDat}
+            className={`mr-1 mb-1 ${className} btn`}
+          >
+            {element.tenGhe}
+          </button>
           {(index + 1) % 16 === 0 && <br />}
         </React.Fragment>
-      )
-    })
-  }
+      );
+    });
+  };
   const handleSelectedChair = (chair) => {
     const data = [...chairList];
     const index = data.findIndex((element) => element.maGhe === chair.maGhe);
     data[index].dangChon = !data[index].dangChon;
     setChairList(data);
-  }
+  };
 
+  const rederSeatList = () => {
+    const filterChair = chairList.filter(
+      (element) => element.dangChon === true
+    );
+    return filterChair.map((element) => {
+      return <span key={element.maGhe} className="detail-value"> {element.tenGhe}</span>;
+    });
+  };
+
+  const renderTotalPrice = () => {
+    // use ES6
+
+    // const filterChair = chairList.filter(
+    //   (element) => element.dangChon === true
+    // );
+    // return filterChair.reduce((total, element) => total += element.giaVe, 0).toLocaleString();
+
+    // dùng Lodash
+    const filterChair = filter(chairList, "dangChon")
+    const total = sumBy(filterChair, "giaVe");
+    return total.toLocaleString();
+  }
 
   return (
     <div className="backgroud-booking ">
-      <div className='row mr-0 ml-0'>
-        <div className='col-8'>
+      <div className="row mr-0 ml-0">
+        <div className="col-8">
           <div className="title">MOVIE SEAT SELECTION</div>
-          <div className=''>
-            <div className='wrapper-booking'>
+          <div className="">
+            <div className="wrapper-booking">
               <div className="w-100">
                 <div className="screen">
                   <h2 className="wthree">Screen this way</h2>
@@ -65,7 +96,7 @@ export default function Booking() {
                   <ul className="seat_w3ls text-center">
                     <li className="smallBox greenBox">Selected Seat</li>
                     <li className="smallBox redBox">Reserved Seat</li>
-                    <li className="smallBox emptyBox">normal Seat</li>
+                    <li className="smallBox emptyBox">Normal Seat</li>
                     <li className="smallBox vipBox">Vip Seat</li>
                   </ul>
                 </div>
@@ -76,10 +107,11 @@ export default function Booking() {
             </div>
           </div>
         </div>
-        <div className='col-4 mt-5'>
+        <div className="col-4 mt-5">
           <div className="movie-info">
             <div className="movie-price">
-              <p className="price-text">0VND</p>
+              <span className="price-title">Giá Tiền: </span>
+              <span className="price-text">{renderTotalPrice()} VND</span>
             </div>
             <hr className="divider" />
             <div className="movie-details">
@@ -99,7 +131,10 @@ export default function Booking() {
             <hr className="divider" />
             <div className="movie-details">
               <h3 className="detail-heading">Ngày giờ chiếu:</h3>
-              <h3 className="detail-value">{ticketDetail.ngayChieu} - <span className="time-highlight">{ticketDetail.gioChieu}</span></h3>
+              <h3 className="detail-value">
+                {ticketDetail.ngayChieu} -{" "}
+                <span className="time-highlight">{ticketDetail.gioChieu}</span>
+              </h3>
             </div>
             <hr className="divider" />
             <div className="movie-details">
@@ -108,8 +143,8 @@ export default function Booking() {
             </div>
             <hr className="divider" />
             <div className="movie-details">
-              <h3 className="detail-heading">Chọn: </h3>
-              <h3 className="detail-value"></h3>
+              <span className="detail-heading">Ghế Đang Chọn: </span>
+              {rederSeatList()}
             </div>
             <hr className="divider" />
             <div className="button-group">
@@ -119,5 +154,5 @@ export default function Booking() {
         </div>
       </div>
     </div>
-  )
+  );
 }

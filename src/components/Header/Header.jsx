@@ -1,8 +1,9 @@
 import React from 'react'
 import "./Header.scss"
-import imgCarousel from "../../assets/img/banner-2.jpg"
-import imgCarousel1 from "../../assets/img/carousel-3.jpg"
-import imgCarousel2 from "../../assets/img/theNun.jpg"
+import  venice from "../../assets/img/banner-2.jpg"
+import avengers from "../../assets/img/carousel-3.jpg"
+import theNun from "../../assets/img/theNun.jpg"
+import logo from "../../assets/img/cinema.png"
 import { NavLink } from 'react-router-dom'
 export default function Header() {
   return (
@@ -11,7 +12,7 @@ export default function Header() {
         <div className="header-dark">
           <nav className="navbar navbar-dark navbar-expand-md navigation-clean-search">
             <div className="container">
-              <img style={{ width: "6%" }} src="./img/cinema.png" alt="" />
+              <img style={{ width: "6%" }} src={logo} alt="" />
               <a className="navbar-brand" href="#">MOVIE CINEMA</a>
               <button className="navbar-toggler" data-toggle="collapse" data-target="#navcol-1">
                 <span className="sr-only">Toggle navigation</span>
@@ -19,8 +20,8 @@ export default function Header() {
               </button>
               <div className="collapse navbar-collapse justify-content-between" id="navcol-1">
                 <ul className="nav navbar-nav">
-                  <li className="nav-item" role="presentation"><NavLink className="nav-link" to="/">TRANG CHỦ</NavLink></li>
-                  <li className="nav-item" role="presentation"><NavLink className="nav-link" to="/movie-list">PHIM ĐANG CHIẾU</NavLink></li>
+                  <li className="nav-item-header" role="presentation"><NavLink className="nav-link" to="/">TRANG CHỦ</NavLink></li>
+                  <li className="nav-item-header" role="presentation"><NavLink className="nav-link" to="/movie-list">PHIM ĐANG CHIẾU</NavLink></li>
                   <li className="dropdown">
                     <a className="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">DROPDOWN</a>
                     <div className="dropdown-menu" role="menu">
@@ -46,21 +47,21 @@ export default function Header() {
               </ol>
               <div className="carousel-inner">
                 <div className="carousel-item active">
-                  <img src={imgCarousel2} className="d-block w-100" alt="..." />
+                  <img src={theNun} className="d-block w-100" alt="..." />
                   <div className="carousel-caption d-none d-md-block">
                     <h5>First slide label</h5>
                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <img src={imgCarousel1} className="d-block w-100" alt="..." />
+                  <img src={avengers} className="d-block w-100" alt="..." />
                   <div className="carousel-caption d-none d-md-block">
                     <h5>Second slide label</h5>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <img src={imgCarousel} className="d-block w-100" alt="..." />
+                  <img src={venice} className="d-block w-100" alt="..." />
                   <div className="carousel-caption d-none d-md-block">
                     <h5>Third slide label</h5>
                     <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
