@@ -14,6 +14,7 @@ export default function ShowTime() {
     setShowTime(result.data.content.heThongRapChieu);
   };
 
+  // console.log(showTime)
   const renderTabList = () => {
     return showTime.map((element, idx) => {
       return (
@@ -35,7 +36,6 @@ export default function ShowTime() {
       );
     });
   };
-  console.log(showTime);
 
   const renderTabContent = () => {
     return showTime.map((element, idx) => {
@@ -63,8 +63,8 @@ export default function ShowTime() {
                   <span className="text-white">{element.diaChi}</span>
                   {element.lichChieuPhim.map((element) => {
                     return (
-                      <div className="row">
-                        <div key={element.maRap} className="col-4">
+                      <div key={element.maRap} className="row">
+                        <div className="col-4">
                           <Link
                             className=" calendar-movie"
                             to={`/booking/${element.maLichChieu}`}
