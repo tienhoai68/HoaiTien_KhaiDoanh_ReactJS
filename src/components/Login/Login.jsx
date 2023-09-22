@@ -1,66 +1,89 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 // import "./style.css";
 import "./Login.scss";
+import Register from './components/Register/Register';
+import { userService } from '../../services/user';
+import { useDispatch } from "react-redux"
+import { setUserInfoAction } from '../../store/actions/userAction';
 
 export default function Login() {
+    const dispatch = useDispatch();
+
+    const [stateLogin, setStateLogin] = useState({
+        taiKhoan: "",
+        matKhau: "",
+    });
+
     const handleClickRegister = () => {
         const container = document.getElementById("container");
         container.classList.add("right-panel-active");
 
     };
-
     const handleClickLogin = () => {
         const container = document.getElementById("container");
         container.classList.remove("right-panel-active");
     };
+
+    const handleChangeLogin = (event) => {
+        setStateLogin({
+            ...stateLogin,
+            [event.target.name]: event.target.value,
+        })
+    }
+
     const handleSubmitLogin = async (event) => {
         event.preventDefault();
+        const result = await userService.loginApi(stateLogin);
+        console.log(result);
+        dispatch(setUserInfoAction(result.data.content));
     }
+
 
 
     return (
         <div className='background-login'>
             <div className='container' id='container'>
                 <div className='form-container register-container'>
-                    <form onSubmit={handleSubmitLogin}>
+                    {/* <form onSubmit={handleSubmitRegister}>
                         <h1>Register here</h1>
                         <div className='form-control'>
-                            <input type="text" placeholder='Tài khoản' />
+                            <input onChange={handleChangeRegister} type="text" placeholder='Tài khoản' />
                             <span></span>
                         </div>
                         <div className='form-control'>
-                            <input type="text" placeholder='Mật khẩu' />
+                            <input onChange={handleChangeRegister} type="text" placeholder='Mật khẩu' />
                             <span></span>
                         </div>
                         <div className='form-control'>
-                            <input type="text" placeholder='Email' />
+                            <input onChange={handleChangeRegister} type="text" placeholder='Email' />
                             <span></span>
                         </div>
                         <div className='form-control'>
-                            <input type="text" placeholder='Số điện thoại' />
+                            <input onChange={handleChangeRegister} type="text" placeholder='Số điện thoại' />
                             <span></span>
                         </div>
                         <div className='form-control'>
-                            <input type="text" placeholder='Mã nhóm' />
+                            <input onChange={handleChangeRegister} type="text" placeholder='Mã nhóm' />
                             <span></span>
                         </div>
                         <div className='form-control'>
-                            <input type="text" placeholder='Họ Tên' />
+                            <input onChange={handleChangeRegister} type="text" placeholder='Họ Tên' />
                             <span></span>
                         </div>
                         <button type='submit'>Register</button>
-                    </form>
+                    </form> */}
+                    <Register />
                 </div>
                 <div className='form-container login-container'>
                     <form onSubmit={handleSubmitLogin} className='form-lg'>
                         <h1>Login here</h1>
                         <div className='form-control2'>
-                            <input name='taiKhoan' type="text" placeholder='Tài khoản' />
+                            <input onChange={handleChangeLogin} name='taiKhoan' type="text" placeholder='Tài khoản' />
                             <span></span>
                         </div>
                         <div className='form-control2'>
-                            <input name='matKhau' type="text" placeholder='Mật Khẩu' />
+                            <input onChange={handleChangeLogin} name='matKhau' type="text" placeholder='Mật Khẩu' />
                             <span></span>
                         </div>
                         <button type='submit'>Login</button>

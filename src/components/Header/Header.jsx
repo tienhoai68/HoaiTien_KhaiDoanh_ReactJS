@@ -1,11 +1,12 @@
 import React from 'react'
 import "./Header.scss"
-import  venice from "../../assets/img/banner-2.jpg"
+import venice from "../../assets/img/banner-2.jpg"
 import avengers from "../../assets/img/carousel-3.jpg"
 import theNun from "../../assets/img/theNun.jpg"
 import logo from "../../assets/img/cinema.png"
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 export default function Header() {
+  const navigate = useNavigate();
   return (
     <div className="mtw_banner_top" >
       <div>
@@ -32,8 +33,8 @@ export default function Header() {
                   </li>
                 </ul>
                 <div className="button-group-header">
-                  <button className="button_default btn_details mr-2">ĐĂNG KÍ</button>
-                  <button className="button_default btn_ticket ">ĐĂNG NHẬP</button>
+                  <button onClick={() => navigate("/login")} className="button_default btn_details mr-2">ĐĂNG KÍ</button>
+                  <button onClick={() => navigate("/login")} className="button_default btn_ticket ">ĐĂNG NHẬP</button>
                 </div>
               </div>
             </div>
