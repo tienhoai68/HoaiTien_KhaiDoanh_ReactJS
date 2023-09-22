@@ -69,7 +69,6 @@ export default function Booking() {
 
   const renderTotalPrice = () => {
     // use ES6
-
     // const filterChair = chairList.filter(
     //   (element) => element.dangChon === true
     // );
@@ -81,6 +80,20 @@ export default function Booking() {
     return total.toLocaleString();
   }
 
+  const handleBookTicket = async () => {
+    const filterChair = filter(chairList, "dangChon")
+
+    const dataSendApi = {
+      maLichChieu: Number(params.bookingId),
+      danhSachVe: filterChair.map((element) => {
+        return {
+          maGhe: element.maGhe,
+          giaVe: element.giaVe,
+        }
+      })
+    }
+    await ticketService.bookTicketApi(dataSendApi);
+  }
   return (
     <div className="backgroud-booking ">
       <div className="row mr-0 ml-0">
@@ -148,7 +161,7 @@ export default function Booking() {
             </div>
             <hr className="divider" />
             <div className="button-group">
-              <button className="button_default btn_booking ">Đặt vé</button>
+              <button onClick={handleBookTicket} className="button_default btn_booking ">Đặt vé</button>
             </div>
           </div>
         </div>
