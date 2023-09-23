@@ -134,6 +134,30 @@
 .header-dark .hero {
   margin-top: 60px;
 }
+// css header Logout
+// .navbar-light .navbar-nav .nav-link {
+//   color: rgba(0,0,0,.5);
+// }
+.nav-img img {
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  margin: -8px 0;
+  margin-right: 10px;
+}
+.navbar-logout {
+  .dropdown-menu {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+    background: url(../../../public/img/bg_menu_hover.png);
+    border-radius: 2px;
+    top: 110%;
+    left: 12%;
+  }
+  .dropdown-item i {
+    font-size: 16px;
+    min-width: 22px;
+}
+}
 
 @media (min-width:768px) {
   .header-dark .hero {
@@ -192,5 +216,4 @@
     }
   }
 }
-
 ;
