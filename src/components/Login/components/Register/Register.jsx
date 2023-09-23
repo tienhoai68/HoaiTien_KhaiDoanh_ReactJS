@@ -21,9 +21,10 @@ export default function Register() {
 
   const handleSubmitRegister = async (event) => {
     event.preventDefault();
-    const result = await userService.registerApi(stateRegister);
     console.log(stateRegister);
+    await userService.registerApi(stateRegister);
   }
+  // console.log(stateRegister);
 
 
   return (
