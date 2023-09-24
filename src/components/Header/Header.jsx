@@ -27,10 +27,11 @@ export default function Header() {
 
   const renderBanner = () => {
     return bannerMovie.map((element, index) => {
+    
       return (
         <div  key={element.maPhim} className={`carousel-item  ${index === 0 && "active"
       } `}>
-          <img src={element.hinhAnh} className="d-block w-100 img-fluid" alt="..." />
+          <img src={element.hinhAnh} className="img-banner d-block w-100 img-fluid" alt="..." />
           <div className="carousel-caption d-none d-md-block">
             <h5>First slide label</h5>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -71,7 +72,7 @@ export default function Header() {
                 <img src={avatar} className="avatar" alt="Avatar" />
                 Hello {userState.userInfo.hoTen} <b className="caret"></b>
               </a>
-              <div className="dropdown-menu">
+              <div className="dropdown-menu w-25">
                 <a href="#" className="dropdown-item">
                   <i className="fa-regular fa-user"></i> Profile
                 </a>
@@ -160,7 +161,7 @@ export default function Header() {
             <div
               id="carouselExampleCaptions"
               className="carousel slide"
-              data-ride="carousel"
+              // data-ride="carousel"
             >
               <ol className="carousel-indicators">
                 <li
