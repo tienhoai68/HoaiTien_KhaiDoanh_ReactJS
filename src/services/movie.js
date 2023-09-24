@@ -3,7 +3,7 @@ import { requestApi } from "../configs/callApi";
 class MovieService {
     fecthMovieListApi() {
         return requestApi({
-            url: "/QuanLyPhim/LayDanhSachPhim?maNhom=GP01",
+            url: "/QuanLyPhim/LayDanhSachPhim?maNhom=GP08",
             method: "GET",
         })
     };

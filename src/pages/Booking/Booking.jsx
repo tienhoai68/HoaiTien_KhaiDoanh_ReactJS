@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Booking.scss";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ticketService } from "../../services/ticket";
 import { element } from "prop-types";
 import { filter, sumBy } from "lodash";
 
 export default function Booking() {
   const params = useParams();
+  const navigate = useNavigate();
 
   const [ticketDetail, setTicketDetail] = useState({});
   const [chairList, setChairList] = useState([]);
@@ -93,6 +94,8 @@ export default function Booking() {
       })
     }
     await ticketService.bookTicketApi(dataSendApi);
+    // navigate sang trang vé sẽ đúng
+    navigate("/")
   }
   return (
     <div className="backgroud-booking ">

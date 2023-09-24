@@ -3,8 +3,10 @@ import "./MovieList.scss";
 import "./ResponsiveMovieList.scss"
 import { movieService } from "../../services/movie";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 export default function MovieList() {
   const [movieList, setMovieList] = useState([]);
+  const userState = useSelector((state) => state.userReducer);
   
   const navigate = useNavigate();
 
@@ -16,6 +18,14 @@ export default function MovieList() {
     const result = await movieService.fecthMovieListApi();
     setMovieList(result.data.content);
   };
+
+  const handleBooking = (codeMovie) => {
+    if(userState) {
+      navigate(`/movie-detail/${codeMovie}`)
+    }else{
+      navigate("/login")
+    }
+  }
 
   const renderMovieList = () => {
     return movieList.map((element) => {
@@ -40,7 +50,7 @@ export default function MovieList() {
                   </p>
                   <div className="mb-3 mb-lg-4 button-group">
                     <button onClick={() => navigate(`/movie-detail/${element.maPhim}`)} className="button_default btn_details mr-2">Chi Tiết</button>
-                    <button className="button_default btn_ticket ">Đặt vé</button>
+                    <button onClick={() => handleBooking(element.maPhim)} className="button_default btn_ticket ">Đặt vé</button>
                   </div>
                 </div>
               </div>
