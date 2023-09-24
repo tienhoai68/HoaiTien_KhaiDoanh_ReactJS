@@ -11,14 +11,14 @@ export default function MovieDetail() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [videoUrl, setVideoUrl] = useState('');
 
-
   const fetchMovieDetail = async () => {
     const result = await movieService.fecthMovieDetailApi(param.movieId);
     setDetail(result.data.content)
   };
 
   const showModal = (videoUrl) => {
-    setVideoUrl(videoUrl);
+    const videoUrlWithParams = `${videoUrl}?autoplay=1&mute=1`;
+    setVideoUrl(videoUrlWithParams);
     setIsModalVisible(true);
   };
 
