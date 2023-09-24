@@ -1,21 +1,22 @@
-import React from 'react'
-import { useRoutes } from 'react-router-dom'
-import Home from '../pages/Home/Home'
-import HomeLayout from '../layouts/HomeLayout/HomeLayout'
-import MovieDetail from '../pages/MovieDetail/MovieDetail'
-import MovieList from '../pages/MovieList/MovieList'
-import Booking from '../pages/Booking/Booking'
+import React from "react";
+import { useRoutes } from "react-router-dom";
+import Home from "../pages/Home/Home";
+import HomeLayout from "../layouts/HomeLayout/HomeLayout";
+import MovieDetail from "../pages/MovieDetail/MovieDetail";
+import MovieList from "../pages/MovieList/MovieList";
+import Booking from "../pages/Booking/Booking";
 
-import AdminLayout from '../layouts/AdminLayout/AdminLayout'
-import AdminHome from '../pages/AdminHome/AdminHome'
-import AdminUsers from "../pages/AdminUser/AdminUsers"
-import AdminFilm from '../pages/AdminFilm/AdminFilm'
-import AddnewFilm from '../pages/AdminFilmAddnew/AddnewFilm'
-import EditFilm from '../pages/AdminFilmEdit/EditFilm'
-import Login from '../components/Login/Login'
+import AdminLayout from "../layouts/AdminLayout/AdminLayout";
+import AdminHome from "../pages/AdminHome/AdminHome";
+import AdminUsers from "../pages/AdminUser/AdminUsers";
+import AdminFilm from "../pages/AdminFilm/AdminFilm";
+import AddnewFilm from "../pages/AdminFilmAddnew/AddnewFilm";
+import EditFilm from "../pages/AdminFilmEdit/EditFilm";
+import Login from "../components/Login/Login";
+import AuthGuard from "../guards/AuthGuard";
+import NoAuthGuard from "../guards/NoAuthGuard";
 
 export default function Router() {
-
   const routing = useRoutes([
     {
       path: "/",
@@ -27,17 +28,21 @@ export default function Router() {
         },
         {
           path: "/movie-detail/:movieId",
-          element: <MovieDetail />
+          element: <MovieDetail />,
         },
         {
           path: "/movie-list",
-          element: <MovieList />
+          element: <MovieList />,
         },
         {
           path: "/booking/:bookingId",
-          element: <Booking />
-        }
-      ]
+          element: (
+            <AuthGuard>
+              <Booking />
+            </AuthGuard>
+          ),
+        },
+      ],
     },
     {
       path: "/admin",
@@ -49,7 +54,7 @@ export default function Router() {
         },
         {
           path: "/admin/user",
-          element: <AdminUsers />
+          element: <AdminUsers />,
         },
         {
           path: "/admin/films",
@@ -61,15 +66,18 @@ export default function Router() {
         },
         {
           path: "/admin/films/edit",
-          element: <EditFilm />
+          element: <EditFilm />,
         },
-
-      ]
+      ],
     },
     {
       path: "/login",
-      element: <Login />
-    }
-  ])
+      element: (
+        <NoAuthGuard>
+          <Login />
+        </NoAuthGuard>
+      ),
+    },
+  ]);
   return routing;
 }

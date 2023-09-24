@@ -4,13 +4,22 @@ import { movieService } from '../../services/movie';
 import { useParams } from 'react-router';
 import ShowTime from './components/ShowTime';
 import { formatDate } from '../../utils/formatDate';
+import { Modal } from 'antd';
 export default function MovieDetail() {
   const param = useParams();
   const [detail, setDetail] = useState({});
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [videoUrl, setVideoUrl] = useState('');
+
 
   const fetchMovieDetail = async () => {
     const result = await movieService.fecthMovieDetailApi(param.movieId);
     setDetail(result.data.content)
+  };
+
+  const showModal = (videoUrl) => {
+    setVideoUrl(videoUrl);
+    setIsModalVisible(true);
   };
 
   useEffect(() => {
@@ -44,7 +53,7 @@ export default function MovieDetail() {
               <span className='l-comment'></span>
             </div>
             <div className='film-item-btn'>
-              <button className='trailler-btn'>TRAILER</button>
+              <button onClick={()=> showModal(detail.trailer)} className='trailler-btn video-popup'>TRAILER</button>
             </div>
           </div>
         </div>
@@ -53,6 +62,23 @@ export default function MovieDetail() {
         <ShowTime />
 
       </div>
+      <Modal
+        title="TRAILER"
+        open={isModalVisible}
+        onOk={() => setIsModalVisible(false)}
+        onCancel={() => setIsModalVisible(false)}
+        width={800}
+        footer={null}
+      >
+        <iframe
+          title="YouTube Video"
+          width="100%"
+          height="400"
+          src={videoUrl}
+          frameBorder="0"
+          allowFullScreen
+        ></iframe>
+      </Modal>
     </div>
 
   )

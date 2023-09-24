@@ -8,7 +8,7 @@ export default function Register() {
     matKhau: "",
     email: "",
     soDt: "",
-    maNhom: "GP01",
+    maNhom: "GP08",
     hoTen: ""
   });
 
