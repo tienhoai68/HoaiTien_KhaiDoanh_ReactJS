@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.scss";
 import venice from "../../assets/img/banner-2.jpg";
 import avengers from "../../assets/img/carousel-3.jpg";
@@ -8,10 +8,37 @@ import avatar from "../../assets/img/avatar-1.jpg";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserInfoAction } from "../../store/actions/userAction";
+import { movieService } from "../../services/movie";
 export default function Header() {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.userReducer);
   const navigate = useNavigate();
+
+  const [bannerMovie, setBannerMovie] = useState([]);
+
+  useEffect(() => {
+    fetchBannerMovie();
+  }, []);
+
+  const fetchBannerMovie = async () => {
+    const result = await movieService.fetchMovieBannerApi();
+    setBannerMovie(result.data.content);
+  };
+
+  const renderBanner = () => {
+    return bannerMovie.map((element, index) => {
+      return (
+        <div  key={element.maPhim} className={`carousel-item  ${index === 0 && "active"
+      } `}>
+          <img src={element.hinhAnh} className="d-block w-100 img-fluid" alt="..." />
+          <div className="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </div>
+        </div>
+      );
+    });
+  };
 
   const renderButtonLogin = () => {
     if (!userState.userInfo) {
@@ -34,8 +61,6 @@ export default function Header() {
     } else {
       return (
         <>
-          {/* <span>Hello {userState.userInfo.hoTen}</span> */}
-          {/* <button onClick={() => navigate("/login")} className="button_default btn_details ml-2"> <i className="fa fa-sign-out"></i> ĐĂNG XUẤT</button> */}
           <div className="navbar-nav ml-auto navbar-logout">
             <div className="nav-item-logout dropdown">
               <a
@@ -48,14 +73,15 @@ export default function Header() {
               </a>
               <div className="dropdown-menu">
                 <a href="#" className="dropdown-item">
-                <i className="fa-regular fa-user"></i> Profile
+                  <i className="fa-regular fa-user"></i> Profile
                 </a>
                 <a href="#" className="dropdown-item">
                   <i className="fa fa-sliders"></i> Settings
                 </a>
                 <div className="dropdown-divider"></div>
                 <button className="dropdown-item" onClick={handleLogout}>
-                    <i className="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                  <i className="fa-solid fa-arrow-right-from-bracket"></i>{" "}
+                  Logout
                 </button>
               </div>
             </div>
@@ -66,10 +92,10 @@ export default function Header() {
   };
 
   const handleLogout = () => {
-      localStorage.removeItem("USER_INFO");
-      dispatch(setUserInfoAction(null));
-      navigate("/");
-  }
+    localStorage.removeItem("USER_INFO");
+    dispatch(setUserInfoAction(null));
+    navigate("/");
+  };
 
   return (
     <div className="mtw_banner_top">
@@ -152,7 +178,8 @@ export default function Header() {
                 ></li>
               </ol>
               <div className="carousel-inner">
-                <div className="carousel-item active">
+                {renderBanner()}
+                {/* <div className="carousel-item active">
                   <img src={theNun} className="d-block w-100" alt="..." />
                   <div className="carousel-caption d-none d-md-block">
                     <h5>First slide label</h5>
@@ -179,7 +206,7 @@ export default function Header() {
                       consectetur.
                     </p>
                   </div>
-                </div>
+                </div> */}
               </div>
               <a
                 className="carousel-control-prev"
