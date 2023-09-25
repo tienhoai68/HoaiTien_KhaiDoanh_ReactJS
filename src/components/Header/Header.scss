@@ -2,6 +2,19 @@
   background: linear-gradient(135deg, #b1b4b6, #262727);
   background-color: #151516;
   padding-bottom: 40px;
+  background-size: 400% 400%; /* Kích thước gradient lớn hơn khung */
+  animation: gradientAnimation 10s linear infinite;
+  @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
 }
 
 .header-dark .navbar {

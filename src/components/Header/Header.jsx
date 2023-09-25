@@ -130,7 +130,7 @@ export default function Header() {
                   </li>
                   <li className="nav-item-header" role="presentation">
                     <NavLink className="nav-link" to="/">
-                      RẠP CHIẾU
+                     CỤM RẠP
                     </NavLink>
                   </li>
                   <li className="nav-item-header" role="presentation">
