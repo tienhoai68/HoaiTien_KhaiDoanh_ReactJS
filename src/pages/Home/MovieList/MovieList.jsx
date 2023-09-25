@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./MovieList.scss";
 import "./ResponsiveMovieList.scss"
-import { movieService } from "../../services/movie";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
+import { movieService } from "../../../services/movie";
 export default function MovieList() {
   const [movieList, setMovieList] = useState([]);
   const userState = useSelector((state) => state.userReducer);
-  
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,9 +20,9 @@ export default function MovieList() {
   };
 
   const handleBooking = (codeMovie) => {
-    if(userState) {
+    if (userState) {
       navigate(`/movie-detail/${codeMovie}`)
-    }else{
+    } else {
       navigate("/login")
     }
   }
@@ -65,29 +65,12 @@ export default function MovieList() {
     <div className="main-movie container">
       <div className="title-movie">
         <div className="page-title category-title">
-          <h1>Phim Đang Chiếu</h1>
+          <h1>DANH SÁCH PHIM</h1>
         </div>
         <div className="py-5">
           <div className="row justify-content-center">
             {renderMovieList()}
           </div>
-          {/* <div className="col-md-4">
-            <div className="main-movie">
-                <div className="movie-img">
-                  <img src="" alt="" className="back-img" />
-                  <img src="" alt="" className="movie-cover" />
-                  <i className="fa fa-play"></i>
-                </div>
-                <h6>Wonder</h6>
-                <img src="" alt="" className="rating"/>
-                <div className="head1 text-center">
-                  <p>Rating</p>
-                </div>
-                <div className="head2 text-center">
-                  <p>Rating</p>
-                </div>
-            </div>
-          </div> */}
         </div>
       </div>
     </div>

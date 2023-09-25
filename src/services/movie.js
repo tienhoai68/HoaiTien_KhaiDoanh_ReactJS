@@ -13,7 +13,7 @@ class MovieService {
             method: "GET",
         })
     };
-    fetchMovieBannerApi () {
+    fetchMovieBannerApi() {
         return requestApi({
             url: "/QuanLyPhim/LayDanhSachBanner",
             method: "GET",

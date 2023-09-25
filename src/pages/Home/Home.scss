@@ -1,0 +1,30 @@
+.ant-tabs-nav-list {
+  border: 1px solid #e0e0e0;
+}
+
+.date {
+  display: inline;
+}
+
+.address {
+  color: #757575;
+  display: -webkit-box;
+  overflow: hidden;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.ant-tabs-tabpane {
+  padding-left: 0px !important;
+}
+
+.rounded-circle {
+  width: 40px;
+}
+
+.img-movie {
+  width: 100px;
+  height: 126px;
+}

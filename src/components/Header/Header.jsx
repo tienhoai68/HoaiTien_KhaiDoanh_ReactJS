@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Header.scss";
-import venice from "../../assets/img/banner-2.jpg";
-import avengers from "../../assets/img/carousel-3.jpg";
-import theNun from "../../assets/img/theNun.jpg";
 import logo from "../../assets/img/cinema.png";
 import avatar from "../../assets/img/avatar-1.jpg";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -27,10 +24,10 @@ export default function Header() {
 
   const renderBanner = () => {
     return bannerMovie.map((element, index) => {
-    
+
       return (
-        <div  key={element.maPhim} className={`carousel-item  ${index === 0 && "active"
-      } `}>
+        <div key={element.maPhim} className={`carousel-item  ${index === 0 && "active"
+          } `}>
           <img src={element.hinhAnh} className="img-banner d-block w-100 img-fluid" alt="..." />
           <div className="carousel-caption d-none d-md-block">
             <h5>First slide label</h5>
@@ -105,9 +102,9 @@ export default function Header() {
           <nav className="navbar navbar-dark navbar-expand-md navigation-clean-search">
             <div className="container">
               <img style={{ width: "6%" }} src={logo} alt="" />
-              <a className="navbar-brand" href="#">
+              <NavLink className="navbar-brand" href="/">
                 MOVIE CINEMA
-              </a>
+              </NavLink>
               <button
                 className="navbar-toggler"
                 data-toggle="collapse"
@@ -127,31 +124,21 @@ export default function Header() {
                     </NavLink>
                   </li>
                   <li className="nav-item-header" role="presentation">
-                    <NavLink className="nav-link" to="/movie-list">
-                      PHIM ĐANG CHIẾU
+                    <NavLink className="nav-link" to="/">
+                      DANH SÁCH PHIM
                     </NavLink>
                   </li>
-                  <li className="dropdown">
-                    <a
-                      className="dropdown-toggle nav-link dropdown-toggle"
-                      data-toggle="dropdown"
-                      aria-expanded="false"
-                      href="#"
-                    >
-                      DROPDOWN
-                    </a>
-                    <div className="dropdown-menu" role="menu">
-                      <a className="dropdown-item" role="presentation" href="#">
-                        First Item
-                      </a>
-                      <a className="dropdown-item" role="presentation" href="#">
-                        Second Item
-                      </a>
-                      <a className="dropdown-item" role="presentation" href="#">
-                        Third Item
-                      </a>
-                    </div>
+                  <li className="nav-item-header" role="presentation">
+                    <NavLink className="nav-link" to="/">
+                      RẠP CHIẾU
+                    </NavLink>
                   </li>
+                  <li className="nav-item-header" role="presentation">
+                    <NavLink className="nav-link" to="/">
+                      TIN TỨC
+                    </NavLink>
+                  </li>
+
                 </ul>
                 <div className="button-group-header">{renderButtonLogin()}</div>
               </div>
@@ -161,7 +148,7 @@ export default function Header() {
             <div
               id="carouselExampleCaptions"
               className="carousel slide"
-              // data-ride="carousel"
+            // data-ride="carousel"
             >
               <ol className="carousel-indicators">
                 <li
@@ -180,34 +167,6 @@ export default function Header() {
               </ol>
               <div className="carousel-inner">
                 {renderBanner()}
-                {/* <div className="carousel-item active">
-                  <img src={theNun} className="d-block w-100" alt="..." />
-                  <div className="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>
-                      Nulla vitae elit libero, a pharetra augue mollis interdum.
-                    </p>
-                  </div>
-                </div>
-                <div className="carousel-item">
-                  <img src={avengers} className="d-block w-100" alt="..." />
-                  <div className="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </div>
-                </div>
-                <div className="carousel-item">
-                  <img src={venice} className="d-block w-100" alt="..." />
-                  <div className="carousel-caption d-none d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>
-                      Praesent commodo cursus magna, vel scelerisque nisl
-                      consectetur.
-                    </p>
-                  </div>
-                </div> */}
               </div>
               <a
                 className="carousel-control-prev"
