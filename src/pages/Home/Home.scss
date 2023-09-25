@@ -1,20 +1,55 @@
+.backgroud-movie {
+  border-bottom: 3px solid #241d1e;
+  margin-bottom: 35px;
+}
 .ant-tabs-nav-list {
-  border: 1px solid #e0e0e0;
+  // border: 1px solid #e0e0e0;
+  border-radius: 30px;
+
+}
+.ant-tabs{
+  width: 100%;
+  box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.3), 0 0 50px 0 rgba(0, 0, 0, 0.4) inset;
+  border-radius: 30px;
+}
+.border-list {
+  // border: 1px solid #e0e0e0;
+  padding: 20px;
+  border-top-right-radius : 30px;
+  border-bottom-right-radius : 30px;
+
+}
+.date {
+  text-decoration: none;
+  color: #0077b5;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  padding: 0px 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  &:hover {
+    background-color: #ff6f61; /* Màu nền khi hover */
+    color: #ffffff; /* Màu văn bản khi hover */
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Đổ bóng khi hover */
+    transform: scale(1.1); /* Hiệu ứng phóng to khi hover */
+  }
+  &::after{
+    content: "\2192"; /* Mã Unicode của mũi tên phải */
+  margin-left: 2px; /* Khoảng cách giữa văn bản và biểu tượng */
+  }
+  
 }
 
-.date {
-  display: inline;
-}
 
 .address {
-  color: #757575;
-  display: -webkit-box;
-  overflow: hidden;
-  font-weight: 400;
+  width: 300px;
   text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+  white-space: nowrap;
+  overflow: hidden;
 }
+
+
 
 .ant-tabs-tabpane {
   padding-left: 0px !important;
@@ -27,4 +62,5 @@
 .img-movie {
   width: 100px;
   height: 126px;
+  border: 3px solid #262625;
 }
