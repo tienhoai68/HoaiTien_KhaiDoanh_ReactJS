@@ -7,6 +7,12 @@ class CinemaService {
       method: "GET",
     })
   };
+  fetchCinemaApi() {
+    return requestApi({
+      url: `/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP08`,
+      method: "GET",
+    })
+  }
 }
 
 export const cinemaService = new CinemaService();

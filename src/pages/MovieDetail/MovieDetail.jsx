@@ -10,6 +10,7 @@ export default function MovieDetail() {
   const [detail, setDetail] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [videoUrl, setVideoUrl] = useState('');
+  const [iframeKey, setIframeKey] = useState(1);
 
   const fetchMovieDetail = async () => {
     const result = await movieService.fecthMovieDetailApi(param.movieId);
@@ -20,8 +21,12 @@ export default function MovieDetail() {
     const videoUrlWithParams = `${videoUrl}?autoplay=1&mute=1`;
     setVideoUrl(videoUrlWithParams);
     setIsModalVisible(true);
+    setIframeKey(prevKey => prevKey + 1);
   };
-
+  const handleModalClose = () => {
+    setIsModalVisible(false);
+    setVideoUrl("");
+  };
   useEffect(() => {
     fetchMovieDetail();
   }, []);
@@ -53,24 +58,24 @@ export default function MovieDetail() {
               <span className='l-comment'></span>
             </div>
             <div className='film-item-btn'>
-              <button onClick={()=> showModal(detail.trailer)} className='trailler-btn video-popup'>TRAILER</button>
+              <button onClick={() => showModal(detail.trailer)} className='trailler-btn video-popup'>TRAILER</button>
             </div>
           </div>
         </div>
       </div>
       <div className='container'>
         <ShowTime />
-
       </div>
       <Modal
         title="TRAILER"
-        open={isModalVisible}
-        onOk={() => setIsModalVisible(false)}
-        onCancel={() => setIsModalVisible(false)}
+        visible={isModalVisible}
+        // onOk={() => setIsModalVisible(false)}
+        onCancel={() => handleModalClose()}
         width={800}
         footer={null}
       >
         <iframe
+          key={iframeKey}
           title="YouTube Video"
           width="100%"
           height="400"
