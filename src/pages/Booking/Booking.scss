@@ -83,6 +83,14 @@ li.smallBox {
 }
 
 /* Chỗ ngồi */
+td {
+  width: 40px;
+  font-weight: 600;
+  font-size: 1em;
+  padding-top: 7px;
+  height: 24px;
+  color: #fff;
+}
 
 .seats {
   border: 1px solid red;
@@ -169,15 +177,18 @@ input[type=checkbox]:before {
 .movie-info {
   width: 100%;
   max-width: 400px;
-  margin: 0 auto;
+  margin: 100px auto 0;
   padding: 20px;
   border: 1px solid #ccc;
   color: #fff;
 }
-
+.price-title {
+  font-size: 28px;
+  text-align: center;
+}
 .price-text {
   color: rgb(139, 195, 74);
-  font-size: 35px;
+  font-size: 28px;
   text-align: center;
 }
 
@@ -193,6 +204,7 @@ input[type=checkbox]:before {
 
 .detail-value {
   font-size: 20px;
+  color: rgb(139, 195, 74);
 }
 
 .time-highlight {
