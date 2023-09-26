@@ -1,9 +1,9 @@
 import { requestApi } from "../configs/callApi";
 
 class MovieService {
-    fecthMovieListApi() {
+    fecthMovieListApi(key) {
         return requestApi({
-            url: "/QuanLyPhim/LayDanhSachPhim?maNhom=GP08",
+            url: `/QuanLyPhim/LayDanhSachPhim?maNhom=${key}`,
             method: "GET",
         })
     };

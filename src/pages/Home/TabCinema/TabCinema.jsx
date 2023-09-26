@@ -22,7 +22,7 @@ export default function TabCinema() {
       return (
         <TabPane tab={<img src={element.logo} className='rounded-circle' />} key={index}>
           <Tabs tabPosition={tabPosition}>
-            {element.lstCumRap.slice(0,5).map((element, index) => {
+            {element.lstCumRap.slice(0, 5).map((element, index) => {
               // console.log(element);
               return <TabPane tab={<div className='cinema-name text-left'>
                 <div>{element.tenCumRap}</div>
@@ -35,15 +35,15 @@ export default function TabCinema() {
                       <div className='content-movie w-100 ml-3'>
                         <h2>{element.tenPhim}</h2>
                         <div>
-                        <div className='row'>
-                          {element.lstLichChieuTheoPhim.slice(0,12).map((element) => {
-                            return <Fragment key={element.maLichChieu}>
-                              <div className='col-3'>
-                              <NavLink className='date'>{moment(element.ngayChieuGioChieu).format("hh :mm A")}</NavLink>
-                              </div>
-                            </Fragment>
-                          })}
-                        </div>
+                          <div className='row'>
+                            {element.lstLichChieuTheoPhim.slice(0, 12).map((element) => {
+                              return <Fragment key={element.maLichChieu}>
+                                <div className='col-3'>
+                                  <NavLink className='date'>{moment(element.ngayChieuGioChieu).format("hh :mm A")}</NavLink>
+                                </div>
+                              </Fragment>
+                            })}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -59,7 +59,9 @@ export default function TabCinema() {
   return (
     <div className='container  mt-5'>
       <div className='backgroud-movie'>
-        <h2>CỤM RẠP CHIẾU</h2>
+        <div className='icon-container'>
+          <h2><i className='fas fa-film'></i> CỤM RẠP CHIẾU</h2>
+        </div>
       </div>
       <Tabs tabPosition={tabPosition}>
         {renderTabpane()}
