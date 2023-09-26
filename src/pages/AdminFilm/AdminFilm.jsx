@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { movieService } from '../../services/movie';
 import "./AdminFilm.scss"
-
+import {
+  EditOutlined
+} from '@ant-design/icons';
 export default function AdminFilm() {
 
   const [moiveList, setMovieList] = useState([]);
@@ -25,12 +27,9 @@ export default function AdminFilm() {
           <td>{element.tenPhim}</td>
           <td>{element.moTa}</td>
           <td className='d-flex'>
-            <button className='btn'>
-              <i className="fa-solid fa-file-pen" />
-            </button>
-            <button className='btn'>
-              <i className="fa-regular fa-trash-can" />
-            </button>
+            <NavLink className=""><EditOutlined /></NavLink>
+            <NavLink className=""><EditOutlined /></NavLink>
+
           </td>
         </tr>
       )
@@ -63,14 +62,12 @@ export default function AdminFilm() {
             <tr>
               <th className="nowrap">
                 <span className="mr-1">Mã Phim</span>
-                <i className="fa fa-arrow-up" id="SapXepTang" />
-                <i className="fa fa-arrow-down" id="SapXepGiam" />
+
               </th>
               <th>Hình Ảnh</th>
               <th>
                 <span className="mr-1">Tên Phim</span>
-                <i className="fa fa-arrow-up" id="SapXepTang" />
-                <i className="fa fa-arrow-down" id="SapXepGiam" />
+
               </th>
               <th>Mô Tả</th>
               <th>Hoạt Động</th>
@@ -78,13 +75,7 @@ export default function AdminFilm() {
           </thead>
           <tbody>
             {renderMoive()}
-            {/* <tr>
-              <th>abcc</th>
-              <th>ádsa</th>
-              <th>áđá</th>
-              <th>sđá</th>
-              <th>ađá</th>
-            </tr> */}
+
           </tbody>
         </table>
       </div>
