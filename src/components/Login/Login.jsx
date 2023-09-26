@@ -69,7 +69,7 @@ export default function Login() {
                 <div className='overlay-container'>
                     <div className='overlay'>
                         <div className='overlay-panel over-left'>
-                            <h1 className='title'>
+                            <h1 className='title-login'>
                                 Hello
                             </h1>
                             <p>Nếu bạn có tài khoản, hãy đăng nhập</p>
@@ -80,7 +80,7 @@ export default function Login() {
                         </div>
 
                         <div className='overlay-panel overlay-right'>
-                            <h1 className='title'>
+                            <h1 className='title-login'>
                                 Hello
                             </h1>
                             <p>Nếu bạn không có tài khoản, hãy đăng ký</p>

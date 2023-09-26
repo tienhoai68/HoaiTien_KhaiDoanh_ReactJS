@@ -1,7 +1,13 @@
 .sider-bar {
     width: 200px;
     height: 100vh;
+
 }
-.nav-item:hover{
+
+.sider-bar .nav-link {
+    background-color: #343a40 !important;
+}
+
+.sider-bar .nav-item:hover {
     background-color: blueviolet !important;
 }

@@ -13,6 +13,7 @@ import AdminFilm from '../pages/AdminFilm/AdminFilm'
 import AddnewFilm from '../pages/AdminFilmAddnew/AddnewFilm'
 import EditFilm from '../pages/AdminFilmEdit/EditFilm'
 import Login from '../components/Login/Login'
+import AdminUserDetai from '../pages/AdminUserDetail/AdminUserDetai'
 
 export default function Router() {
 
@@ -48,9 +49,14 @@ export default function Router() {
           element: <AdminHome />,
         },
         {
-          path: "/admin/user",
+          path: "/admin/user/",
           element: <AdminUsers />
         },
+        {
+          path: "/admin/user-detail/:userId",
+          element: <AdminUserDetai />
+        },
+
         {
           path: "/admin/films",
           element: <AdminFilm />,
