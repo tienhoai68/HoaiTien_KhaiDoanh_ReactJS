@@ -1,14 +1,62 @@
 .main-movie {
   margin-top: 30px;
-  .category-title {
-    border-bottom: 3px solid #241d1e;
-    margin-bottom: 35px;
+
+  .page-title.category-title {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #b1b4b6, #262727);
+    color: #fff;
+    padding: 0px 20px;
+    font-size: 24px;
+    text-align: center;
+    border-radius: 20px;
+    transition: all 0.5s;
+
+    i {
+      margin-right: 10px;
+      font-size: 24px;
+      animation: spin 2s infinite linear;
+    }
+
+    // Sử dụng CSS Animation
+    animation: slideIn 1s ease forwards;
+
+    @keyframes slideIn {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    &:hover {
+      background-color: #fff;
+      color: #be4343;
+    }
   }
+
   .card-img {
     height: 260px;
     object-fit: cover;
   }
-};
+}
+
+;
+
 .main {
   border-radius: 30px;
   overflow: hidden;
@@ -54,6 +102,7 @@
     border-radius: 60px;
     cursor: pointer;
   }
+
   h6 {
     margin-top: 24%;
     text-align: center;
@@ -62,14 +111,14 @@
     font-weight: 600;
     font-family: sans-serif;
   }
-  
+
   .rating {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 39%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 39%;
   }
-  
+
 }
 
 .ticket-head {
@@ -147,6 +196,7 @@
   bottom: 0;
   text-align: center;
 }
+
 .ticket__movie-title {
   text-transform: uppercase;
   margin-bottom: 5px;
@@ -195,31 +245,41 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
 .button-group {
   width: 100%;
   text-align: center;
-    .button_default {
-      transition: 0.5s ease-in-out;
-      color: #FFF;
-      font-size: 16px;
-      border-radius: 5px;
-      padding: 8px 26px;
-      text-decoration: none;
+
+  .button_default {
+    transition: 0.5s ease-in-out;
+    color: #FFF;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 8px 26px;
+    text-decoration: none;
+  }
+
+  .btn_details {
+    border: none;
+    background-color: #1abc9c;
+
+    &:hover {
+      box-shadow: 0px 0px 0px 2.5px white inset, 0px 0px 0px 5px #1abc9c;
     }
-    .btn_details {
-      border: none;
-      background-color: #1abc9c;
-        &:hover {
-          box-shadow: 0px 0px 0px 2.5px white inset, 0px 0px 0px 5px #1abc9c;
-        }
-    };
-    .btn_ticket {
-      background-color: #dc2c29;
-      border: none;
-      &:hover {
-        padding: 5px 24px;
-        letter-spacing: 2.5px;
-        box-shadow: 0 0 0 2px white, 0 0 0 3px #dc2c29, 0 0 0 2px white inset, 0 0 0 5px #dc2c29, 7.5px 7.5px 0 2.5px white ,10px 10px 0 5px #dc2c29;
-      }
+  }
+
+  ;
+
+  .btn_ticket {
+    background-color: #dc2c29;
+    border: none;
+
+    &:hover {
+      padding: 5px 24px;
+      letter-spacing: 2.5px;
+      box-shadow: 0 0 0 2px white, 0 0 0 3px #dc2c29, 0 0 0 2px white inset, 0 0 0 5px #dc2c29, 7.5px 7.5px 0 2.5px white, 10px 10px 0 5px #dc2c29;
     }
-};
+  }
+}
+
+;

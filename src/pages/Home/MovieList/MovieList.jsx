@@ -15,7 +15,7 @@ export default function MovieList() {
   }, []);
 
   const fetchMovieList = async () => {
-    const result = await movieService.fecthMovieListApi();
+    const result = await movieService.fecthMovieListApi("GP08");
     setMovieList(result.data.content);
   };
 
@@ -65,6 +65,7 @@ export default function MovieList() {
     <div className="main-movie container">
       <div className="title-movie">
         <div className="page-title category-title">
+          <i className="fas fa-star"></i>
           <h1>DANH SÁCH PHIM</h1>
         </div>
         <div className="py-5">
