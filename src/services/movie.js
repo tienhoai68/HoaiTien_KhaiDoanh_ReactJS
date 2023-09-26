@@ -7,6 +7,12 @@ class MovieService {
             method: "GET",
         })
     };
+    fecthMovieListPageApi(page) {
+        return requestApi({
+            url: `/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP11&soTrang=${page}`,
+            method: "GET",
+        })
+    };
     fecthMovieDetailApi(movieId) {
         return requestApi({
             url: `/QuanLyPhim/LayThongTinPhim?MaPhim=${movieId}`,
