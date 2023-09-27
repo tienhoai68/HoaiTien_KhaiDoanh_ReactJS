@@ -99,7 +99,7 @@ export default function SlickMovie() {
     });
   };
 
-  return (
+ return (
     <div className="main-movie container">
       <div className="title-movie">
         <div className="page-title category-title">
