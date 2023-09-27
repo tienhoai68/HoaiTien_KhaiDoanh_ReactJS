@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Header.scss";
-import logo from "../../assets/img/cinema.png";
+import logo from "../../assets/img/logo-default.png";
 import avatar from "../../assets/img/avatar-1.jpg";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -60,7 +60,7 @@ export default function Header() {
               <a
                 href="#"
                 data-toggle="dropdown"
-                className="nav-link nav-img dropdown-toggle user-action"
+                className="nav-link-info nav-img dropdown-toggle user-action"
               >
                 <img src={avatar} className="avatar" alt="Avatar" />
                 Hello {userState.userInfo.hoTen} <b className="caret"></b>
@@ -97,9 +97,8 @@ export default function Header() {
         <div className="header-dark">
           <nav className="navbar navbar-dark navbar-expand-md navigation-clean-search">
             <div className="container">
-              <img style={{ width: "6%" }} src={logo} alt="" />
               <NavLink className="navbar-brand" href="/">
-                MOVIE CINEMA
+              <img className="img-fluid" src={logo} alt="" />             
               </NavLink>
               <button
                 className="navbar-toggler"

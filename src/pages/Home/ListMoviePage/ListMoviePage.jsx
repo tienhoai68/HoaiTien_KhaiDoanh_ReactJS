@@ -35,7 +35,10 @@ export default function ListMoviePage() {
               />
               <span className="badge-page">Premium</span>
             </div>
-            <div className="rating-page">
+            
+            <div className="movie-details-page">
+              <h6 className="name-movie-page">{element.tenPhim}</h6>
+              <div className="rating-page">
               <div className="star-rating-page">
                 <span className="star">&#9733;</span>
                 <span className="star">&#9733;</span>
@@ -44,14 +47,12 @@ export default function ListMoviePage() {
                 <span className="star">&#9734;</span>
               </div>
             </div>
-            <div className="movie-details-page">
-              <h6 className="name-movie-page">{element.tenPhim}</h6>
               <div className="d-flex justify-content-between align-items-center">
-                <p class="icon-text mb-0">
-                  <i class="fas fa-clock"></i> 120 min
+                <p className="icon-text mb-0">
+                  <i className="fas fa-clock"></i> 120 min
                 </p>
-                <button class="custom-button">
-                  <i class="fa fa-heart"></i> Chi Tiết
+                <button className="custom-button">
+                  <i className="fa fa-heart"></i> Chi Tiết
                 </button>
               </div>
             </div>
@@ -67,11 +68,33 @@ export default function ListMoviePage() {
         <div className="page-title category-title">
           <i className="fas fa-star"></i>
           <h1>DANH SÁCH PHIM</h1>
+          <hr />
+          <div className="btn-group-isotope isotope-filters">
+            <button
+              className="btn btn-success-mod-1 btn-sm mr-1 active text-capitalize"
+              data-isotope-filter="*"
+              data-isotope-group="gallery"
+            >
+              Đang chiếu
+            </button>
+            <button
+              className="btn btn-success-mod-1 btn-sm ml-1  text-capitalize"
+              data-isotope-filter="type-1"
+              data-isotope-group="gallery"
+            >
+              Sắp chiếu
+            </button>
+          </div>
         </div>
         <div className="py-5">
           <div className="row justify-content-center">{renderMovieList()}</div>
           <div className="ant-pagination">
-            <Pagination onChange={handleChangePage} defaultCurrent={1} defaultPageSize={8} total={50} />
+            <Pagination
+              onChange={handleChangePage}
+              defaultCurrent={1}
+              defaultPageSize={8}
+              total={50}
+            />
           </div>
         </div>
       </div>

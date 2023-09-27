@@ -1,37 +1,93 @@
 .main-movie {
-  margin: 86px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 
   .page-title.category-title {
-    display: flex;
-    align-items: center;
-    background: linear-gradient(135deg, #b1b4b6, #262727);
-    color: #fff;
-    padding: 0px 20px;
-    font-size: 24px;
+    font-size: 46px;
+    line-height: 1.13043;
+    text-transform: uppercase;
+    font-family: "Roboto Slab", serif;
     text-align: center;
-    border-radius: 20px;
-    transition: all 0.5s;
-
+    hr {
+      width: 100px;
+      display: inline-block;
+      border-bottom: 2px solid #b7b7b7;
+      border-top: none;
+      margin-bottom: 30px;
+    }
     i {
       margin-right: 10px;
       font-size: 24px;
       animation: spin 2s infinite linear;
+      color: #dc2c29;
     }
 
-    // Sử dụng CSS Animation
-    animation: slideIn 1s ease forwards;
-
-    @keyframes slideIn {
-      0% {
-        transform: translateX(-100%);
-        opacity: 0;
+    .btn-group-isotope {
+      .btn-group-isotope .active {
+        background-color: #d81a24;
+        color: #fff;
+        box-shadow: none;
       }
-
-      100% {
-        transform: translateX(0);
-        opacity: 1;
+      .btn-group-isotope .btn {
+        margin-top: 10px;
+        margin-left: 10px;
       }
-    }
+      .btn-success-mod-1:hover {
+        background-color: #d81a24;
+        border-color: #d81a24;
+        color: #fff;
+      }
+      .btn-success-mod-1:focus {
+        background-color: transparent;
+        border-color: #d81a24;
+        color: #d81a24;
+      }
+  
+      .btn:focus,
+      .btn:hover {
+        text-decoration: none;
+      }
+      a:focus,
+      button:focus {
+        outline: none !important;
+      }
+      button:focus {
+        outline: 1px dotted;
+        outline: 5px auto -webkit-focus-ring-color;
+      }
+      .isotope-filters > * {
+        margin-top: 0;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .btn-sm {
+        padding: 10px 40px;
+        font-size: 18px;
+        border-radius: 6px;
+      }
+      .btn-success-mod-1 {
+        color: #d81a24;
+        background-color: transparent;
+        border-color: #d81a24;
+      }
+      .btn {
+        text-transform: uppercase;
+        font-family: "Roboto Slab", serif;
+        letter-spacing: 0;
+        border-width: 2px;
+        transition: 0.4s;
+        white-space: normal;
+        cursor: pointer;
+      }
+      transform: translateY(-10px);
+      margin-bottom: 20px;
+      margin-left: -10px;
+      .active {
+        background-color: #d81a24;
+        color: #fff;
+        box-shadow: none;
+      }
+    }  
 
     @keyframes spin {
       0% {
@@ -42,11 +98,6 @@
         transform: rotate(360deg);
       }
     }
-
-    &:hover {
-      background-color: #fff;
-      color: #be4343;
-    }
   }
 
   .card-img {
@@ -54,8 +105,6 @@
     object-fit: cover;
   }
 }
-
-;
 
 .main {
   border-radius: 30px;
@@ -118,7 +167,6 @@
     margin-right: auto;
     width: 39%;
   }
-
 }
 
 .ticket-head {
@@ -145,7 +193,6 @@
 }
 
 @keyframes bounceIn {
-
   0%,
   20%,
   40%,
@@ -252,7 +299,7 @@
 
   .button_default {
     transition: 0.5s ease-in-out;
-    color: #FFF;
+    color: #fff;
     font-size: 16px;
     border-radius: 5px;
     padding: 8px 26px;
@@ -268,8 +315,6 @@
     }
   }
 
-  ;
-
   .btn_ticket {
     background-color: #dc2c29;
     border: none;
@@ -277,9 +322,8 @@
     &:hover {
       padding: 5px 24px;
       letter-spacing: 2.5px;
-      box-shadow: 0 0 0 2px white, 0 0 0 3px #dc2c29, 0 0 0 2px white inset, 0 0 0 5px #dc2c29, 7.5px 7.5px 0 2.5px white, 10px 10px 0 5px #dc2c29;
+      box-shadow: 0 0 0 2px white, 0 0 0 3px #dc2c29, 0 0 0 2px white inset,
+        0 0 0 5px #dc2c29, 7.5px 7.5px 0 2.5px white, 10px 10px 0 5px #dc2c29;
     }
   }
 }
-
-;
