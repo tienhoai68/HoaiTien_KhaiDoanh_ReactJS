@@ -78,6 +78,7 @@ export default function AdminUsers() {
   const handleAdd = async () => {
     const result = await userAdminService.fecthAddUserAdminApi(state);
     dispatch(addUserAction(result.data.content));
+    console.log(result.data.content)
     setState({
       taiKhoan: "",
       matKhau: "",

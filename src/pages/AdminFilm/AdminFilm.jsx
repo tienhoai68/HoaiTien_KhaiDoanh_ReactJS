@@ -5,18 +5,20 @@ import "./AdminFilm.scss"
 import {
   EditOutlined
 } from '@ant-design/icons';
+import { filmService } from '../../services/Films';
 export default function AdminFilm() {
 
   const [moiveList, setMovieList] = useState([]);
 
   useEffect(() => {
     movieListApi();
-  })
+  }, [])
   const movieListApi = async () => {
-    const result = await movieService.fecthMovieListApi();
+    const result = await filmService.fetchFilmsListApi();
     setMovieList(result.data.content);
   }
   const renderMoive = () => {
+
     return moiveList.map((element, idx) => {
       return (
         <tr key={idx}>
@@ -81,7 +83,7 @@ export default function AdminFilm() {
       </div>
       <div className="card-footer myCardFooter">
         <nav>
-          <ul className="pagination justify-content-center" id="ulPhanTrang">
+          <ul className="pagination justify-content-center" >
           </ul>
         </nav>
       </div>
