@@ -12,7 +12,7 @@ export const userAdminReducer = (state = DEFAULT_STATE, action) => {
 
             break;
         case EDIT_USER:
-            console.log(state.user)
+            state.user = action.payload;
             break;
     };
     return { ...state };
