@@ -5,7 +5,6 @@ import "./AdminFilm.scss"
 import {
   EditOutlined
 } from '@ant-design/icons';
-import { Pagination } from 'antd';
 import { filmService } from '../../services/Films';
 export default function AdminFilm() {
 
