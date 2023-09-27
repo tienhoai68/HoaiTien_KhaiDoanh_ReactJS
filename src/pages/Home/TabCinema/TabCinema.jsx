@@ -57,15 +57,17 @@ export default function TabCinema() {
     })
   }
   return (
-    <div className='container  mt-5'>
-      <div className='backgroud-movie'>
-        <div className='icon-container'>
-          <h2><i className='fas fa-film'></i> CỤM RẠP CHIẾU</h2>
+    <div className="main-movie container">
+      <div className="title-movie">
+        <div className="page-title category-title">
+          <i className="fas fa-star"></i>
+          <h1>CỤM RẠP CHIẾU</h1>
+          <hr />
         </div>
-      </div>
       <Tabs tabPosition={tabPosition}>
         {renderTabpane()}
       </Tabs>
+      </div>
     </div>
   )
 }
