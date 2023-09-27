@@ -3,7 +3,7 @@ import "./MovieList.scss";
 import "./ResponsiveMovieList.scss"
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
-import { movieService } from "../../../services/movie";
+import { movieService } from "../../services/movie";
 export default function MovieList() {
   const [movieList, setMovieList] = useState([]);
   const userState = useSelector((state) => state.userReducer);
@@ -66,7 +66,7 @@ export default function MovieList() {
       <div className="title-movie">
         <div className="page-title category-title">
           <i className="fas fa-star"></i>
-          <h1>DANH SÁCH PHIM</h1>
+          <h1>PHIM ĐANG CHIẾU</h1>
         </div>
         <div className="py-5">
           <div className="row justify-content-center">

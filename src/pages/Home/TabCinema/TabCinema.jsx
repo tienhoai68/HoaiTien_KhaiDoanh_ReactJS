@@ -25,7 +25,7 @@ export default function TabCinema() {
             {element.lstCumRap.slice(0, 5).map((element, index) => {
               // console.log(element);
               return <TabPane tab={<div className='cinema-name text-left'>
-                <div>{element.tenCumRap}</div>
+                <div className='name-cinema'>{element.tenCumRap}</div>
                 <div className='address'>{element.diaChi}</div>
               </div>} key={index}>
                 {element.danhSachPhim.map((element) => {
@@ -33,7 +33,7 @@ export default function TabCinema() {
                     <div className='d-flex border-list'>
                       <img className='img-movie' src={element.hinhAnh} alt="" />
                       <div className='content-movie w-100 ml-3'>
-                        <h2>{element.tenPhim}</h2>
+                        <h2 className='movie-name'><i className="fa-solid fa-film"></i> {element.tenPhim}</h2>
                         <div>
                           <div className='row'>
                             {element.lstLichChieuTheoPhim.slice(0, 12).map((element) => {

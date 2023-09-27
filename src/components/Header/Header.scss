@@ -2,19 +2,43 @@
   background: linear-gradient(135deg, #b1b4b6, #262727);
   background-color: #151516;
   padding-bottom: 40px;
-  background-size: 400% 400%; /* Kích thước gradient lớn hơn khung */
+  background-size: 400% 400%;
+  /* Kích thước gradient lớn hơn khung */
   animation: gradientAnimation 10s linear infinite;
+
   @keyframes gradientAnimation {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .carousel-indicators {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    li {
+      width: 12px;
+      height: 12px;
+      background-color: green;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: darkgreen;
       }
     }
+  }
 }
 
 .header-dark .navbar {
@@ -58,6 +82,7 @@
   color: #fcfeff !important;
   background-color: transparent;
 }
+
 .header-dark .navbar .navbar-nav>li>.dropdown-menu {
   margin-top: -5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
@@ -100,6 +125,7 @@
 .header-dark .navbar .action-button:hover {
   background: #269d9d;
 }
+
 .header-dark .navbar .form-inline label {
   color: #ccc;
 }
@@ -124,6 +150,7 @@
 .header-dark .hero {
   margin-top: 60px;
 }
+
 .nav-img img {
   border-radius: 50%;
   width: 38px;
@@ -131,6 +158,7 @@
   margin: -8px 0;
   margin-right: 10px;
 }
+
 .navbar-logout {
   .dropdown-menu {
     box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
@@ -139,6 +167,7 @@
     top: 110%;
     left: 12%;
   }
+
   .dropdown-item i {
     font-size: 16px;
     min-width: 22px;
@@ -168,70 +197,72 @@
     padding: 8px 10px;
     text-decoration: none;
   }
-  
+
   ;
-  
+
   .btn_details {
     border: none;
     background-color: #208f8f;
-    
+
     &:hover {
       box-shadow: 0px 0px 0px 2.5px white inset, 0px 0px 0px 5px #1abc9c;
     }
   }
-  
+
   ;
-  
+
   .btn_ticket {
     background-color: #dc2c29;
     border: none;
-    
+
     &:hover {
       box-shadow: 0px 0px 0px 2.5px white inset, 0px 0px 0px 5px #dc2c29;
     }
   }
 }
+
 ;
-.carousel-item .img-banner{
-  height: 622px ;
+
+.carousel-item .img-banner {
+  height: 622px;
 }
 
 // Large devices (desktops, less than 1200px)
-@media (max-width: 1199.98px) { 
-  .carousel-item{
-    .img-banner{
-      height: 500px ;
+@media (max-width: 1199.98px) {
+  .carousel-item {
+    .img-banner {
+      height: 500px;
     }
 
   }
+
   // Medium devices (tablets, less than 992px)
 }
-@media (max-width: 991.98px) { 
-  .carousel-item{
-    .img-banner{
-      height: 420px ;
+
+@media (max-width: 991.98px) {
+  .carousel-item {
+    .img-banner {
+      height: 420px;
     }
 
   }
- }
+}
+
 // Small devices (landscape phones, less than 768px)
-@media (max-width: 767.98px) { 
-  .carousel-item{
-    .img-banner{
-      height: 350px ;
+@media (max-width: 767.98px) {
+  .carousel-item {
+    .img-banner {
+      height: 350px;
     }
 
   }
- }
-@media (max-width: 575.98px) { 
-  .carousel-item{
-    .img-banner{
-      height: 200px ;
+}
+
+@media (max-width: 575.98px) {
+  .carousel-item {
+    .img-banner {
+      height: 200px;
     }
 
   }
- }
-
-
-
-
+}

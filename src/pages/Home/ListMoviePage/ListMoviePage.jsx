@@ -26,8 +26,8 @@ export default function ListMoviePage() {
   const renderMovieList = () => {
     return movieListPage.slice(2, 10).map((element) => {
       return (
-        <div className="col-3 my-3">
-          <div key={element.maPhim} className="movie-card-page">
+        <div key={element.maPhim} className="col-3 my-3">
+          <div className="movie-card-page">
             <div className="movie-image-page">
               <img
                 src={element.hinhAnh} // Đường dẫn hình ảnh mặc định
@@ -43,11 +43,17 @@ export default function ListMoviePage() {
                 <span className="star">&#9733;</span>
                 <span className="star">&#9734;</span>
               </div>
-              <p>{element.danhGia}</p>
             </div>
             <div className="movie-details-page">
               <h6 className="name-movie-page">{element.tenPhim}</h6>
-              <p className="duration-page">120 min</p>
+              <div className="d-flex justify-content-between align-items-center">
+                <p class="icon-text mb-0">
+                  <i class="fas fa-clock"></i> 120 min
+                </p>
+                <button class="custom-button">
+                  <i class="fa fa-heart"></i> Chi Tiết
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -65,7 +71,7 @@ export default function ListMoviePage() {
         <div className="py-5">
           <div className="row justify-content-center">{renderMovieList()}</div>
           <div className="ant-pagination">
-            <Pagination onChange={handleChangePage} defaultCurrent={1} defaultPageSize={10} total={50} />
+            <Pagination onChange={handleChangePage} defaultCurrent={1} defaultPageSize={8} total={50} />
           </div>
         </div>
       </div>
