@@ -13,6 +13,7 @@ import EditFilm from "../pages/AdminFilmEdit/EditFilm";
 import Login from "../components/Login/Login";
 import AuthGuard from "../guards/AuthGuard";
 import NoAuthGuard from "../guards/NoAuthGuard";
+import MovieList from "../pages/MovieList/MovieList";
 
 export default function Router() {
   const routing = useRoutes([
@@ -27,6 +28,10 @@ export default function Router() {
         {
           path: "/movie-detail/:movieId",
           element: <MovieDetail />,
+        },
+        {
+          path: "/movie-list",
+          element: <MovieList />,
         },
         {
           path: "/booking/:bookingId",

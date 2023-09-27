@@ -7,6 +7,24 @@
   border-radius: 20px;
 }
 
+.name-cinema {
+  color: green;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.movie-name {
+  font-size: 26px;
+  font-weight: 700;
+  color: green;
+  text-transform: capitalize;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+
+  i {
+    color: #FF6B6B;
+  }
+}
+
 .movie-title {
   font-size: 30px;
   color: #fff;

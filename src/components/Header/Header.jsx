@@ -29,10 +29,6 @@ export default function Header() {
         <div key={element.maPhim} className={`carousel-item  ${index === 0 && "active"
           } `}>
           <img src={element.hinhAnh} className="img-banner d-block w-100 img-fluid" alt="..." />
-          <div className="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </div>
         </div>
       );
     });
@@ -124,18 +120,18 @@ export default function Header() {
                     </NavLink>
                   </li>
                   <li className="nav-item-header" role="presentation">
+                    <NavLink className="nav-link" to="/movie-list">
+                      PHIM ĐANG CHIẾU
+                    </NavLink>
+                  </li>
+                  <li className="nav-item-header" role="presentation">
                     <NavLink className="nav-link" to="/">
                       DANH SÁCH PHIM
                     </NavLink>
                   </li>
                   <li className="nav-item-header" role="presentation">
                     <NavLink className="nav-link" to="/">
-                     CỤM RẠP
-                    </NavLink>
-                  </li>
-                  <li className="nav-item-header" role="presentation">
-                    <NavLink className="nav-link" to="/">
-                      TIN TỨC
+                      CỤM RẠP
                     </NavLink>
                   </li>
 
