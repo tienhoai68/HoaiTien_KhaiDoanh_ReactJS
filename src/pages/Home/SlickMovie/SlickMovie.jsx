@@ -3,7 +3,7 @@ import "./SlickMovie.scss";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import { movieService } from "../../../services/movie";
-import Slider from "react-slick";
+// import Slider from "react-slick";
 
 export default function SlickMovie() {
   const settings = {
@@ -99,9 +99,9 @@ export default function SlickMovie() {
           <h1 className="movie-title">Phim Hot</h1>
         </div>
         <div>
-          <Slider {...settings}>
+          {/* <Slider {...settings}> */}
             {renderMovieList()}
-          </Slider>
+          {/* </Slider> */}
         </div>
       </div>
 

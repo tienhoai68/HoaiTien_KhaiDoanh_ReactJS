@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { userAdminService } from '../../services/userAdmin';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addUserAction } from '../../store/actions/userAdminAction';
-import { userService } from '../../services/user';
+
 
 
 export default function AdminUsers() {
@@ -18,22 +18,31 @@ export default function AdminUsers() {
     hoTen: "",
     maLoaiNguoiDung: "",
   });
-  
-  const userState = useSelector((state) => state.userReducer);
+
+
   useEffect(() => {
     UserListApi();
-    loginAccount();
+
   }, []);
-  const loginAccount = async () => {
-    console.log(userState);
-    // const result = await userService.loginApi(userState);
-    // console.log(result);
-  };
+
 
   const UserListApi = async () => {
+
     const result = await userAdminService.fecthUserAdminApi();
+
     setUserList(result.data.content);
   };
+
+  const handleSearch = async (event) => {
+    const result = await userAdminService.fecthSearchUserApi(event.target.value);
+
+    setUserList(result.data.content);
+    if (event.target.value === "") {
+      UserListApi();
+    }
+    console.log(userList);
+
+  }
 
 
   const renderUser = () => {
@@ -49,14 +58,18 @@ export default function AdminUsers() {
           <td>{element.soDT}</td>
           <td>
             <button onClick={() => handleSelect(element)} data-toggle="modal" data-target="#myModal" ><i className="fa-solid fa-magnifying-glass" /></button>
+            <button onClick={() => handleDelete(element.taiKhoan)} ><i className="fa-solid fa-trash" />
+            </button>
           </td>
         </tr>
       )
     })
   };
-  const handleSelect = (element) => {
-    setState(element);
-  }
+  const handleSelect = async (element) => {
+    const result = await userAdminService.fecthTakeProfileUserApi(element.taiKhoan);
+    console.log(result);
+    setState(result.data.content);
+  };
   const handleEdit = async () => {
     console.log(state);
     const result = await userAdminService.fecthEditUserAdminApi(state);
@@ -65,7 +78,22 @@ export default function AdminUsers() {
   const handleAdd = async () => {
     const result = await userAdminService.fecthAddUserAdminApi(state);
     dispatch(addUserAction(result.data.content));
+    setState({
+      taiKhoan: "",
+      matKhau: "",
+      email: "",
+      soDT: "",
+      maNhom: "GP01",
+      hoTen: "",
+      maLoaiNguoiDung: "",
+    })
   };
+  const handleDelete = async (key) => {
+    console.log(key);
+    const result = await userAdminService.fecthDeleteUserAdminApi(key);
+    console.log(result);
+  }
+
 
   const handleChange = (event) => {
     setState({
@@ -87,7 +115,7 @@ export default function AdminUsers() {
         <div className="row mb-3">
           <div className="col">
             <div className="input-group">
-              <input type="text" className="form-control" placeholder="Tìm kiếm theo tài khoản" id="searchName" />
+              <input type="text" onChange={handleSearch} className="form-control" placeholder="Tìm kiếm theo tài khoản" id="searchName" />
               <div className="input-group-prepend">
                 <span className="input-group-text" id="btnTimNV"><i className="fa fa-search" /></span>
               </div>
