@@ -62,7 +62,7 @@ export default function Login() {
               <input
                 onChange={handleChangeLogin}
                 name="matKhau"
-                type="text"
+                type="password"
                 placeholder="Mật Khẩu"
               />
               <span></span>

@@ -24,11 +24,20 @@ export default function SlickMovie() {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 800,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
           initialSlide: 2,
+          infinite: true,
+          dots: true,
         },
       },
       {
@@ -36,6 +45,8 @@ export default function SlickMovie() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          infinite: true,
+          dots: true,
         },
       },
     ],
@@ -53,7 +64,6 @@ export default function SlickMovie() {
     const result = await movieService.fecthMovieListApi("GP13");
     setMovieList(result.data.content);
   };
-
   const handleBooking = (codeMovie) => {
     if (userState) {
       navigate(`/movie-detail/${codeMovie}`);
@@ -86,20 +96,20 @@ export default function SlickMovie() {
           <div className="movie-details">
             <h6 className="name-movie">{element.tenPhim}</h6>
             <div className="d-flex justify-content-between align-items-center">
-                <p className="icon-text mb-0">
-                  <i className="fas fa-clock"></i> 120 min
-                </p>
-                <button className="custom-button">
-                  <i className="fa fa-heart"></i> Chi Tiết
-                </button>
-              </div>
+              <p className="icon-text mb-0">
+                <i className="fas fa-clock"></i> 120 min
+              </p>
+              <button onClick={() => handleBooking(element.maPhim)} className="custom-button">
+                <i className="fa fa-heart"></i> Chi Tiết
+              </button>
+            </div>
           </div>
         </div>
       );
     });
   };
 
- return (
+  return (
     <div className="main-movie container">
       <div className="title-movie">
         <div className="page-title category-title">

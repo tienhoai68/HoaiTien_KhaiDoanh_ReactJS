@@ -2,15 +2,24 @@ import React, { useEffect, useState } from "react";
 import { Pagination } from "antd";
 import { movieService } from "../../../services/movie";
 import "./ListMoviePage.scss";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 export default function ListMoviePage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [movieListPage, setMovieListPage] = useState([]);
+  const [isNowPlaying, setIsNowPlaying] = useState();
+  const [isActive, setIsActive] = useState();
+  const userState = useSelector((state) => state.userReducer);
+  const navigate = useNavigate();
 
   const fetchMovieList = async () => {
     const result = await movieService.fecthMovieListPageApi(currentPage);
     // console.log(result.data.content);
     setMovieListPage(result.data.content.items);
   };
+  const handleNowPlaying = (key) => {
+    setIsNowPlaying(key);
+  }
 
   const handleChangePage = (page) => {
     setCurrentPage(page);
@@ -18,15 +27,34 @@ export default function ListMoviePage() {
     fetchMovieList();
   };
 
+  const handleBooking = (codeMovie) => {
+    if (userState) {
+      navigate(`/movie-detail/${codeMovie}`)
+    } else {
+      navigate("/login")
+    }
+  }
+
   useEffect(() => {
     fetchMovieList();
   }, []);
 
   // console.log(movieListPage.items)
   const renderMovieList = () => {
-    return movieListPage.slice(2, 10).map((element) => {
+    const filteredMovies = movieListPage.filter((element) => {
+      if (isNowPlaying) {
+        return element.dangChieu === true;
+      } else if (isNowPlaying === false) {
+        return element.dangChieu === false;
+      } else {
+        return element;
+      }
+    }
+      // isNowPlaying ? element.dangChieu : !element.dangChieu
+    );
+    return filteredMovies.slice(2, 10).map((element) => {
       return (
-        <div key={element.maPhim} className="col-3 my-3">
+        <div key={element.maPhim} className="col-10 col-sm-6 col-md-4 col-lg-3 my-3">
           <div className="movie-card-page">
             <div className="movie-image-page">
               <img
@@ -35,23 +63,23 @@ export default function ListMoviePage() {
               />
               <span className="badge-page">Premium</span>
             </div>
-            
+
             <div className="movie-details-page">
               <h6 className="name-movie-page">{element.tenPhim}</h6>
               <div className="rating-page">
-              <div className="star-rating-page">
-                <span className="star">&#9733;</span>
-                <span className="star">&#9733;</span>
-                <span className="star">&#9733;</span>
-                <span className="star">&#9733;</span>
-                <span className="star">&#9734;</span>
+                <div className="star-rating-page">
+                  <span className="star">&#9733;</span>
+                  <span className="star">&#9733;</span>
+                  <span className="star">&#9733;</span>
+                  <span className="star">&#9733;</span>
+                  <span className="star">&#9734;</span>
+                </div>
               </div>
-            </div>
               <div className="d-flex justify-content-between align-items-center">
                 <p className="icon-text mb-0">
                   <i className="fas fa-clock"></i> 120 min
                 </p>
-                <button className="custom-button">
+                <button onClick={() => handleBooking(element.maPhim)} className="custom-button">
                   <i className="fa fa-heart"></i> Chi Tiết
                 </button>
               </div>
@@ -71,14 +99,24 @@ export default function ListMoviePage() {
           <hr />
           <div className="btn-group-isotope isotope-filters">
             <button
-              className="btn btn-success-mod-1 btn-sm mr-1 active text-capitalize"
+              onClick={() => handleNowPlaying()}
+              className="btn btn-success-mod-1 btn-sm mr-1 text-capitalize"
+              data-isotope-filter="type-1"
+              data-isotope-group="gallery"
+            >
+              Tất cả
+            </button>
+            <button
+              onClick={() => handleNowPlaying(true)}
+              className="btn btn-success-mod-1 btn-sm mr-1 text-capitalize"
               data-isotope-filter="*"
               data-isotope-group="gallery"
             >
               Đang chiếu
             </button>
             <button
-              className="btn btn-success-mod-1 btn-sm ml-1  text-capitalize"
+              onClick={() => handleNowPlaying(false)}
+              className="btn btn-success-mod-1 btn-sm text-capitalize"
               data-isotope-filter="type-1"
               data-isotope-group="gallery"
             >

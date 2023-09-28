@@ -3,6 +3,7 @@ import "./Home.scss"
 import TabCinema from './TabCinema/TabCinema';
 import SlickMovie from './SlickMovie/SlickMovie';
 import ListMoviePage from './ListMoviePage/ListMoviePage';
+import Newsletter from './Newsletter/Newsletter';
 
 export default function Home() {
   return (
@@ -12,6 +13,9 @@ export default function Home() {
       </div>
       <div>
         <SlickMovie />
+      </div>
+      <div>
+        <Newsletter />
       </div>
       <div>
         <TabCinema />
