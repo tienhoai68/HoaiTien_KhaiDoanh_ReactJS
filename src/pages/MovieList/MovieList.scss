@@ -21,12 +21,16 @@
       animation: spin 2s infinite linear;
       color: #dc2c29;
     }
-
+    
     .btn-group-isotope {
-      .btn-group-isotope .active {
-        background-color: #d81a24;
-        color: #fff;
-        box-shadow: none;
+      .btn {
+        text-transform: uppercase;
+        font-family: "Roboto Slab", serif;
+        letter-spacing: 0;
+        border-width: 2px;
+        transition: 0.4s;
+        white-space: normal;
+        cursor: pointer;
       }
       .btn-group-isotope .btn {
         margin-top: 10px;
@@ -38,27 +42,9 @@
         color: #fff;
       }
       .btn-success-mod-1:focus {
-        background-color: transparent;
+        background-color: #d81a24;
         border-color: #d81a24;
-        color: #d81a24;
-      }
-  
-      .btn:focus,
-      .btn:hover {
-        text-decoration: none;
-      }
-      a:focus,
-      button:focus {
-        outline: none !important;
-      }
-      button:focus {
-        outline: 1px dotted;
-        outline: 5px auto -webkit-focus-ring-color;
-      }
-      .isotope-filters > * {
-        margin-top: 0;
-        display: inline-block;
-        vertical-align: middle;
+        color: #fff;
       }
       .btn-sm {
         padding: 10px 40px;
@@ -69,23 +55,6 @@
         color: #d81a24;
         background-color: transparent;
         border-color: #d81a24;
-      }
-      .btn {
-        text-transform: uppercase;
-        font-family: "Roboto Slab", serif;
-        letter-spacing: 0;
-        border-width: 2px;
-        transition: 0.4s;
-        white-space: normal;
-        cursor: pointer;
-      }
-      transform: translateY(-10px);
-      margin-bottom: 20px;
-      margin-left: -10px;
-      .active {
-        background-color: #d81a24;
-        color: #fff;
-        box-shadow: none;
       }
     }  
 

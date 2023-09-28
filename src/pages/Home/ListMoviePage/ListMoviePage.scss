@@ -27,6 +27,7 @@
   overflow: hidden;
   transition: transform 0.3s;
   position: relative;
+  cursor: pointer;
 
   // width: 233px;
   &:hover {
@@ -194,7 +195,9 @@
   &:hover i {
     transform: scale(1.2);
   }
-
+  &:active {
+    background-color: #2980b9; /* Màu nền khi click */
+  }
   &::before {
     content: '';
     position: absolute;

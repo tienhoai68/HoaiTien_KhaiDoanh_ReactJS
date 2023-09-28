@@ -110,7 +110,7 @@ export default function SlickMovie() {
   };
 
   return (
-    <div className="main-movie container">
+    <div className="main-movie container pt-0">
       <div className="title-movie">
         <div className="page-title category-title">
           <i className="fas fa-star"></i>

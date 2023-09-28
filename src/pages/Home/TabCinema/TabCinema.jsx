@@ -28,8 +28,10 @@ export default function TabCinema() {
                 <div className='name-cinema'>{element.tenCumRap}</div>
                 <div className='address'>{element.diaChi}</div>
               </div>} key={index}>
+              <div className='scroll scroll-y'>
                 {element.danhSachPhim.map((element) => {
                   return <Fragment key={element.maPhim}>
+                    
                     <div className='d-flex border-list'>
                       <img className='img-movie' src={element.hinhAnh} alt="" />
                       <div className='content-movie w-100 ml-3'>
@@ -38,7 +40,7 @@ export default function TabCinema() {
                           <div className='row'>
                             {element.lstLichChieuTheoPhim.slice(0, 12).map((element) => {
                               return <Fragment key={element.maLichChieu}>
-                                <div className='col-3'>
+                                <div className='col-sm-6 col-md-4 col-lg-3'>
                                   <NavLink to={`/booking/${element.maLichChieu}`} className='date'>{moment(element.ngayChieuGioChieu).format("hh :mm A")}</NavLink>
                                 </div>
                               </Fragment>
@@ -49,6 +51,8 @@ export default function TabCinema() {
                     </div>
                   </Fragment>
                 })}
+              </div>
+
               </TabPane>
             })}
           </Tabs>

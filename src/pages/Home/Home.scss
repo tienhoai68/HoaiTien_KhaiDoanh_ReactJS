@@ -15,6 +15,10 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
+.scroll {
+  overflow-y: scroll;
+  height: 418px;
+}
 
 .border-list {
   // border: 1px solid #e0e0e0;
@@ -71,4 +75,24 @@
 .img-movie {
   width: 100px;
   border: 3px solid #262625;
+}
+
+//Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) {
+
+
+  // Medium devices (tablets, less than 992px)
+}
+
+@media (max-width: 991.98px) {
+  
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+  
+}
+
+@media (max-width: 575.98px) {
+  
 }
