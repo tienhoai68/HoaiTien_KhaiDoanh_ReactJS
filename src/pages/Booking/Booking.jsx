@@ -117,7 +117,7 @@ export default function Booking() {
                   </ul>
                 </div>
               </div>
-              <div style={{ width: "100" }} className="mx-auto text-center">
+              <div style={{ width: "100" }} className="mx-auto scroll-chair text-center">
                 {renderChairList()}
               </div>
             </div>
