@@ -30,22 +30,22 @@ export default function Footer() {
         <div className="footer-policy container ">
           <div className="content-policy  row">
             <div className="cgv-vietnam p-lg-0 col-12 col-lg-3 col-sm-6">
-              <h3>Cinema Việt Nam</h3>
+              <h3>Movie Center</h3>
               <ul>
                 <li>
                   <i className="fa-solid fa-angles-right"></i> Giới Thiệu
                 </li>
                 <li>
-                   <i className="fa-solid fa-angles-right"></i> Tiện Ích Online
+                  <i className="fa-solid fa-angles-right"></i> Tiện Ích Online
                 </li>
                 <li>
-                   <i className="fa-solid fa-angles-right"></i> Thẻ Quà Tặng
+                  <i className="fa-solid fa-angles-right"></i> Thẻ Quà Tặng
                 </li>
                 <li>
-                   <i className="fa-solid fa-angles-right"></i> Tuyển Dụng
+                  <i className="fa-solid fa-angles-right"></i> Tuyển Dụng
                 </li>
                 <li>
-                   <i className="fa-solid fa-angles-right"></i> Liên Hệ Quảng Cáo
+                  <i className="fa-solid fa-angles-right"></i> Liên Hệ Quảng Cáo
                 </li>
               </ul>
             </div>
@@ -53,19 +53,19 @@ export default function Footer() {
               <h3>Điều khoản sử dụng</h3>
               <ul>
                 <li>
-                   <i className="fa-solid fa-angles-right"></i> Điều Khoản Chung
+                  <i className="fa-solid fa-angles-right"></i> Điều Khoản Chung
                 </li>
                 <li>
-                   <i className="fa-solid fa-angles-right"></i> Điều Khoản Giao Dịch
+                  <i className="fa-solid fa-angles-right"></i> Điều Khoản Giao Dịch
                 </li>
                 <li>
-                   <i className="fa-solid fa-angles-right"></i> Chính Sách Thanh Toán
+                  <i className="fa-solid fa-angles-right"></i> Chính Sách Thanh Toán
                 </li>
                 <li>
-                   <i className="fa-solid fa-angles-right"></i> Chính Sách Bảo Mật
+                  <i className="fa-solid fa-angles-right"></i> Chính Sách Bảo Mật
                 </li>
                 <li>
-                   <i className="fa-solid fa-angles-right"></i> Câu Hỏi Thường Gặp
+                  <i className="fa-solid fa-angles-right"></i> Câu Hỏi Thường Gặp
                 </li>
               </ul>
             </div>
@@ -88,7 +88,11 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="footer-address"></div>
+        <div id="copyright">
+          <div className="center text-center">
+            <div className="copytext">Copyright 2023 Movie Center | All Rights Reserved | Powered by CyberSoft</div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -39,7 +39,7 @@ export default function TabCinema() {
                             {element.lstLichChieuTheoPhim.slice(0, 12).map((element) => {
                               return <Fragment key={element.maLichChieu}>
                                 <div className='col-3'>
-                                  <NavLink className='date'>{moment(element.ngayChieuGioChieu).format("hh :mm A")}</NavLink>
+                                  <NavLink to={`/booking/${element.maLichChieu}`} className='date'>{moment(element.ngayChieuGioChieu).format("hh :mm A")}</NavLink>
                                 </div>
                               </Fragment>
                             })}
@@ -64,9 +64,9 @@ export default function TabCinema() {
           <h1>CỤM RẠP CHIẾU</h1>
           <hr />
         </div>
-      <Tabs tabPosition={tabPosition}>
-        {renderTabpane()}
-      </Tabs>
+        <Tabs tabPosition={tabPosition}>
+          {renderTabpane()}
+        </Tabs>
       </div>
     </div>
   )
