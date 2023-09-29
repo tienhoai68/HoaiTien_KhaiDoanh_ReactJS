@@ -15,9 +15,10 @@
 }
 
 .background-login h1 {
+    font-family: "Roboto Slab", serif;
     font-weight: 700;
     letter-spacing: -1.5px;
-
+    text-align: center;
     margin-bottom: 15px;
 }
 
@@ -127,6 +128,15 @@
     width: 100%;
 }
 
+.background-login .form-control2 input {
+    background-color: #fff;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #adadad;
+    width: 100%;
+    margin: 10px 0;
+}
+
 .background-login .container {
     border-radius: 25px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 0px 10px rgba(0, 0, 0, 0.22);
@@ -147,6 +157,7 @@
 .background-login .form-control {
     width: 100%;
     position: relative;
+    margin: 10px 0;
 }
 
 .background-login .form-control2 {
@@ -158,7 +169,7 @@
     position: absolute;
     border-bottom: 3px solid #2691d9;
     left: 0;
-    bottom: 0px;
+    bottom: 17%;
     width: 0%;
     transition: all 0.3s ease;
 }

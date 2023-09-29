@@ -5,14 +5,21 @@ import { userService } from "../../services/user";
 import { useDispatch } from "react-redux";
 import { setUserInfoAction } from "../../store/actions/userAction";
 import { useNavigate } from "react-router-dom";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+
+const validationSchema = Yup.object().shape({
+  taiKhoan: Yup.string().required('(*) Tài khoản không được để trống'),
+  matKhau: Yup.string().required('(*) Mật khẩu không được để trống'),
+})
 
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [stateLogin, setStateLogin] = useState({
-    taiKhoan: "",
-    matKhau: "",
-  });
+  // const [stateLogin, setStateLogin] = useState({
+  //   taiKhoan: "",
+  //   matKhau: "",
+  // });
 
   const handleClickRegister = () => {
     const container = document.getElementById("container");
@@ -23,20 +30,23 @@ export default function Login() {
     container.classList.remove("right-panel-active");
   };
 
-  const handleChangeLogin = (event) => {
-    setStateLogin({
-      ...stateLogin,
-      [event.target.name]: event.target.value,
-    });
-  };
+  // const handleChangeLogin = (event) => {
+  //   setStateLogin({
+  //     ...stateLogin,
+  //     [event.target.name]: event.target.value,
+  //   });
+  // };
 
-  const handleSubmitLogin = async (event) => {
-    event.preventDefault();
-    const result = await userService.loginApi(stateLogin);
-    console.log(result);
-    dispatch(setUserInfoAction(result.data.content));
-    localStorage.setItem("USER_INFO", JSON.stringify(result.data.content));
-    navigate("/");
+  const handleSubmitLogin = async (values, { resetForm }) => {
+    // event.preventDefault();
+    // const result = await userService.loginApi(stateLogin);
+    // console.log(result);
+    // dispatch(setUserInfoAction(result.data.content));
+    // localStorage.setItem("USER_INFO", JSON.stringify(result.data.content));
+    // navigate("/");
+    console.log(values);
+    // Gọi hàm xử lý đăng ký ở đây
+    // resetForm();
   };
 
   return (
@@ -46,30 +56,31 @@ export default function Login() {
           {/* cắt thành component Register */}
           <Register />
         </div>
-        <div className="form-container login-container">
-          <form onSubmit={handleSubmitLogin} className="form-lg">
-            <h1>Login here</h1>
-            <div className="form-control2">
-              <input
-                onChange={handleChangeLogin}
-                name="taiKhoan"
-                type="text"
-                placeholder="Tài khoản"
-              />
-              <span></span>
-            </div>
-            <div className="form-control2">
-              <input
-                onChange={handleChangeLogin}
-                name="matKhau"
-                type="password"
-                placeholder="Mật Khẩu"
-              />
-              <span></span>
-            </div>
-            <button type="submit">Login</button>
-          </form>
-        </div>
+        <Formik
+          initialValues={{
+            taiKhoan: '',
+            matKhau: '',
+          }}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmitLogin}
+        >
+          <div className="form-container login-container">
+            <Form onSubmit={handleSubmitLogin} className="form-lg">
+              <h1>Login here</h1>
+              <div className="form-control2">
+                <Field name='taiKhoan' type='text' placeholder='Tài khoản' />
+                <span></span>
+                <ErrorMessage name='taiKhoan' component='label' className='form-label text-danger' />
+              </div>
+              <div className="form-control2">
+                <Field name='matKhau' type='password' placeholder='Mật khẩu' />
+                <span></span>
+                <ErrorMessage name='matKhau' component='label' className='form-label text-danger' />
+              </div>
+              <button type="submit">Login</button>
+            </Form>
+          </div>
+        </Formik>
         <div className="overlay-container">
           <div className="overlay">
             <div className="overlay-panel over-left">

@@ -3,6 +3,18 @@
   margin: 80px 0;
 }
 
+.cinema-name {
+  width: 210px;
+}
+
+.name-cinema {
+  color: green;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
 
 .ant-tabs-nav-list {
   // border: 1px solid #e0e0e0;
@@ -15,6 +27,7 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
+
 .scroll {
   overflow-y: scroll;
   height: 418px;
@@ -54,7 +67,7 @@
 
 
 .address {
-  width: 300px;
+  width: 208px;
   font-weight: 500;
   color: #888;
   text-overflow: ellipsis;
@@ -79,20 +92,20 @@
 
 //Large devices (desktops, less than 1200px)
 @media (max-width: 1199.98px) {
-
+  .date {
+    padding: 0;
+  }
 
   // Medium devices (tablets, less than 992px)
 }
 
 @media (max-width: 991.98px) {
-  
+  .tablist-movie {
+    display: none;
+  }
 }
 
 // Small devices (landscape phones, less than 768px)
-@media (max-width: 767.98px) {
-  
-}
+@media (max-width: 767.98px) {}
 
-@media (max-width: 575.98px) {
-  
-}
+@media (max-width: 575.98px) {}

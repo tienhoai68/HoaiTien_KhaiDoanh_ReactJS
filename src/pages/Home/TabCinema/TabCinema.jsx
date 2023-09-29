@@ -28,30 +28,29 @@ export default function TabCinema() {
                 <div className='name-cinema'>{element.tenCumRap}</div>
                 <div className='address'>{element.diaChi}</div>
               </div>} key={index}>
-              <div className='scroll scroll-y'>
-                {element.danhSachPhim.map((element) => {
-                  return <Fragment key={element.maPhim}>
-                    
-                    <div className='d-flex border-list'>
-                      <img className='img-movie' src={element.hinhAnh} alt="" />
-                      <div className='content-movie w-100 ml-3'>
-                        <h2 className='movie-name'><i className="fa-solid fa-film"></i> {element.tenPhim}</h2>
-                        <div>
-                          <div className='row'>
-                            {element.lstLichChieuTheoPhim.slice(0, 12).map((element) => {
-                              return <Fragment key={element.maLichChieu}>
-                                <div className='col-sm-6 col-md-4 col-lg-3'>
-                                  <NavLink to={`/booking/${element.maLichChieu}`} className='date'>{moment(element.ngayChieuGioChieu).format("hh :mm A")}</NavLink>
-                                </div>
-                              </Fragment>
-                            })}
+                <div className='scroll'>
+                  {element.danhSachPhim.map((element) => {
+                    return <Fragment key={element.maPhim}>
+                      <div className='d-flex border-list'>
+                        <img className='img-movie' src={element.hinhAnh} alt="" />
+                        <div className='content-movie w-100 ml-3'>
+                          <h2 className='movie-name'><i className="fa-solid fa-film"></i> {element.tenPhim}</h2>
+                          <div>
+                            <div className='row'>
+                              {element.lstLichChieuTheoPhim.slice(0, 12).map((element) => {
+                                return <Fragment key={element.maLichChieu}>
+                                  <div className='col-md-4 col-lg-3'>
+                                    <NavLink to={`/booking/${element.maLichChieu}`} className='date'>{moment(element.ngayChieuGioChieu).format("hh :mm A")}</NavLink>
+                                  </div>
+                                </Fragment>
+                              })}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </Fragment>
-                })}
-              </div>
+                    </Fragment>
+                  })}
+                </div>
 
               </TabPane>
             })}
@@ -61,7 +60,7 @@ export default function TabCinema() {
     })
   }
   return (
-    <div className="main-movie container">
+    <div className="main-movie tablist-movie container">
       <div className="title-movie">
         <div className="page-title category-title">
           <i className="fas fa-star"></i>

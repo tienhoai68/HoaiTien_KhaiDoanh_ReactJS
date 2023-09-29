@@ -8,7 +8,6 @@ export default function ListMoviePage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [movieListPage, setMovieListPage] = useState([]);
   const [isNowPlaying, setIsNowPlaying] = useState();
-  const [isActive, setIsActive] = useState();
   const userState = useSelector((state) => state.userReducer);
   const navigate = useNavigate();
 
