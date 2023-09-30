@@ -1,94 +1,95 @@
-import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import { movieService } from '../../services/movie';
-import "./AdminFilm.scss"
-import {
-  EditOutlined
-} from '@ant-design/icons';
-import { filmService } from '../../services/Films';
-export default function AdminFilm() {
+import React, { Fragment, useEffect, useState } from 'react';
+import { Button, Table, Input } from 'antd';
 
-  const [moiveList, setMovieList] = useState([]);
+import { filmService } from '../../services/Films';
+import { NavLink } from 'react-router-dom';
+const { Search } = Input;
+const onSearch = (value, _e, info) => console.log(info?.source, value);
+export default function AdminFilm() {
+  const [filmList, setFilmList] = useState([]);
 
   useEffect(() => {
-    movieListApi();
+    fetchFilmList();
   }, [])
-  const movieListApi = async () => {
+
+  const fetchFilmList = async () => {
     const result = await filmService.fetchFilmsListApi();
-    setMovieList(result.data.content);
-  }
-  const renderMoive = () => {
+    setFilmList(result.data.content);
+  };
 
-    return moiveList.map((element, idx) => {
-      return (
-        <tr key={idx}>
-          <td>{element.maPhim}</td>
-          <td>
-            <img className='img-moive' src={element.hinhAnh} alt="" />
-          </td>
-          <td>{element.tenPhim}</td>
-          <td>{element.moTa}</td>
-          <td className='d-flex'>
-            <NavLink className=""><EditOutlined /></NavLink>
-            <NavLink className=""><EditOutlined /></NavLink>
+  const columns = [
+    {
+      title: 'Mã phim',
+      dataIndex: 'maPhim',
+      value: (text, object) => { return <span>{text}</span> },
+      sorter: (a, b) => b.maPhim - a.maPhim,
+      sortDirections: ['descend', 'ascend'],
+    },
+    {
+      title: 'Hình ảnh',
+      dataIndex: 'hinhAnh',
+      render: (text, film) => {
+        return <Fragment>
+          <img src={film.hinhAnh} alt={film.tenPhim} width={100} height={100} />
+        </Fragment>
+      }
+    },
+    {
+      title: 'Tên Phim',
+      dataIndex: 'tenPhim',
+      sorter: (a, b) => {
+        let tenPhimA = a.tenPhim.toLowerCase().trim();
+        let tenPhimB = b.tenPhim.toLowerCase().trim();
+        if (tenPhimA > tenPhimB) {
+          return 1;
+        }
+        return -1;
+      },
+      sortDirections: ['descend', 'ascend'],
 
-          </td>
-        </tr>
-      )
-    })
-  }
+    },
+    {
+      title: 'Mô tả',
+      dataIndex: 'moTa',
+      render: (text, film) => {
+        return <Fragment>
+          {film.moTa.length > 50 ? film.moTa.substr(0, 50) + '...' : film.moTa}
+        </Fragment>
+      }
+    },
+    {
+      title: 'Hành động',
+      dataIndex: 'hanhDong',
+      render: (text, film) => {
+        return <Fragment>
+          <NavLink to='' className="mr-2">
+            <i className="fa-solid fa-magnifying-glass" />
+          </NavLink>
+          <NavLink className="">
+            <i className="fa-solid fa-trash" />
+          </NavLink>
+        </Fragment>
+      }
+
+    },
+
+  ];
+  const data = filmList;
+  const onChange = (pagination, filters, sorter, extra) => {
+    console.log('params', pagination, filters, sorter, extra);
+  };
 
   return (
-    <div className="card text-center">
-      <div className="card-header text-left myCardHeader">
-        <h3 className="text-left font-weight-bold">Quản lý Phim</h3>
-        <button className='btn btn-info '>
-          <NavLink to="/admin/films/addnew" className='nav-link text-white'>
-            <span>Thêm Phim</span>
-          </NavLink>
-        </button>
-      </div>
-      <div className="card-body">
-        <div className="row mb-3">
-          <div className="col">
-            <div className="input-group">
-              <input type="text" className="form-control" placeholder="Loại nhân viên" id="searchName" />
-              <div className="input-group-prepend">
-                <span className="input-group-text" id="btnTimNV"><i className="fa fa-search" /></span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <table className="table table-bordered table-hover myTable">
-          <thead>
-            <tr>
-              <th className="nowrap">
-                <span className="mr-1">Mã Phim</span>
+    <div>
 
-              </th>
-              <th>Hình Ảnh</th>
-              <th>
-                <span className="mr-1">Tên Phim</span>
-
-              </th>
-              <th>Mô Tả</th>
-              <th>Hoạt Động</th>
-            </tr>
-          </thead>
-          <tbody>
-            {renderMoive()}
-
-          </tbody>
-        </table>
-      </div>
-      <div className="card-footer myCardFooter">
-        <nav>
-          <ul className="pagination justify-content-center" >
-          </ul>
-        </nav>
-      </div>
+      <h1>Quản lý phim</h1>
+      <Button className='mb-3'>Thêm phim</Button>
+      <Search
+        placeholder="input search text"
+        size="large"
+        onSearch={onSearch}
+      />
+      <Table columns={columns} dataSource={data} onChange={onChange} />
     </div>
-
-
   )
 }

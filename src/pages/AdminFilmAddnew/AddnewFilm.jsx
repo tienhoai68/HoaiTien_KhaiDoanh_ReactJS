@@ -9,12 +9,13 @@ import {
 } from 'antd';
 import { useFormik } from 'formik';
 import moment from 'moment';
+import { filmService } from '../../services/Films';
 
 
 export default function AddnewFilm() {
   const [componentSize, setComponentSize] = useState('default');
   const [img, setImg] = useState('');
-  // const dispatch = useDispatch();
+
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
@@ -31,22 +32,24 @@ export default function AddnewFilm() {
       danhGia: 0,
       hinhAnh: {},
     },
-    onSubmit: async (value) => {
-      // value.maPhim = Date.now();
+    onSubmit: (value) => {
+      value.maPhim = Date.now();
 
-      // let formData = new FormData();
-      // for (let key in value) {
-      //   if (key !== "hinhAnh") {
-      //     formData.append(key, value[key]);
-      //   } else {
-      //     formData.append('File', value.hinhAnh, value.hinhAnh.name);
-      //   }
-      // }
-      // console.log(formData.get('File'));
-      // const result = await filmService.fetchAddNewFilm(formData);
-      // dispatch(addNewFilmAction(formData));
+      let formData = new FormData();
+      for (let key in value) {
+        if (key !== "hinhAnh") {
+          formData.append(key, value[key]);
+        } else {
+          formData.append('File', value.hinhAnh, value.hinhAnh.name);
+        }
+      }
+      addFilm(formData);
     }
   })
+  const addFilm = async (formData) => {
+    const result = await filmService.fetchAddNewFilm(formData);
+    console.log(result.data.content)
+  }
 
   const handleChangeDate = (value) => {
     let ngayKhoiChieu = moment(value).format('DD/MM/YYYY');
