@@ -25,7 +25,7 @@ export default function Register() {
       text: 'Bạn đã đăng kí thành công',
     });
     resetForm();
-    navigate("/login")
+    navigate("/login");
   };
 
   return (
