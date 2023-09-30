@@ -18,14 +18,22 @@ export default function Register() {
   const navigate = useNavigate();
 
   const handleSubmitRegister = async (values, { resetForm }) => {
-    await userService.registerApi(values);
-    Swal.fire({
-      icon: 'success',
-      title: 'Success!',
-      text: 'Bạn đã đăng kí thành công',
-    });
-    resetForm();
-    navigate("/login");
+    try {
+      await userService.registerApi(values);
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: 'Bạn đã đăng kí thành công',
+      });
+      resetForm();
+      navigate("/login")
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `${error.response.data.content}`,
+      })
+    }
   };
 
   return (
