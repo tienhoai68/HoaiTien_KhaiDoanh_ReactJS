@@ -1,6 +1,10 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
+import { userService } from '../../../../services/user';
+
 
 const validationSchema = Yup.object().shape({
   taiKhoan: Yup.string().required('(*) Tài khoản không được để trống'),
@@ -11,12 +15,17 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function Register() {
-
+  const navigate = useNavigate();
 
   const handleSubmitRegister = async (values, { resetForm }) => {
-    console.log(values);
-    // Gọi hàm xử lý đăng ký ở đây
+    await userService.registerApi(values);
+    Swal.fire({
+      icon: 'success',
+      title: 'Success!',
+      text: 'Bạn đã đăng kí thành công',
+    });
     resetForm();
+    navigate("/login")
   };
 
   return (

@@ -19,8 +19,9 @@
     font-weight: 700;
     letter-spacing: -1.5px;
     text-align: center;
-    margin-bottom: 15px;
+    margin: 16px 0;
 }
+
 
 .background-login h1.title {
     font-size: 45px;
@@ -35,6 +36,9 @@
     letter-spacing: 0.5px;
     margin: 20px 0 30px;
     text-shadow: 0 0 10px rgba(16, 64, 74, 0.5);
+}
+.form-label-login {
+    margin-right: 33px;
 }
 
 .background-login span {

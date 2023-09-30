@@ -14,6 +14,7 @@ import Login from "../components/Login/Login";
 import AuthGuard from "../guards/AuthGuard";
 import NoAuthGuard from "../guards/NoAuthGuard";
 import MovieList from "../pages/MovieList/MovieList";
+import PageNotFound from "../pages/PageNotFound/PageNotFound";
 
 export default function Router() {
   const routing = useRoutes([
@@ -40,6 +41,10 @@ export default function Router() {
               <Booking />
             </AuthGuard>
           ),
+        },
+        {
+          path: "*",
+          element: <PageNotFound />,
         },
       ],
     },
