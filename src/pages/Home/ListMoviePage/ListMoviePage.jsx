@@ -13,7 +13,6 @@ export default function ListMoviePage() {
 
   const fetchMovieList = async () => {
     const result = await movieService.fecthMovieListPageApi(currentPage);
-    // console.log(result.data.content);
     setMovieListPage(result.data.content.items);
   };
   const handleNowPlaying = (key) => {
@@ -22,7 +21,6 @@ export default function ListMoviePage() {
 
   const handleChangePage = (page) => {
     setCurrentPage(page);
-    console.log(currentPage);
     fetchMovieList();
   };
 
@@ -56,7 +54,7 @@ export default function ListMoviePage() {
         <div key={element.maPhim} className="col-10 col-sm-6 col-md-4 col-lg-3 my-3">
           <div onClick={() => handleBooking(element.maPhim)} className="movie-card-page">
             <div className="movie-image-page">
-              <img 
+              <img
                 src={element.hinhAnh} // Đường dẫn hình ảnh mặc định
                 alt="Sample Movie"
               />
