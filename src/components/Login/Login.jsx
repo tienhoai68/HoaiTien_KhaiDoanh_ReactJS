@@ -7,6 +7,7 @@ import { setUserInfoAction } from "../../store/actions/userAction";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import Swal from 'sweetalert2';
 
 const validationSchema = Yup.object().shape({
   taiKhoan: Yup.string().required('(*) Tài khoản không được để trống'),
@@ -15,38 +16,34 @@ const validationSchema = Yup.object().shape({
 
 export default function Login() {
   const dispatch = useDispatch();
+
   const navigate = useNavigate();
-  // const [stateLogin, setStateLogin] = useState({
-  //   taiKhoan: "",
-  //   matKhau: "",
-  // });
 
   const handleClickRegister = () => {
     const container = document.getElementById("container");
     container.classList.add("right-panel-active");
   };
+
   const handleClickLogin = () => {
     const container = document.getElementById("container");
     container.classList.remove("right-panel-active");
   };
 
-  // const handleChangeLogin = (event) => {
-  //   setStateLogin({
-  //     ...stateLogin,
-  //     [event.target.name]: event.target.value,
-  //   });
-  // };
-
   const handleSubmitLogin = async (values, { resetForm }) => {
-    // event.preventDefault();
-    // const result = await userService.loginApi(stateLogin);
-    // console.log(result);
-    // dispatch(setUserInfoAction(result.data.content));
-    // localStorage.setItem("USER_INFO", JSON.stringify(result.data.content));
-    // navigate("/");
-    console.log(values);
-    // Gọi hàm xử lý đăng ký ở đây
-    // resetForm();
+    try {
+      const result = await userService.loginApi(values);
+      dispatch(setUserInfoAction(result.data.content));
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: 'Bạn đã đăng nhập thành công',
+      });
+      localStorage.setItem("USER_INFO", JSON.stringify(result.data.content));
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
+    resetForm();
   };
 
   return (
@@ -65,19 +62,19 @@ export default function Login() {
           onSubmit={handleSubmitLogin}
         >
           <div className="form-container login-container">
-            <Form onSubmit={handleSubmitLogin} className="form-lg">
+            <Form className="form-lg">
               <h1>Login here</h1>
               <div className="form-control2">
                 <Field name='taiKhoan' type='text' placeholder='Tài khoản' />
                 <span></span>
-                <ErrorMessage name='taiKhoan' component='label' className='form-label text-danger' />
               </div>
+                <ErrorMessage name='taiKhoan' component='label' className='form-label form-label-login text-danger' />
               <div className="form-control2">
                 <Field name='matKhau' type='password' placeholder='Mật khẩu' />
                 <span></span>
-                <ErrorMessage name='matKhau' component='label' className='form-label text-danger' />
               </div>
-              <button type="submit">Login</button>
+                <ErrorMessage name='matKhau' component='label' className='form-label form-label-login text-danger' />
+              <button type='submit'>Login</button>
             </Form>
           </div>
         </Formik>
