@@ -25,4 +25,4 @@ class FimlService {
     };
 }
 
-export const filmService = new FimlService;
+export const filmService = new FimlService();

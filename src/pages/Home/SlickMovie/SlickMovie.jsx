@@ -75,7 +75,7 @@ export default function SlickMovie() {
   const renderMovieList = () => {
     return movieList.map((element) => {
       return (
-        <div key={element.maPhim} className="movie-card">
+        <div onClick={() => handleBooking(element.maPhim)} key={element.maPhim} className="movie-card">
           <div className="movie-image">
             <img
               src={element.hinhAnh} // Đường dẫn hình ảnh mặc định

@@ -4,6 +4,7 @@ import "./ResponsiveMovieList.scss"
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import { movieService } from "../../services/movie";
+import Banner from "../Home/Banner/Banner";
 export default function MovieList() {
   const [movieList, setMovieList] = useState([]);
   const userState = useSelector((state) => state.userReducer);
@@ -62,6 +63,10 @@ export default function MovieList() {
   };
 
   return (
+    <div>
+    <div>
+      <Banner/>
+    </div>
     <div className="main-movie container">
       <div className="title-movie">
         <div className="page-title category-title">
@@ -74,6 +79,7 @@ export default function MovieList() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
