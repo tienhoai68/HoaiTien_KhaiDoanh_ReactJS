@@ -16,6 +16,7 @@ import NoAuthGuard from "../guards/NoAuthGuard";
 import MovieList from "../pages/MovieList/MovieList";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import AddFilm from "../pages/AdminFilmAddnew/AddFilm";
+import UserProfile from "../pages/UserProfile/UserProfile";
 
 export default function Router() {
   const routing = useRoutes([
@@ -26,6 +27,10 @@ export default function Router() {
         {
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "/profile",
+          element: <UserProfile />,
         },
         {
           path: "/movie-detail/:movieId",
@@ -76,6 +81,7 @@ export default function Router() {
         },
       ],
     },
+  
     {
       path: "/login",
       element: (

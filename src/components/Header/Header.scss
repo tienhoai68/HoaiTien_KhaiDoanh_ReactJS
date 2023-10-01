@@ -1,25 +1,6 @@
 .header-dark {
   background: url(../../assets/img/bg-image-1.jpg);
   background-size: 400% 400%;
-  padding-bottom: 20px;
-  .carousel-indicators {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-
-    li {
-      width: 12px;
-      height: 12px;
-      background-color: #fff;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      &:hover {
-        background-color: #c0bfbf;
-      }
-    }
-  }
 }
 
 .header-dark .navbar {
@@ -33,6 +14,28 @@
   // width: 100%;
   // background: url(../../assets/img/bg-image-1.jpg);
   // z-index: 100;
+}
+.nav-img img {
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  margin: -8px 0;
+  margin-right: 10px;
+}
+
+.navbar-logout {
+  .dropdown-menu {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: url(../../../public/img/bg_menu_hover.png);
+    border-radius: 5px;
+    top: 140%;
+    left: 0%;
+  }
+
+  .dropdown-item i {
+    font-size: 16px;
+    min-width: 22px;
+  }
 }
 
 .header-dark .navbar .navbar-brand {
@@ -159,29 +162,6 @@
   margin-top: 60px;
 }
 
-.nav-img img {
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  margin: -8px 0;
-  margin-right: 10px;
-}
-
-.navbar-logout {
-  .dropdown-menu {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background: url(../../../public/img/bg_menu_hover.png);
-    border-radius: 5px;
-    top: 140%;
-    left: 0%;
-  }
-
-  .dropdown-item i {
-    font-size: 16px;
-    min-width: 22px;
-  }
-}
-
 .header-dark .hero h1 {
   color: #fff;
   font-family: "Bitter", serif;
@@ -219,46 +199,6 @@
 
     &:hover {
       box-shadow: 0px 0px 0px 2.5px white inset, 0px 0px 0px 5px #dc2c29;
-    }
-  }
-}
-
-.carousel-item .img-banner {
-  height: 622px;
-}
-
-// Large devices (desktops, less than 1200px)
-@media (max-width: 1199.98px) {
-  .carousel-item {
-    .img-banner {
-      height: 500px;
-    }
-  }
-
-  // Medium devices (tablets, less than 992px)
-}
-
-@media (max-width: 991.98px) {
-  .carousel-item {
-    .img-banner {
-      height: 420px;
-    }
-  }
-}
-
-// Small devices (landscape phones, less than 768px)
-@media (max-width: 767.98px) {
-  .carousel-item {
-    .img-banner {
-      height: 350px;
-    }
-  }
-}
-
-@media (max-width: 575.98px) {
-  .carousel-item {
-    .img-banner {
-      height: 200px;
     }
   }
 }
