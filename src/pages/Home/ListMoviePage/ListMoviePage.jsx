@@ -7,21 +7,26 @@ import { useNavigate } from "react-router-dom";
 export default function ListMoviePage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [movieListPage, setMovieListPage] = useState([]);
+  const [movieList, setMovieList] = useState([]);
   const [isNowPlaying, setIsNowPlaying] = useState();
   const userState = useSelector((state) => state.userReducer);
   const navigate = useNavigate();
 
-  const fetchMovieList = async () => {
+  const fetchMovieListPage = async () => {
     const result = await movieService.fecthMovieListPageApi(currentPage);
     setMovieListPage(result.data.content.items);
   };
+  const fetchMovieList = async () => {
+   const result = await movieService.fecthMovieListWithPageApi();
+    setMovieList(result.data.content)
+  }
   const handleNowPlaying = (key) => {
     setIsNowPlaying(key);
   }
 
   const handleChangePage = (page) => {
     setCurrentPage(page);
-    fetchMovieList();
+    fetchMovieListPage();
   };
 
   const handleBooking = (codeMovie) => {
@@ -34,6 +39,7 @@ export default function ListMoviePage() {
 
   useEffect(() => {
     fetchMovieList();
+    fetchMovieListPage();
   }, []);
 
   // console.log(movieListPage.items)
@@ -128,7 +134,7 @@ export default function ListMoviePage() {
               onChange={handleChangePage}
               defaultCurrent={1}
               defaultPageSize={8}
-              total={50}
+              total={movieList.length}
             />
           </div>
         </div>
