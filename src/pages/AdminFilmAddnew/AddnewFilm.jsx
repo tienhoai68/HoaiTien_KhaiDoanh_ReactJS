@@ -32,24 +32,24 @@ export default function AddnewFilm() {
       danhGia: 0,
       hinhAnh: {},
     },
-    onSubmit: (value) => {
-      value.maPhim = Date.now();
+    onSubmit: async (value) => {
 
       let formData = new FormData();
       for (let key in value) {
         if (key !== "hinhAnh") {
           formData.append(key, value[key]);
-        } else {
+        }
+        if (key === "hinhAnh") {
           formData.append('File', value.hinhAnh, value.hinhAnh.name);
         }
       }
-      addFilm(formData);
+      console.log(formData.get("File"))
+      // const result = await filmService.fetchAddNewFilm(formData);
+      // console.log(result.data.content)
     }
-  })
-  const addFilm = async (formData) => {
-    const result = await filmService.fetchAddNewFilm(formData);
-    console.log(result.data.content)
+
   }
+  )
 
   const handleChangeDate = (value) => {
     let ngayKhoiChieu = moment(value).format('DD/MM/YYYY');
@@ -61,7 +61,7 @@ export default function AddnewFilm() {
   }
   const handleChangeFile = (event) => {
     let file = event.target.files[0];
-    if (file.type === 'image/jpg' || file.type === 'image/png' || file.type === "image/gif") {
+    if (file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/png' || file.type === "image/gif") {
       let reader = new FileReader();
 
       reader.readAsDataURL(file);
@@ -126,7 +126,7 @@ export default function AddnewFilm() {
           <InputNumber onChange={handleChangeSwitch('danhGia')} min={1} max={10} />
         </Form.Item>
         <Form.Item label="Hình Ảnh">
-          <input name='hinhAnh' type="file" onChange={handleChangeFile} accept='image/jpg, image/gif ,image/png' />
+          <input name='hinhAnh' type="File" onChange={handleChangeFile} accept='image/jpg, image/gif ,image/png' />
           <br />
           <img style={{ width: 150, height: 150 }} src={img} alt="..." />
         </Form.Item>

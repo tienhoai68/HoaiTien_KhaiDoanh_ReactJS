@@ -15,6 +15,7 @@ import AuthGuard from "../guards/AuthGuard";
 import NoAuthGuard from "../guards/NoAuthGuard";
 import MovieList from "../pages/MovieList/MovieList";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
+import AddFilm from "../pages/AdminFilmAddnew/AddFilm";
 
 export default function Router() {
   const routing = useRoutes([
@@ -66,7 +67,8 @@ export default function Router() {
         },
         {
           path: "/admin/films/addnew",
-          element: <AddnewFilm />,
+          // element: <AddnewFilm />,
+          element: <AddFilm />,
         },
         {
           path: "/admin/films/edit",
