@@ -52,27 +52,27 @@ export default function Register() {
         onSubmit={handleSubmitRegister}
       >
         <Form className="register-form">
-          <div className='form-control'>
+          <div className='form-control form-register'>
             <Field name='taiKhoan' type='text' placeholder='Tài khoản' />
             <span></span>
             <ErrorMessage name='taiKhoan' component='label' className='form-label text-danger' />
           </div>
-          <div className='form-control'>
+          <div className='form-control form-register'>
             <Field name='matKhau' type='password' placeholder='Mật khẩu' />
             <span></span>
             <ErrorMessage name='matKhau' component='label' className='form-label text-danger' />
           </div>
-          <div className='form-control'>
+          <div className='form-control form-register'>
             <Field name='email' type='text' placeholder='Email' />
             <span></span>
             <ErrorMessage name='email' component='label' className='form-label text-danger' />
           </div>
-          <div className='form-control'>
+          <div className='form-control form-register'>
             <Field name='soDt' type='text' placeholder='Số điện thoại' />
             <span></span>
             <ErrorMessage name='soDt' component='label' className='form-label text-danger' />
           </div>
-          <div className='form-control'>
+          <div className='form-control form-register'>
             <Field name='hoTen' type='text' placeholder='Họ Tên' />
             <span></span>
             <ErrorMessage name='hoTen' component='label' className='form-label text-danger' />

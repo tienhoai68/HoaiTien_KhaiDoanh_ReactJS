@@ -59,7 +59,7 @@ export default function UserProfile() {
   const renderTicketInfo = () => {
     return ticketInfo.map((element) => {
       return (
-        <div key={element.maVe} className="col-6">
+        <div key={element.maVe} className="col-12 col-md-12 col-lg-6">
           <div className="ticket-section">
             <div className="ticket-info-container">
               <div className="ticket-info">
@@ -132,37 +132,37 @@ export default function UserProfile() {
             >
               <Form className="register-form">
                 <div className="row">
-                  <div className='form-group col-6'>
+                  <div className='form-group col-12 col-md-12 col-lg-6'>
                     <label className='label-user'> <span className='text-red'>* </span>Tài Khoản</label>
                     <Field disabled={true} className='form-control' name='taiKhoan' type='text' placeholder='Tài khoản' />
                     <span></span>
                     <ErrorMessage name='taiKhoan' component='label' className='form-label text-danger' />
                   </div>
-                  <div className='form-group col-6'>
+                  <div className='form-group col-12 col-md-12 col-lg-6'>
                     <label className='label-user'><span className='text-red'>* </span>Mật Khẩu </label>
                     <Field className='form-control' name='matKhau' type='password' placeholder='Mật khẩu' />
                     <span></span>
                     <ErrorMessage name='matKhau' component='label' className='form-label text-danger' />
                   </div>
-                  <div className='form-group col-6'>
+                  <div className='form-group col-12 col-md-12 col-lg-6'>
                     <label className='label-user'><span className='text-red'>* </span>Email </label>
                     <Field className='form-control' name='email' type='text' placeholder='Email' />
                     <span></span>
                     <ErrorMessage name='email' component='label' className='form-label text-danger' />
                   </div>
-                  <div className='form-group col-6'>
+                  <div className='form-group col-12 col-md-12 col-lg-6'>
                     <label className='label-user'><span className='text-red'>* </span>Số Điện Thoại </label>
                     <Field className='form-control' name='soDT' type='text' placeholder='Số điện thoại' />
                     <span></span>
                     <ErrorMessage name='soDT' component='label' className='form-label text-danger' />
                   </div>
-                  <div className='form-group col-6'>
+                  <div className='form-group col-12 col-md-12 col-lg-6'>
                     <label className='label-user'><span className='text-red'>* </span>Họ Tên </label>
                     <Field className='form-control' name='hoTen' type='text' placeholder='Họ Tên' />
                     <span></span>
                     <ErrorMessage name='hoTen' component='label' className='form-label text-danger' />
                   </div>
-                  <div className='form-group col-6'>
+                  <div className='form-group col-12 col-md-12 col-lg-6'>
                     <label className='label-user'><span className='text-red'>* </span>Mã Loại Người Dùng </label>
                     <Field disabled={true} className='form-control' name='loaiNguoiDung.tenLoai' type='text' placeholder='Mã Loại Người Dùng' />
                     <span></span>
