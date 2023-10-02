@@ -54,11 +54,10 @@ export default function ListMoviePage() {
         return element;
       }
     }
-      // isNowPlaying ? element.dangChieu : !element.dangChieu
     );
     return filteredMovies.slice(2, 10).map((element) => {
       return (
-        <div key={element.maPhim} className="col-10 col-sm-6 col-md-4 col-lg-3 my-3">
+        <div key={element.maPhim} className="col-7 col-sm-6 col-md-4 col-lg-3 my-3">
           <div onClick={() => handleBooking(element.maPhim)} className="movie-card-page">
             <div className="movie-image-page">
               <img
