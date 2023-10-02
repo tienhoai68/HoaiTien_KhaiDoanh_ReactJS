@@ -68,6 +68,7 @@ export default function AddFilm() {
     }
     const handleSubmit = () => {
         console.log(state);
+        
     }
 
 

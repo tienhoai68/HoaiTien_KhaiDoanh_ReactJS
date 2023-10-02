@@ -38,22 +38,19 @@ export default function AddnewFilm() {
       for (let key in value) {
         if (key !== "hinhAnh") {
           formData.append(key, value[key]);
-        }
-        if (key === "hinhAnh") {
+        } else {
           formData.append('File', value.hinhAnh, value.hinhAnh.name);
         }
       }
-      console.log(formData.get("File"))
-      // const result = await filmService.fetchAddNewFilm(formData);
-      // console.log(result.data.content)
+      console.log(formData)
+      const result = await filmService.fetchAddNewFilm(formData);
+      console.log(result.data.content);
     }
-
-  }
-  )
+  })
 
   const handleChangeDate = (value) => {
     let ngayKhoiChieu = moment(value).format('DD/MM/YYYY');
-    formik.setFieldValue(ngayKhoiChieu);
+    formik.setFieldValue("ngayKhoiChieu", ngayKhoiChieu);
   }
 
   const handleChangeSwitch = (name) => {
