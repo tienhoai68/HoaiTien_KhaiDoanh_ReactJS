@@ -17,7 +17,7 @@ export default function ListMoviePage() {
     setMovieListPage(result.data.content.items);
   };
   const fetchMovieList = async () => {
-   const result = await movieService.fecthMovieListWithPageApi();
+    const result = await movieService.fecthMovieListWithPageApi();
     setMovieList(result.data.content)
   }
   const handleNowPlaying = (key) => {
@@ -25,6 +25,7 @@ export default function ListMoviePage() {
   }
 
   const handleChangePage = (page) => {
+    console.log(page);
     setCurrentPage(page);
     fetchMovieListPage();
   };
@@ -132,7 +133,7 @@ export default function ListMoviePage() {
           <div className="ant-pagination">
             <Pagination
               onChange={handleChangePage}
-              defaultCurrent={1}
+              defaultCurrent={currentPage}
               defaultPageSize={8}
               total={movieList.length}
             />
