@@ -67,11 +67,11 @@ export default function Router() {
         },
         {
           path: "/admin/films/addnew",
-          element: <AddnewFilm />,
-          // element: <AddFilm />,
+          // element: <AddnewFilm />,
+          element: <AddFilm />,
         },
         {
-          path: "/admin/films/edit",
+          path: "/admin/films/edit/:filmId",
           element: <EditFilm />,
         },
       ],
