@@ -15,6 +15,13 @@ class UserService {
       data,
     })
   }
+  fetchUserInfoApi(data) {
+    return requestApi({
+      url: "/QuanLyNguoiDung/ThongTinTaiKhoan",
+      method: "POST",
+      data,
+    })
+  }
 }
 
 export const userService = new UserService();

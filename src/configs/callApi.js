@@ -19,7 +19,6 @@ requestApi.interceptors.request.use((config) => {
     accessToken = userState.userReducer.userInfo.accessToken;
     config.headers.Authorization = `Bearer ${accessToken}`
   }
-
   return config;
 })
 
