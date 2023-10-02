@@ -5,6 +5,8 @@ import { filmService } from '../../services/Films';
 import { NavLink } from 'react-router-dom';
 const { Search } = Input;
 const onSearch = (value, _e, info) => console.log(info?.source, value);
+
+
 export default function AdminFilm() {
   const [filmList, setFilmList] = useState([]);
 
@@ -61,8 +63,8 @@ export default function AdminFilm() {
       title: 'Hành động',
       dataIndex: 'hanhDong',
       render: (text, film) => {
-        return <Fragment>
-          <NavLink to='' className="mr-2">
+        return <Fragment >
+          <NavLink to={`/admin/films/edit/${film.maPhim}`} className="mr-2" >
             <i className="fa-solid fa-magnifying-glass" />
           </NavLink>
           <NavLink className="">
@@ -78,6 +80,7 @@ export default function AdminFilm() {
   const onChange = (pagination, filters, sorter, extra) => {
     console.log('params', pagination, filters, sorter, extra);
   };
+
 
   return (
     <div>

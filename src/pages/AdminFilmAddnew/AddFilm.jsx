@@ -66,9 +66,19 @@ export default function AddFilm() {
             'hinhAnh': file,
         })
     }
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         console.log(state);
-        
+        let formData = new FormData();
+        for (let name in state) {
+            if (name !== "hinhAnh") {
+                formData.append(name, state[name]);
+            } else {
+                formData.append('File', state.hinhAnh)
+            }
+        }
+        const result = await filmService.fetchAddNewFilmApi(formData);
+        console.log(result)
+
     }
 
 

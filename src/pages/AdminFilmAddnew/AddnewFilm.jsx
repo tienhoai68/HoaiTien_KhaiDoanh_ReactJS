@@ -42,7 +42,7 @@ export default function AddnewFilm() {
           formData.append('File', value.hinhAnh, value.hinhAnh.name);
         }
       }
-      console.log(formData)
+      console.log(formData.get("File"));
       const result = await filmService.fetchAddNewFilm(formData);
       console.log(result.data.content);
     }
@@ -123,7 +123,7 @@ export default function AddnewFilm() {
           <InputNumber onChange={handleChangeSwitch('danhGia')} min={1} max={10} />
         </Form.Item>
         <Form.Item label="Hình Ảnh">
-          <input name='hinhAnh' type="File" onChange={handleChangeFile} accept='image/jpg, image/gif ,image/png' />
+          <input name='hinhAnh' type="File" onChange={handleChangeFile} />
           <br />
           <img style={{ width: 150, height: 150 }} src={img} alt="..." />
         </Form.Item>
