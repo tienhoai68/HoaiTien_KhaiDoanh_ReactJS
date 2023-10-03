@@ -52,7 +52,14 @@ export default function AddFilm() {
             'ngayKhoiChieu': ngayKhoiChieu,
         })
     }
+    const handleChangeNumber = (value) => {
 
+        setState({
+            ...state,
+            'danhGia': value,
+        })
+        console.log(state)
+    }
     const handleChangeImg = (event) => {
         let file = event.target.files[0];
         console.log(file);
@@ -67,17 +74,16 @@ export default function AddFilm() {
         })
     }
     const handleSubmit = async () => {
-        console.log(state);
         let formData = new FormData();
         for (let name in state) {
             if (name !== "hinhAnh") {
                 formData.append(name, state[name]);
             } else {
-                formData.append('File', state.hinhAnh)
+                formData.append('File', state.hinhAnh, state.hinhAnh.name);
             }
         }
         const result = await filmService.fetchAddNewFilmApi(formData);
-        console.log(result)
+        console.log(result.data.content);
 
     }
 
@@ -120,7 +126,7 @@ export default function AddFilm() {
                     <Input name='moTa' onChange={handleChange} />
                 </Form.Item>
                 <Form.Item label="Date">
-                    <DatePicker name='ngayKhoiChieu' onChange={handleChangeDate} />
+                    <DatePicker format="DD/MM/YYYY" name='ngayKhoiChieu' onChange={handleChangeDate} />
                 </Form.Item>
                 <Form.Item label="Đang Chiếu" valuePropName="checked">
                     <Switch name='dangChieu' onChange={handleChangeSwitch} />
@@ -132,7 +138,7 @@ export default function AddFilm() {
                     <Switch name='Hot' onChange={handleChangeSwitch} />
                 </Form.Item>
                 <Form.Item label="Đánh Giá">
-                    <InputNumber min={1} max={10} />
+                    <InputNumber onChange={handleChangeNumber} name='danhGia' min={1} max={10} />
                 </Form.Item>
                 <Form.Item label="Hình Ảnh">
                     <input name='hinhAnh' type="File" onChange={handleChangeImg} />
