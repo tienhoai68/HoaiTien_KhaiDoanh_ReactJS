@@ -76,18 +76,17 @@ export default function AddFilm() {
             'hinhAnh': file,
         })
     }
-    const handleSubmit = async () => {
-        console.log(state);
+    const handleSubmit = () => {
+
         let formData = new FormData();
         for (let name in state) {
             if (name !== "hinhAnh") {
                 formData.append(name, state[name]);
             } else {
-                formData.append('File', state.hinhAnh)
+                formData.append('File', state.hinhAnh, state.hinhAnh.name)
             }
         }
-        const result = await filmService.fetchAddNewFilm(formData);
-        console.log(result)
+        console.log(formData)
 
     }
 
@@ -130,24 +129,24 @@ export default function AddFilm() {
                     <Input value={state.moTa} name='moTa' onChange={handleChange} />
                 </Form.Item>
                 <Form.Item label="Date">
-                    <DatePicker  name='ngayKhoiChieu' onChange={handleChangeDate} />
+                    <DatePicker value={moment(state.ngayKhoiChieu, 'DD/MM/YYYY')} name='ngayKhoiChieu' onChange={handleChangeDate} />
                 </Form.Item>
                 <Form.Item label="Đang Chiếu" valuePropName="checked">
-                    <Switch name='dangChieu' onChange={handleChangeSwitch} />
+                    <Switch checked={state.dangChieu} name='dangChieu' onChange={handleChangeSwitch} />
                 </Form.Item>
                 <Form.Item label="Sắp Chiếu" valuePropName="checked">
-                    <Switch name='sapChieu' onChange={handleChangeSwitch} />
+                    <Switch checked={state.sapChieu} name='sapChieu' onChange={handleChangeSwitch} />
                 </Form.Item>
                 <Form.Item label="Hot" valuePropName="checked">
-                    <Switch name='Hot' onChange={handleChangeSwitch} />
+                    <Switch checked={state.Hot} name='Hot' onChange={handleChangeSwitch} />
                 </Form.Item>
                 <Form.Item label="Đánh Giá">
-                    <InputNumber min={1} max={10} />
+                    <InputNumber value={state.danhGia} min={1} max={10} />
                 </Form.Item>
                 <Form.Item label="Hình Ảnh">
                     <input name='hinhAnh' type="File" onChange={handleChangeImg} />
                     <br />
-                    <img style={{ width: 150, height: 150 }} src={img} alt="..." />
+                    <img style={{ width: 150, height: 150 }} src={img === '' ? state.hinhAnh : img} alt="..." />
                 </Form.Item>
                 <Form.Item label="Tác Vụ">
                     <button className='p-2' type='submit'>Thêm Phim</button>
