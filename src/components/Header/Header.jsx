@@ -5,6 +5,7 @@ import avatar from "../../assets/img/User-Profile.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserInfoAction } from "../../store/actions/userAction";
+import { Link } from "react-scroll";
 export default function Header() {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.userReducer);
@@ -74,7 +75,7 @@ export default function Header() {
           <nav className="navbar navbar-dark navbar-expand-md navigation-clean-search">
             <div className="container">
               <NavLink className="navbar-brand" href="/">
-              <img className="img-fluid" src={logo} alt="" />             
+                <img className="img-fluid" src={logo} alt="" />
               </NavLink>
               <button
                 className="navbar-toggler"
@@ -95,19 +96,37 @@ export default function Header() {
                     </NavLink>
                   </li>
                   <li className="nav-item-header" role="presentation">
-                    <NavLink className="nav-link" to="/movie-list">
-                      PHIM ĐANG CHIẾU
-                    </NavLink>
+                    <Link activeClass="active"
+                      to="Movie-Hot"
+                      spy={true}
+                      smooth={true}
+                      offset={-70}
+                      duration={500} className="nav-link">
+                      PHIM HOT
+                    </Link>
                   </li>
                   <li className="nav-item-header" role="presentation">
-                    <NavLink className="nav-link" to="/">
+                    <Link
+                      activeClass="active"
+                      to="Movie-List"
+                      spy={true}
+                      smooth={true}
+                      offset={-70}
+                      duration={500} className="nav-link">
                       DANH SÁCH PHIM
-                    </NavLink>
+                    </Link>
                   </li>
                   <li className="nav-item-header" role="presentation">
-                    <NavLink className="nav-link" to="/">
+                    <Link
+                      activeClass="active"
+                      to="Cinema"
+                      spy={true}
+                      smooth={true}
+                      offset={-70}
+                      duration={500}
+                      className="nav-link">
                       CỤM RẠP
-                    </NavLink>
+                    </Link>
                   </li>
 
                 </ul>

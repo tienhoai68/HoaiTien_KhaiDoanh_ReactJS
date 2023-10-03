@@ -132,6 +132,7 @@ export default function ListMoviePage() {
           <div className="ant-pagination">
             <Pagination
               onChange={handleChangePage}
+              current={currentPage}
               defaultCurrent={currentPage}
               defaultPageSize={8}
               total={movieList.length}

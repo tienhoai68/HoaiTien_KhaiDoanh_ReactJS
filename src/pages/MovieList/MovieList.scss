@@ -8,6 +8,7 @@
     text-transform: uppercase;
     font-family: "Roboto Slab", serif;
     text-align: center;
+
     hr {
       width: 100px;
       display: inline-block;
@@ -15,13 +16,14 @@
       border-top: none;
       margin-bottom: 30px;
     }
+
     i {
       margin-right: 10px;
       font-size: 24px;
       animation: spin 2s infinite linear;
       color: #dc2c29;
     }
-    
+
     .btn-group-isotope {
       .btn {
         text-transform: uppercase;
@@ -32,31 +34,36 @@
         white-space: normal;
         cursor: pointer;
       }
+
       .btn-group-isotope .btn {
         margin-top: 10px;
         margin-left: 10px;
       }
+
       .btn-success-mod-1:hover {
         background-color: #d81a24;
         border-color: #d81a24;
         color: #fff;
       }
+
       .btn-success-mod-1:focus {
         background-color: #d81a24;
         border-color: #d81a24;
         color: #fff;
       }
+
       .btn-sm {
         padding: 10px 40px;
         font-size: 18px;
         border-radius: 6px;
       }
+
       .btn-success-mod-1 {
         color: #d81a24;
         background-color: transparent;
         border-color: #d81a24;
       }
-    }  
+    }
 
     @keyframes spin {
       0% {
@@ -162,6 +169,7 @@
 }
 
 @keyframes bounceIn {
+
   0%,
   20%,
   40%,
