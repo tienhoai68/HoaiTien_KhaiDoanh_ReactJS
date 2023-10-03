@@ -29,7 +29,7 @@ export default function BackToTop() {
   return (
     isVisible && (
       <button className="back-to-top" onClick={scrollToTop}>
-        <i class="fa-solid fa-arrow-up"></i>
+        <i className="fa-solid fa-arrow-up"></i>
       </button>
     )
   )

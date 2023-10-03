@@ -29,21 +29,21 @@ export default function UserProfile() {
 
   const handleChangeUserInfo = async (values, { resetForm }) => {
     console.log(values);
-    // try {
-    //   await userService.fetchUserInfoApi(values);
-    //   Swal.fire({
-    //     icon: 'success',
-    //     title: 'Success!',
-    //     text: 'Bạn đã đăng kí thành công',
-    //   });
-    //   resetForm();
-    // } catch (error) {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: 'Oops...',
-    //     text: `${error.response.data.content}`,
-    //   })
-    // }
+    try {
+      await userService.fetchUserInfoApi(values);
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: 'Bạn đã đăng kí thành công',
+      });
+      resetForm();
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `${error.response.data.content}`,
+      })
+    }
   };
 
   const handlefetchUserInfo = async () => {

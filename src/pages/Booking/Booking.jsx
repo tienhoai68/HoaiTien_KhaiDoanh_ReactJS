@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Booking.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import { ticketService } from "../../services/ticket";
-import { element } from "prop-types";
 import { filter, sumBy } from "lodash";
+import Swal from 'sweetalert2';
 
 export default function Booking() {
   const params = useParams();
@@ -94,8 +94,15 @@ export default function Booking() {
       })
     }
     await ticketService.bookTicketApi(dataSendApi);
-    // navigate sang trang vé sẽ đúng
-    navigate("/")
+    Swal.fire({
+      icon: 'success',
+      title: 'Thành công!',
+      text: 'Bạn đã đặt vé thành công',
+      confirmButtonColor: '#3085d6', 
+      confirmButtonText: 'OK' 
+    });
+    
+    navigate("/profile")
   }
   return (
     <div className="backgroud-booking ">
