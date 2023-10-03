@@ -10,18 +10,18 @@ export default function Home() {
   return (
     <div>
       <div>
-        <Banner/>
+        <Banner />
       </div>
-      <div>
+      <div id="Movie-List">
         <ListMoviePage />
       </div>
-      <div>
+      <div id='Movie-Hot'>
         <SlickMovie />
       </div>
       <div>
         <Newsletter />
       </div>
-      <div>
+      <div id='Cinema'>
         <TabCinema />
       </div>
     </div>

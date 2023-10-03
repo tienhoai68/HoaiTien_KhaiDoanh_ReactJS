@@ -175,6 +175,7 @@
     }
   }
 }
+
 .custom-button {
   display: inline-block;
   padding: 6px 8px;
@@ -194,9 +195,12 @@
   &:hover i {
     transform: scale(1.2);
   }
+
   &:active {
-    background-color: #2980b9; /* Màu nền khi click */
+    background-color: #2980b9;
+    /* Màu nền khi click */
   }
+
   &::before {
     content: '';
     position: absolute;
