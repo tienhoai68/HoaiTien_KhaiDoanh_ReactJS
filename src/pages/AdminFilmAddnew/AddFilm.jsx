@@ -11,7 +11,6 @@ import moment from 'moment';
 import { filmService } from '../../services/Films';
 
 
-
 export default function AddFilm() {
     const [componentSize, setComponentSize] = useState('default');
     const onFormLayoutChange = ({ size }) => {
@@ -27,7 +26,7 @@ export default function AddFilm() {
         ngayKhoiChieu: '',
         dangChieu: false,
         sapChieu: false,
-        Hot: false,
+        hot: false,
         danhGia: 0,
         hinhAnh: {},
     })
@@ -53,16 +52,14 @@ export default function AddFilm() {
         })
     }
     const handleChangeNumber = (value) => {
-
         setState({
             ...state,
             'danhGia': value,
         })
-        console.log(state)
     }
+
     const handleChangeImg = (event) => {
         let file = event.target.files[0];
-        console.log(file);
         let reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = (event) => {
@@ -135,7 +132,7 @@ export default function AddFilm() {
                     <Switch name='sapChieu' onChange={handleChangeSwitch} />
                 </Form.Item>
                 <Form.Item label="Hot" valuePropName="checked">
-                    <Switch name='Hot' onChange={handleChangeSwitch} />
+                    <Switch name='hot' onChange={handleChangeSwitch} />
                 </Form.Item>
                 <Form.Item label="Đánh Giá">
                     <InputNumber onChange={handleChangeNumber} name='danhGia' min={1} max={10} />
