@@ -22,6 +22,13 @@ class UserService {
       data,
     })
   }
+  updateUserInfo(data) {
+    return requestApi({
+      url: "/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+      method: "PUT",
+      data,
+    })
+  }
 }
 
 export const userService = new UserService();

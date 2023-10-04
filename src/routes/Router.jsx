@@ -17,6 +17,7 @@ import MovieList from "../pages/MovieList/MovieList";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import AddFilm from "../pages/AdminFilmAddnew/AddFilm";
 import UserProfile from "../pages/UserProfile/UserProfile";
+import AdminGuard from "../guards/AdminGuard";
 
 export default function Router() {
   const routing = useRoutes([
@@ -56,7 +57,10 @@ export default function Router() {
     },
     {
       path: "/admin",
-      element: <AdminLayout />,
+      element: (<AdminGuard>
+        <AdminLayout />
+      </AdminGuard>
+      ),
       children: [
         {
           path: "/admin",
@@ -81,7 +85,7 @@ export default function Router() {
         },
       ],
     },
-  
+
     {
       path: "/login",
       element: (
