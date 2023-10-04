@@ -3,7 +3,7 @@ import { filmService } from '../../services/Films';
 import { NavLink } from 'react-router-dom';
 
 import './AdminFilm.scss'
-import { Button } from 'antd';
+
 
 export default function AdminFilm() {
 
@@ -39,7 +39,7 @@ export default function AdminFilm() {
     <div>
 
       <h1>Quản lý phim</h1>
-      <button className='mb-3'>Thêm phim</button>
+      <NavLink to={`/admin/films/addnew`} className='mb-3'>Thêm phim</NavLink>
       <table className='table'>
         <thead>
           <th>Mã phim</th>
