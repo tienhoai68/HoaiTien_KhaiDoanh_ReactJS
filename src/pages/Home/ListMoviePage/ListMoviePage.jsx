@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { Pagination } from "antd";
 import { movieService } from "../../../services/movie";
 import "./ListMoviePage.scss";
@@ -25,7 +25,6 @@ export default function ListMoviePage() {
   }
 
   const handleChangePage = (page) => {
-    console.log(page);
     setCurrentPage(page);
     fetchMovieListPage();
   };
@@ -61,7 +60,7 @@ export default function ListMoviePage() {
           <div onClick={() => handleBooking(element.maPhim)} className="movie-card-page">
             <div className="movie-image-page">
               <img
-                src={element.hinhAnh} // Đường dẫn hình ảnh mặc định
+                src={element.hinhAnh}
                 alt="Sample Movie"
               />
               <span className="badge-page">Premium</span>

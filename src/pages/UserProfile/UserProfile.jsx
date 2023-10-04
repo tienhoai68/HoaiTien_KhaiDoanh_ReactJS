@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./UserProfile.scss"
 import * as Yup from 'yup';
 import { Form, ErrorMessage, Field, Formik } from 'formik';
 import { userService } from '../../services/user';
 import Swal from 'sweetalert2';
 import { formatDate } from '../../utils/formatDate';
+import { useNavigate } from 'react-router-dom';
+import { LoadingContext } from '../../contexts/Loading/Loading';
 
 const validationSchema = Yup.object().shape({
   taiKhoan: Yup.string().required('(*) Tài khoản không được để trống'),
@@ -15,7 +17,7 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function UserProfile() {
-
+  const [_, setIsLoading] = useContext(LoadingContext);
   const [userInfo, setUserInfo] = useState({
     taiKhoan: '',
     matKhau: '',
@@ -30,11 +32,11 @@ export default function UserProfile() {
   const handleChangeUserInfo = async (values, { resetForm }) => {
     console.log(values);
     try {
-      await userService.fetchUserInfoApi(values);
+      await userService.updateUserInfo(values);
       Swal.fire({
         icon: 'success',
         title: 'Success!',
-        text: 'Bạn đã đăng kí thành công',
+        text: 'Bạn đã cập nhật thành công',
       });
       resetForm();
     } catch (error) {
@@ -47,9 +49,11 @@ export default function UserProfile() {
   };
 
   const handlefetchUserInfo = async () => {
+    setIsLoading({ isLoading: true });
     const result = await userService.fetchUserInfoApi();
     setUserInfo(result.data.content)
-    setTicketInfo(result.data.content.thongTinDatVe)
+    setTicketInfo(result.data.content.thongTinDatVe);
+    setIsLoading({ isLoading: false });
   }
 
   useEffect(() => {
@@ -134,7 +138,7 @@ export default function UserProfile() {
                 <div className="row">
                   <div className='form-group col-12 col-md-12 col-lg-6'>
                     <label className='label-user'> <span className='text-red'>* </span>Tài Khoản</label>
-                    <Field disabled={true} className='form-control' name='taiKhoan' type='text' placeholder='Tài khoản' />
+                    <Field readOnly={true} className='form-control' name='taiKhoan' type='text' placeholder='Tài khoản' />
                     <span></span>
                     <ErrorMessage name='taiKhoan' component='label' className='form-label text-danger' />
                   </div>
@@ -164,7 +168,7 @@ export default function UserProfile() {
                   </div>
                   <div className='form-group col-12 col-md-12 col-lg-6'>
                     <label className='label-user'><span className='text-red'>* </span>Mã Loại Người Dùng </label>
-                    <Field disabled={true} className='form-control' name='loaiNguoiDung.tenLoai' type='text' placeholder='Mã Loại Người Dùng' />
+                    <Field readOnly={true} className='form-control' name='loaiNguoiDung.tenLoai' type='text' placeholder='Mã Loại Người Dùng' />
                     <span></span>
                     <ErrorMessage name='maLoaiNguoiDung' component='label' className='form-label text-danger' />
                   </div>

@@ -74,7 +74,7 @@ export default function Header() {
         <div className="header-dark">
           <nav className="navbar navbar-dark navbar-expand-md navigation-clean-search">
             <div className="container">
-              <NavLink className="navbar-brand" href="/">
+              <NavLink className="navbar-brand" to="/">
                 <img className="img-fluid" src={logo} alt="" />
               </NavLink>
               <button
@@ -96,16 +96,6 @@ export default function Header() {
                     </NavLink>
                   </li>
                   <li className="nav-item-header" role="presentation">
-                    <Link activeClass="active"
-                      to="Movie-Hot"
-                      spy={true}
-                      smooth={true}
-                      offset={-70}
-                      duration={500} className="nav-link">
-                      PHIM HOT
-                    </Link>
-                  </li>
-                  <li className="nav-item-header" role="presentation">
                     <Link
                       activeClass="active"
                       to="Movie-List"
@@ -114,6 +104,16 @@ export default function Header() {
                       offset={-70}
                       duration={500} className="nav-link">
                       DANH SÁCH PHIM
+                    </Link>
+                  </li>
+                  <li className="nav-item-header" role="presentation">
+                    <Link activeClass="active"
+                      to="Movie-Hot"
+                      spy={true}
+                      smooth={true}
+                      offset={-70}
+                      duration={500} className="nav-link">
+                      PHIM HOT
                     </Link>
                   </li>
                   <li className="nav-item-header" role="presentation">

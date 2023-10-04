@@ -174,10 +174,12 @@ input[type=checkbox]:before {
   border: 1px solid #ccc;
   color: #fff;
 }
+
 .price-title {
   font-size: 28px;
   text-align: center;
 }
+
 .price-text {
   color: rgb(139, 195, 74);
   font-size: 28px;
@@ -247,24 +249,19 @@ input[type=checkbox]:before {
   .scroll-chair {
     // display: block;
     width: 100%;
-    margin: 0 auto;  
+    margin: 0 auto;
     text-align: center;
     overflow-x: scroll;
-    padding: 0 0 5% 0; 
+    padding: 0 0 5% 0;
     white-space: nowrap;
   }
+
   // Medium devices (tablets, less than 992px)
 }
 
-@media (max-width: 991.98px) {
- 
-}
+@media (max-width: 991.98px) {}
 
 // Small devices (landscape phones, less than 768px)
-@media (max-width: 767.98px) {
-  
-}
+@media (max-width: 767.98px) {}
 
-@media (max-width: 575.98px) {
-  
-}
+@media (max-width: 575.98px) {}

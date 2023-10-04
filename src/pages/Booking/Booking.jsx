@@ -1,22 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Booking.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import { ticketService } from "../../services/ticket";
 import { filter, sumBy } from "lodash";
 import Swal from 'sweetalert2';
+import { ChairType } from "../../enums/api";
+import { LoadingContext } from "../../contexts/Loading/Loading";
 
 export default function Booking() {
   const params = useParams();
   const navigate = useNavigate();
 
+  const [_, setIsLoading] = useContext(LoadingContext);
   const [ticketDetail, setTicketDetail] = useState({});
   const [chairList, setChairList] = useState([]);
 
   useEffect(() => {
+
     fetchTicketDetail();
   }, []);
 
   const fetchTicketDetail = async () => {
+    setIsLoading({ isLoading: true });
     const result = await ticketService.fetchTicketDetailApi(params.bookingId);
     setTicketDetail(result.data.content.thongTinPhim);
     setChairList(
@@ -27,12 +32,13 @@ export default function Booking() {
         };
       })
     );
+    setIsLoading({ isLoading: false });
   };
 
   const renderChairList = () => {
     return chairList.map((element, index) => {
       let className = "chair";
-      if (element.loaiGhe === "Vip") {
+      if (element.loaiGhe === ChairType.Vip) {
         className = "button-vip";
       }
       if (element.dangChon) {
@@ -98,10 +104,10 @@ export default function Booking() {
       icon: 'success',
       title: 'Thành công!',
       text: 'Bạn đã đặt vé thành công',
-      confirmButtonColor: '#3085d6', 
-      confirmButtonText: 'OK' 
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK'
     });
-    
+
     navigate("/profile")
   }
   return (

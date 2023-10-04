@@ -1,20 +1,24 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 import { Tabs } from 'antd';
 import { cinemaService } from '../../../services/cinema';
 import moment from 'moment';
 import { NavLink } from 'react-router-dom';
+import { LoadingContext } from '../../../contexts/Loading/Loading';
 const { TabPane } = Tabs;
 
 export default function TabCinema() {
-  const [tabPosition, setTabPosition] = useState('left');
-  const [cinema, setCinema] = useState([])
+  const [tabPosition] = useState('left');
+  const [cinema, setCinema] = useState([]);
+  const [loadingState, setLoadingState] = useContext(LoadingContext);
   useEffect(() => {
     fetchCinema();
   }, [])
 
   const fetchCinema = async () => {
+    setLoadingState({ isLoading: true });
     const result = await cinemaService.fetchCinemaApi();
     setCinema(result.data.content)
+    setLoadingState({ isLoading: false });
   }
 
   const renderTabpane = () => {
@@ -22,12 +26,11 @@ export default function TabCinema() {
       return (
         <TabPane tab={<img src={element.logo} className='rounded-circle' />} key={index}>
           <Tabs tabPosition={tabPosition}>
-            {element.lstCumRap.slice(0, 5).map((element, index) => {
-              // console.log(element);
+            {element.lstCumRap.slice(0, 5).map((element) => {
               return <TabPane tab={<div className='cinema-name text-left'>
                 <div className='name-cinema'>{element.tenCumRap}</div>
                 <div className='address'>{element.diaChi}</div>
-              </div>} key={index}>
+              </div>} key={element.maCumRap}>
                 <div className='scroll'>
                   {element.danhSachPhim.map((element) => {
                     return <Fragment key={element.maPhim}>

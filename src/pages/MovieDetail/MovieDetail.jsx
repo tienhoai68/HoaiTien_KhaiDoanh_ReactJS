@@ -1,20 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./movieDetail.scss"
 import { movieService } from '../../services/movie';
 import { useParams } from 'react-router';
 import ShowTime from './components/ShowTime';
 import { formatDate } from '../../utils/formatDate';
 import { Modal } from 'antd';
+import { LoadingContext } from '../../contexts/Loading/Loading';
 export default function MovieDetail() {
   const param = useParams();
   const [detail, setDetail] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [videoUrl, setVideoUrl] = useState('');
   const [iframeKey, setIframeKey] = useState(1);
+  const [loadingState, setLoadingState] = useContext(LoadingContext);
+
 
   const fetchMovieDetail = async () => {
+    setLoadingState({ isLoading: true });
     const result = await movieService.fecthMovieDetailApi(param.movieId);
-    setDetail(result.data.content)
+    setDetail(result.data.content);
+    setLoadingState({ isLoading: false });
   };
 
   const showModal = (videoUrl) => {
@@ -68,7 +73,7 @@ export default function MovieDetail() {
       </div>
       <Modal
         title="TRAILER"
-        visible={isModalVisible}
+        open={isModalVisible}
         // onOk={() => setIsModalVisible(false)}
         onCancel={() => handleModalClose()}
         width={800}

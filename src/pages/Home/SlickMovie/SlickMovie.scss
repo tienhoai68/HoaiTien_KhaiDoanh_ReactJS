@@ -92,6 +92,7 @@
   overflow: hidden;
   transition: transform 0.3s;
   position: relative;
+  cursor: pointer;
 
   &:hover {
     transform: scale(1.05);
