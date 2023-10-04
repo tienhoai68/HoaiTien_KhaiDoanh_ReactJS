@@ -33,6 +33,7 @@ export default function UserProfile() {
     console.log(values);
     try {
       await userService.updateUserInfo(values);
+      handlefetchUserInfo();
       Swal.fire({
         icon: 'success',
         title: 'Success!',
