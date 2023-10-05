@@ -8,7 +8,6 @@ import AdminLayout from "../layouts/AdminLayout/AdminLayout";
 import AdminHome from "../pages/AdminHome/AdminHome";
 import AdminUsers from "../pages/AdminUser/AdminUsers";
 import AdminFilm from "../pages/AdminFilm/AdminFilm";
-import AddnewFilm from "../pages/AdminFilmAddnew/AddnewFilm";
 import EditFilm from "../pages/AdminFilmEdit/EditFilm";
 import Login from "../components/Login/Login";
 import AuthGuard from "../guards/AuthGuard";

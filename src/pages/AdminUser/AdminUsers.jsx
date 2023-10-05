@@ -47,7 +47,6 @@ export default function AdminUsers() {
     if (event.target.value === "") {
       UserListApi();
     }
-    console.log(userList);
 
   }
   const validateRequired = (value, ref, mes) => {
