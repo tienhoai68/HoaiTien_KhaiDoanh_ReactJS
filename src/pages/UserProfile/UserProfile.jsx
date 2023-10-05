@@ -5,7 +5,6 @@ import { Form, ErrorMessage, Field, Formik } from 'formik';
 import { userService } from '../../services/user';
 import Swal from 'sweetalert2';
 import { formatDate } from '../../utils/formatDate';
-import { useNavigate } from 'react-router-dom';
 import { LoadingContext } from '../../contexts/Loading/Loading';
 
 const validationSchema = Yup.object().shape({
@@ -27,13 +26,16 @@ export default function UserProfile() {
     maNhom: 'GP08',
     loaiNguoiDung: '',
   });
+
+  const [fieldErrors, setFieldErrors] = useState("");
+
   const [ticketInfo, setTicketInfo] = useState([]);
 
   const handleChangeUserInfo = async (values, { resetForm }) => {
-    console.log(values);
     try {
       await userService.updateUserInfo(values);
       handlefetchUserInfo();
+      setFieldErrors("");
       Swal.fire({
         icon: 'success',
         title: 'Success!',
@@ -41,11 +43,14 @@ export default function UserProfile() {
       });
       resetForm();
     } catch (error) {
+      console.log(error);
+      setFieldErrors(error.response.data.content);
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: `${error.response.data.content}`,
       })
+      resetForm();
     }
   };
 
@@ -154,6 +159,9 @@ export default function UserProfile() {
                     <Field className='form-control' name='email' type='text' placeholder='Email' />
                     <span></span>
                     <ErrorMessage name='email' component='label' className='form-label text-danger' />
+                    {fieldErrors && (
+                      <label label className='text-danger'>{fieldErrors}</label>
+                    )}
                   </div>
                   <div className='form-group col-12 col-md-12 col-lg-6'>
                     <label className='label-user'><span className='text-red'>* </span>Số Điện Thoại </label>
