@@ -41,7 +41,11 @@ export default function Login() {
       localStorage.setItem("USER_INFO", JSON.stringify(result.data.content));
       navigate("/");
     } catch (error) {
-      console.error(error);
+      Swal.fire({
+        icon: 'error',
+        title: `${error.response.data.content}`,
+        text: "Xin vui lòng thử lại ^-^",
+      })
     }
     resetForm();
   };
@@ -68,12 +72,12 @@ export default function Login() {
                 <Field name='taiKhoan' type='text' placeholder='Tài khoản' />
                 <span></span>
               </div>
-                <ErrorMessage name='taiKhoan' component='label' className='form-label form-label-login text-danger' />
+              <ErrorMessage name='taiKhoan' component='label' className='form-label form-label-login text-danger' />
               <div className="form-control2">
                 <Field name='matKhau' type='password' placeholder='Mật khẩu' />
                 <span></span>
               </div>
-                <ErrorMessage name='matKhau' component='label' className='form-label form-label-login text-danger' />
+              <ErrorMessage name='matKhau' component='label' className='form-label form-label-login text-danger' />
               <button type='submit'>Login</button>
             </Form>
           </div>

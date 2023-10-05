@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.scss";
 import logo from "../../assets/img/logo-default.png";
-import avatar from "../../assets/img/User-Profile.png";
+import avatar from "../../assets/img/AVATAR.gif";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserInfoAction } from "../../store/actions/userAction";
