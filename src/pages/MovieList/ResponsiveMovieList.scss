@@ -25,8 +25,9 @@
 }
 // Small devices (landscape phones, 576px and up)
 @media (max-width: 575.98px) { 
-
-
+    .main-movie .page-title.category-title .btn-group-isotope .btn-sm {
+        padding: 6px 22px;
+    }
 }
 @media (min-width: 458px) and (max-width: 575.90px) {
     .main-movie {

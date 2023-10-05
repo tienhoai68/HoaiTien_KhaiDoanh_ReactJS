@@ -75,7 +75,7 @@ export default function Header() {
           <nav className="navbar navbar-dark navbar-expand-md navigation-clean-search">
             <div className="container">
               <NavLink className="navbar-brand" to="/">
-                <img className="img-fluid" src={logo} alt="" />
+                <img className="img-fluid img-header" src={logo} alt="" />
               </NavLink>
               <button
                 className="navbar-toggler"

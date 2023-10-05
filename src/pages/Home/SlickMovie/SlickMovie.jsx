@@ -114,9 +114,9 @@ export default function SlickMovie() {
       <div className="title-movie">
         <div className="page-title category-title">
           <i className="fas fa-star"></i>
-          <h1>PHIM HOT</h1>
+          <h1 className=" title-res">PHIM HOT</h1>
           <hr />
-        </div>
+        </div >
         <Slider {...settings}>{renderMovieList()}</Slider>
       </div>
     </div>
