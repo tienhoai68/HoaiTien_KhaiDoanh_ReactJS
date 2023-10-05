@@ -103,9 +103,16 @@
 
 @media (max-width: 575.98px) {
   .bg-subscribe .title-news {
-    font-size: 38px;
+    font-size: 34px;
 }
   .text-transform-none{
-    font-size: 18px !important;
+    font-size: 15px !important;
+  }
+  .bg-subscribe .subscribe-form-3 .form-input {
+    height: 46px;
+  }
+  .bg-subscribe .subscribe-form-3 .btn {
+    padding: 8px 29px;
+    font-size: 15px;
   }
 }

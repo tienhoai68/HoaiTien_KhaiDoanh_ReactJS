@@ -56,7 +56,7 @@ export default function ListMoviePage() {
     );
     return filteredMovies.slice(2, 10).map((element) => {
       return (
-        <div key={element.maPhim} className="col-7 col-sm-6 col-md-4 col-lg-3 my-3">
+        <div key={element.maPhim} className="movie-page col-9 col-sm-6 col-md-4 col-lg-3 my-3">
           <div onClick={() => handleBooking(element.maPhim)} className="movie-card-page">
             <div className="movie-image-page">
               <img
@@ -97,7 +97,7 @@ export default function ListMoviePage() {
       <div className="title-movie">
         <div className="page-title category-title">
           <i className="fas fa-star"></i>
-          <h1>DANH SÁCH PHIM</h1>
+          <h1 className="title-res">DANH SÁCH PHIM</h1>
           <hr />
           <div className="btn-group-isotope isotope-filters">
             <button

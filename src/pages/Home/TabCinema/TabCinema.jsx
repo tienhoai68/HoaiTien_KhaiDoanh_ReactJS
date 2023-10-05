@@ -67,7 +67,7 @@ export default function TabCinema() {
       <div className="title-movie">
         <div className="page-title category-title">
           <i className="fas fa-star"></i>
-          <h1>CỤM RẠP CHIẾU</h1>
+          <h1 className='title-res'>CỤM RẠP CHIẾU</h1>
           <hr />
         </div>
         <Tabs tabPosition={tabPosition}>

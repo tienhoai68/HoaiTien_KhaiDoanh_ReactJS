@@ -113,7 +113,7 @@ export default function Booking() {
   return (
     <div className="backgroud-booking ">
       <div className="row mr-0 ml-0">
-        <div className="col-8">
+        <div className="col-12 col-lg-8">
           <div className="title">MOVIE SEAT SELECTION</div>
           <div className="">
             <div className="wrapper-booking">
@@ -136,7 +136,7 @@ export default function Booking() {
             </div>
           </div>
         </div>
-        <div className="col-4 mt-5">
+        <div className="col-12 col-lg-4 mt-5">
           <div className="movie-info">
             <div className="movie-price">
               <span className="price-title">Giá Tiền: </span>
