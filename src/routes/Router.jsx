@@ -17,6 +17,7 @@ import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import AddFilm from "../pages/AdminFilmAddnew/AddFilm";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import AdminGuard from "../guards/AdminGuard";
+import AdminShowTime from "../pages/AdminFilm/components/AdminShowTime";
 
 export default function Router() {
   const routing = useRoutes([
@@ -81,6 +82,10 @@ export default function Router() {
         {
           path: "/admin/films/edit/:filmId",
           element: <EditFilm />,
+        },
+        {
+          path: "/admin/films/showtime/:filmId",
+          element: <AdminShowTime />,
         },
       ],
     },

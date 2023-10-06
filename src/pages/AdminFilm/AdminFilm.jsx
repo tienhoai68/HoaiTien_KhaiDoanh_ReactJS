@@ -62,6 +62,7 @@ export default function AdminFilm() {
               <i className="fa-solid fa-magnifying-glass" />
             </NavLink>
             <NavLink onClick={() => handleDelete(element.maPhim)}> <i className="fa-solid fa-trash" /></NavLink>
+            <NavLink to={`/admin/films/showtime/${element.maPhim}`} > <i className="fa-solid fa-calendar-days" /></NavLink>
           </td>
         </tr>
       )

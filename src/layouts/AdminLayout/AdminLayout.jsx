@@ -24,7 +24,7 @@ const items = [
     getItem('Film', '/admin/films'),
     getItem('Add new', '/admin/films/addnew'),
   ]),
-  getItem('Showtime', '5', <FileOutlined />),
+  getItem('Showtime', '/admin/films/showtime/:filmId', <FileOutlined />),
 ];
 
 export default function AdminLayout() {
