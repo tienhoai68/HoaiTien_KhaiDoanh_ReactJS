@@ -19,10 +19,10 @@ function getItem(label, key, icon, children) {
 }
 
 const items = [
-  getItem('User', '/admin/user/', <UserOutlined />,),
+  getItem('User', '/admin/user/', <UserOutlined />),
   getItem('Films', '/admin/films', <PieChartOutlined />, [
-    getItem('Film', '/admin/films'),
-    getItem('Add new', '/admin/films/addnew'),
+    getItem('Film', '/admin/films', <PieChartOutlined />),
+    getItem('Add new', '/admin/films/addnew', <PieChartOutlined />),
   ]),
   getItem('Showtime', '/admin/films/showtime/:filmId', <FileOutlined />),
 ];
@@ -50,7 +50,9 @@ export default function AdminLayout() {
             padding: 10,
             background: colorBgContainer,
           }}
-        ></Header>
+        >
+
+        </Header>
         <Content
           style={{
             margin: '0 16px',
@@ -71,7 +73,7 @@ export default function AdminLayout() {
             textAlign: 'center',
           }}
         >
-          Ant Design ©2023 Created by Ant UED
+          Copyright 2023 Movie Center | All Rights Reserved | Powered by CyberSoft
         </Footer>
       </Layout>
     </Layout>
