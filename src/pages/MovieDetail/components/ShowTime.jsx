@@ -61,10 +61,10 @@ export default function ShowTime() {
                 <div className="col-10 pl-0">
                   <h5>{element.tenCumRap}</h5>
                   <span className="text-white">{element.diaChi}</span>
-                  <div  className="row">
-                  {element.lichChieuPhim.map((element) => {
-                    return (
-                        <div key={element.maRap} className="col-4">
+                  <div className="row">
+                    {element.lichChieuPhim.map((element) => {
+                      return (
+                        <div key={element.maRap} className="col-6 col-md-4 text-time">
                           <Link
                             className="calendar-movie"
                             to={`/booking/${element.maLichChieu}`}
@@ -72,8 +72,8 @@ export default function ShowTime() {
                             {formatDate(element.ngayChieuGioChieu)}
                           </Link>
                         </div>
-                    );
-                  })}
+                      );
+                    })}
                   </div>
                 </div>
               </div>

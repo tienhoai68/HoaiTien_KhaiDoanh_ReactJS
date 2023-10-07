@@ -218,12 +218,13 @@
 @media (max-width: 991.98px) {
   .button-group-header {
     width: 50%;
-}
-.button-group-header .button_default {
-  font-size: 14px;
-  margin-bottom: 4px;
+  }
 
-}
+  .button-group-header .button_default {
+    font-size: 14px;
+    margin-bottom: 4px;
+
+  }
 }
 
 // Small devices (landscape phones, less than 768px)
@@ -238,6 +239,7 @@
 
   .button-group-header {
     margin-top: 10px;
+    margin-bottom: 16px;
   }
 }
 
@@ -245,9 +247,11 @@
   .img-header {
     width: 75%;
   }
-  .navbar-toggler{
+
+  .navbar-toggler {
     padding: 0px 4px !important;
   }
+
   .header-dark .navbar {
     padding: 6px 20px;
   }
