@@ -5,7 +5,6 @@ import HomeLayout from "../layouts/HomeLayout/HomeLayout";
 import MovieDetail from "../pages/MovieDetail/MovieDetail";
 import Booking from "../pages/Booking/Booking";
 import AdminLayout from "../layouts/AdminLayout/AdminLayout";
-import AdminHome from "../pages/AdminHome/AdminHome";
 import AdminUsers from "../pages/AdminUser/AdminUsers";
 import AdminFilm from "../pages/AdminFilm/AdminFilm";
 import EditFilm from "../pages/AdminFilmEdit/EditFilm";
@@ -64,7 +63,7 @@ export default function Router() {
       children: [
         {
           path: "/admin",
-          element: <AdminHome />,
+          element: <AdminFilm />,
         },
         {
           path: "/admin/user",

@@ -75,7 +75,7 @@ export default function AdminFilm() {
     <div>
 
       <h1>Quản lý phim</h1>
-      <button className='mb-3' onClick={() => navigate(`/admin/films/addnew`)}>
+      <button className='btn btn-info mb-3' onClick={() => navigate(`/admin/films/addnew`)}>
         Thêm phim
       </button>
       <div className="row mb-3">

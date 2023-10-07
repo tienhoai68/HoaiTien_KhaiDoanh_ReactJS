@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Form, InputNumber, DatePicker, Cascader } from 'antd';
+import { Form, InputNumber, DatePicker, Cascader } from 'antd';
 import { filmService } from '../../../services/Films';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
@@ -63,10 +63,16 @@ export default function AdminShowTime() {
         })
     }
     const handleSubmit = async () => {
-        const result = await filmService.fetchTaoLichChieuApi(lichChieu);
-        if (result.data.content) {
-            alert("Thêm lịch chiếu thành công !!!")
+        if (lichChieu.maPhim === ':filmId') {
+            alert('Thiếu Mã phim !!!')
+        } else {
+            const result = await filmService.fetchTaoLichChieuApi(lichChieu);
+            if (result.data.content) {
+                alert("Thêm lịch chiếu thành công !!!")
+            }
         }
+
+
     }
     return (
         <Form
