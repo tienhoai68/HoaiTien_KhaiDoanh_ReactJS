@@ -27,7 +27,7 @@ export default function AdminUsers() {
 
   useEffect(() => {
     UserListApi();
-  }, [userList]);
+  }, []);
 
   const UserListApi = async () => {
     const result = await userAdminService.fecthUserAdminApi();
@@ -39,7 +39,6 @@ export default function AdminUsers() {
     const result = await userAdminService.fecthSearchUserApi(
       event.target.value
     );
-
     setUserList(result.data.content);
     if (event.target.value === "") {
       UserListApi();

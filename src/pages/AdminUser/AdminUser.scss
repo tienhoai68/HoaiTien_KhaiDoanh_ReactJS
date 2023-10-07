@@ -1,13 +1,16 @@
 .btnList .btnStyle1 {
   color: #edbcd1;
   background-color: #00664e;
+  border: none;
 }
 .btnList .btnStyle1:hover {
+ 
   color: #00664e;
   background-color: #edbcd1;
 }
 
 .btnList .btnStyle2 {
+  border: none;
   color: #bf0200;
   background-color: #d9d9d9;
 }
