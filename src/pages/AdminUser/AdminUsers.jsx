@@ -1,9 +1,9 @@
-import React, { createRef, useEffect, useState } from 'react'
-import { userAdminService } from '../../services/userAdmin';
-import { useDispatch } from 'react-redux';
-import { addUserAction } from '../../store/actions/userAdminAction';
+import React, { createRef, useEffect, useState } from "react";
+import { userAdminService } from "../../services/userAdmin";
+import { useDispatch } from "react-redux";
+import { addUserAction } from "../../store/actions/userAdminAction";
 
-
+import "./AdminUser.scss";
 
 export default function AdminUsers() {
   const taiKhoanInputRef = createRef();
@@ -25,30 +25,26 @@ export default function AdminUsers() {
     maLoaiNguoiDung: "",
   });
 
-
   useEffect(() => {
     UserListApi();
-
-
-  }, []);
-
+  }, [userList]);
 
   const UserListApi = async () => {
-
     const result = await userAdminService.fecthUserAdminApi();
 
     setUserList(result.data.content);
   };
 
   const handleSearch = async (event) => {
-    const result = await userAdminService.fecthSearchUserApi(event.target.value);
+    const result = await userAdminService.fecthSearchUserApi(
+      event.target.value
+    );
 
     setUserList(result.data.content);
     if (event.target.value === "") {
       UserListApi();
     }
-
-  }
+  };
   const validateRequired = (value, ref, mes) => {
     if (value !== "") {
       ref.innerHTML = "";
@@ -96,7 +92,7 @@ export default function AdminUsers() {
     }
     ref.innerHTML = mes;
     return false;
-  }
+  };
   const validateText = (value, ref, mes) => {
     if (value.match("^[A-Za-z]+$")) {
       ref.innerHTML = "";
@@ -115,7 +111,6 @@ export default function AdminUsers() {
   };
   const renderUser = () => {
     return userList.map((element, idx) => {
-
       return (
         <tr key={idx}>
           <td>{idx + 1}</td>
@@ -124,81 +119,143 @@ export default function AdminUsers() {
           <td>{element.hoTen}</td>
           <td>{element.email}</td>
           <td>{element.soDT}</td>
-          <td>
-            <button onClick={() => handleSelect(element)} data-toggle="modal" data-target="#myModal" ><i className="fa-solid fa-magnifying-glass" /></button>
-            <button onClick={() => handleDelete(element.taiKhoan)} ><i className="fa-solid fa-trash" />
+          <td className="btnList">
+            <button
+              className="btnStyle1 mr-2"
+              onClick={() => handleSelect(element)}
+              data-toggle="modal"
+              data-target="#myModal"
+            >
+              <i className="fa-solid fa-magnifying-glass" />
+            </button>
+            <button
+              className="btnStyle2"
+              onClick={() => handleDelete(element.taiKhoan)}
+            >
+              <i className="fa-solid fa-trash" />
             </button>
           </td>
         </tr>
-      )
-    })
+      );
+    });
   };
   const btnHandle = () => {
     document.getElementById("taiKhoan").disabled = false;
-    document.getElementById("btnAdd").innerHTML = "ADD";
-    document.getElementById("header-title").innerHTML = "ADD USER";
-
-  }
+    document.getElementById("btnAdd").innerHTML = "Thêm";
+    document.getElementById("header-title").innerHTML = "Thêm người dùng";
+  };
   const handleSelect = async (element) => {
     document.getElementById("taiKhoan").disabled = true;
-    document.getElementById("btnAdd").innerHTML = "UPDATE";
-    document.getElementById("header-title").innerHTML = "EDIT USER";
+    document.getElementById("btnAdd").innerHTML = "Cập nhật";
+    document.getElementById("header-title").innerHTML = "Cập nhật người dùng";
     document.getElementById("errorTaiKhoan").style.display = "none";
 
-    const result = await userAdminService.fecthTakeProfileUserApi(element.taiKhoan);
+    const result = await userAdminService.fecthTakeProfileUserApi(
+      element.taiKhoan
+    );
 
     setState(result.data.content);
-
   };
   const addUser = async (state) => {
     const result = await userAdminService.fecthAddUserAdminApi(state);
     dispatch(addUserAction(result.data.content));
     console.log(result.data.content);
-  }
+  };
   const editUser = async (state) => {
     const result = await userAdminService.fecthEditUserAdminApi(state);
     console.log(result.data.content);
-  }
+  };
 
   const handleSubmit = () => {
     let isValid = true;
 
     if (document.getElementById("taiKhoan").disabled === true) {
-
     } else {
       document.getElementById("errorTaiKhoan").style.display = "block";
-      isValid &= validateRequired(state.taiKhoan, taiKhoanInputRef.current, "Chưa nhập tài khoản")
-        && validateCheckExistTaiKhoan(state.taiKhoan, taiKhoanInputRef.current, "Tài khoản đã tồn tại", userList);
+      isValid &=
+        validateRequired(
+          state.taiKhoan,
+          taiKhoanInputRef.current,
+          "Chưa nhập tài khoản"
+        ) &&
+        validateCheckExistTaiKhoan(
+          state.taiKhoan,
+          taiKhoanInputRef.current,
+          "Tài khoản đã tồn tại",
+          userList
+        );
 
-      isValid &= validateRequired(state.email, emailInputRef.current, "Chưa nhập Email")
-        && validateCheck(state.email, emailInputRef.current, "Định dạng email chưa đúng", /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
-        && validateCheckExistEmail(state.email, emailInputRef.current, "Email đã tồn tại", userList);
+      isValid &=
+        validateRequired(
+          state.email,
+          emailInputRef.current,
+          "Chưa nhập Email"
+        ) &&
+        validateCheck(
+          state.email,
+          emailInputRef.current,
+          "Định dạng email chưa đúng",
+          /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+        ) &&
+        validateCheckExistEmail(
+          state.email,
+          emailInputRef.current,
+          "Email đã tồn tại",
+          userList
+        );
     }
-    isValid &= validateRequired(state.matKhau, matKhauInputRef.current, "Chưa nhập mật khẩu")
-      && validateCheck(state.matKhau, matKhauInputRef.current, "Định dạng mật khẩu chưa đúng", /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{0,}$/);
+    isValid &=
+      validateRequired(
+        state.matKhau,
+        matKhauInputRef.current,
+        "Chưa nhập mật khẩu"
+      ) &&
+      validateCheck(
+        state.matKhau,
+        matKhauInputRef.current,
+        "Định dạng mật khẩu chưa đúng",
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{0,}$/
+      );
 
+    isValid &=
+      validateRequired(
+        state.soDT,
+        soDTInputRef.current,
+        "Chưa nhập số điện thoại"
+      ) &&
+      validateCheck(
+        state.soDT,
+        soDTInputRef.current,
+        "Vui lòng nhập số",
+        /^[0-9]+$/
+      ) &&
+      validateChecLength(
+        state.soDT,
+        soDTInputRef.current,
+        "Số điện thoại có 10 số",
+        10
+      );
 
+    isValid &=
+      validateRequired(
+        state.hoTen,
+        hoTenInputRef.current,
+        "Chưa nhập họ tên"
+      ) &&
+      validateText(state.hoTen, hoTenInputRef.current, "Họ tên gì kì vậy ?");
 
-    isValid &= validateRequired(state.soDT, soDTInputRef.current, "Chưa nhập số điện thoại")
-      && validateCheck(state.soDT, soDTInputRef.current, "Vui lòng nhập số", /^[0-9]+$/)
-      && validateChecLength(state.soDT, soDTInputRef.current, "Số điện thoại có 10 số", 10);
-
-    isValid &= validateRequired(state.hoTen, hoTenInputRef.current, "Chưa nhập họ tên")
-      && validateText(state.hoTen, hoTenInputRef.current, "Họ tên gì kì vậy ?");
-
-    isValid &= validateRequired(state.maLoaiNguoiDung, loaiNguoiDungRef.current, "Vui lòng chọn loại người dùng");
+    isValid &= validateRequired(
+      state.maLoaiNguoiDung,
+      loaiNguoiDungRef.current,
+      "Vui lòng chọn loại người dùng"
+    );
     if (isValid) {
-
       if (document.getElementById("taiKhoan").disabled === false) {
-        console.log(123);
         addUser(state);
-
       } else {
-        console.log(456);
         editUser(state);
       }
     }
-
     setState({
       taiKhoan: "",
       matKhau: "",
@@ -207,28 +264,33 @@ export default function AdminUsers() {
       maNhom: "GP01",
       hoTen: "",
       maLoaiNguoiDung: "",
-    })
+    });
   };
   const handleDelete = async (key) => {
-    console.log(key);
     const result = await userAdminService.fecthDeleteUserAdminApi(key);
-    console.log(result);
-  }
-
+    if (result.data.content) {
+      alert("Xóa phim thành công !!!");
+    }
+  };
 
   const handleChange = (event) => {
     setState({
       ...state,
       [event.target.name]: event.target.value,
-    })
+    });
   };
-
 
   return (
     <div className="card ">
       <div className="card-header text-left myCardHeader">
         <h3 className="text-left font-weight-bold">USER MANAGER</h3>
-        <button id='BtnHandleAdd' onClick={btnHandle} className='btn btn-info' data-toggle="modal" data-target="#myModal">
+        <button
+          id="BtnHandleAdd"
+          onClick={btnHandle}
+          className="btn btn-info"
+          data-toggle="modal"
+          data-target="#myModal"
+        >
           <span>Add User</span>
         </button>
       </div>
@@ -236,9 +298,17 @@ export default function AdminUsers() {
         <div className="row mb-3">
           <div className="col">
             <div className="input-group">
-              <input type="text" onChange={handleSearch} className="form-control" placeholder="Tìm kiếm theo tài khoản" id="searchName" />
+              <input
+                type="text"
+                onChange={handleSearch}
+                className="form-control"
+                placeholder="Tìm kiếm theo tài khoản"
+                id="searchName"
+              />
               <div className="input-group-prepend">
-                <span className="input-group-text" id="btnTimNV"><i className="fa fa-search" /></span>
+                <span className="input-group-text" id="btnTimNV">
+                  <i className="fa fa-search" />
+                </span>
               </div>
             </div>
           </div>
@@ -269,85 +339,124 @@ export default function AdminUsers() {
               </th>
             </tr>
           </thead>
-          <tbody>
-            {renderUser()}
-
-          </tbody>
+          <tbody>{renderUser()}</tbody>
         </table>
       </div>
       <div className="modal fade" id="myModal">
         <div className="modal-dialog">
           <div className="modal-content">
             <header className="head-form mb-0 text-center">
-              <h2 id="header-title">Add User</h2>
+              <h2 id="header-title">Thêm người dùng</h2>
             </header>
             <div className="modal-body">
-              <form >
+              <form>
                 <div className="form-group">
                   <div className="input-group">
-                    <input value={state.taiKhoan} id='taiKhoan' onChange={handleChange} type="text" name="taiKhoan" className="form-control input-sm" placeholder="Tài khoản" />
+                    <input
+                      value={state.taiKhoan}
+                      id="taiKhoan"
+                      onChange={handleChange}
+                      type="text"
+                      name="taiKhoan"
+                      className="form-control input-sm"
+                      placeholder="Tài khoản"
+                    />
                   </div>
-                  <span className='text-danger'
-                    id='errorTaiKhoan'
-                    ref={taiKhoanInputRef}>
-                  </span>
+                  <span
+                    className="text-danger"
+                    id="errorTaiKhoan"
+                    ref={taiKhoanInputRef}
+                  ></span>
                 </div>
                 <div className="form-group">
                   <div className="input-group">
-
-                    <input value={state.matKhau} onChange={handleChange} type="text" name="matKhau" className="form-control input-sm" placeholder="Mật Khẩu" />
+                    <input
+                      value={state.matKhau}
+                      onChange={handleChange}
+                      type="text"
+                      name="matKhau"
+                      className="form-control input-sm"
+                      placeholder="Mật Khẩu"
+                    />
                   </div>
-                  <span className='text-danger'
-                    ref={matKhauInputRef}>
-                  </span>
+                  <span className="text-danger" ref={matKhauInputRef}></span>
                 </div>
                 <div className="form-group">
                   <div className="input-group">
-                    <input value={state.email} onChange={handleChange} type="email" name="email" className="form-control input-sm" placeholder="Email" />
+                    <input
+                      value={state.email}
+                      onChange={handleChange}
+                      type="email"
+                      name="email"
+                      className="form-control input-sm"
+                      placeholder="Email"
+                    />
                   </div>
-                  <span className='text-danger'
-                    ref={emailInputRef}>
-                  </span>
+                  <span className="text-danger" ref={emailInputRef}></span>
                 </div>
                 <div className="form-group">
                   <div className="input-group">
-                    <input value={state.soDT} onChange={handleChange} type="text" name="soDT" className="form-control input-sm" placeholder="Số điện thoại" />
+                    <input
+                      value={state.soDT}
+                      onChange={handleChange}
+                      type="text"
+                      name="soDT"
+                      className="form-control input-sm"
+                      placeholder="Số điện thoại"
+                    />
                   </div>
-                  <span className='text-danger'
-                    ref={soDTInputRef}>
-                  </span>
+                  <span className="text-danger" ref={soDTInputRef}></span>
                 </div>
                 <div className="form-group">
                   <div className="input-group">
-                    <input value={state.hoTen} onChange={handleChange} type="text" name="hoTen" className="form-control input-sm" placeholder="Họ tên" />
+                    <input
+                      value={state.hoTen}
+                      onChange={handleChange}
+                      type="text"
+                      name="hoTen"
+                      className="form-control input-sm"
+                      placeholder="Họ tên"
+                    />
                   </div>
-                  <span className='text-danger'
-                    ref={hoTenInputRef}>
-                  </span>
+                  <span className="text-danger" ref={hoTenInputRef}></span>
                 </div>
                 <div className="form-group">
                   <div className="input-group">
-                    <select value={state.maLoaiNguoiDung} onChange={handleChange} name='maLoaiNguoiDung' className="form-control">
+                    <select
+                      value={state.maLoaiNguoiDung}
+                      onChange={handleChange}
+                      name="maLoaiNguoiDung"
+                      className="form-control"
+                    >
                       <option value="">Loại người dùng</option>
                       <option value="KhachHang">Khách hàng</option>
                       <option value="QuanTri">Quản trị</option>
                     </select>
                   </div>
-                  <span className='text-danger'
-                    ref={loaiNguoiDungRef}>
-                  </span>
+                  <span className="text-danger" ref={loaiNguoiDungRef}></span>
                 </div>
               </form>
             </div>
             <div className="modal-footer" id="modal-footer">
-              <button onClick={handleSubmit} id='btnAdd' className="btn btn-success">Thêm</button>
-              <button id="btnDong" type="button" className="btn btn-danger" data-dismiss="modal">Đóng</button>
+              <button
+                onClick={handleSubmit}
+                id="btnAdd"
+                className="btn btn-success"
+              >
+                Thêm
+              </button>
+              <button
+                id="btnDong"
+                type="button"
+                className="btn btn-danger"
+                data-dismiss="modal"
+              >
+                Đóng
+              </button>
             </div>
           </div>
         </div>
       </div>
-
     </div>
-
-  )
+  );
 }

@@ -56,9 +56,10 @@ export default function Router() {
     },
     {
       path: "/admin",
-      element: (<AdminGuard>
-        <AdminLayout />
-      </AdminGuard>
+      element: (
+        <AdminGuard>
+          <AdminLayout />
+        </AdminGuard>
       ),
       children: [
         {

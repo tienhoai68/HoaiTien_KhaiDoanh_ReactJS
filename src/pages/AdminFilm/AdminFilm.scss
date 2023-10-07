@@ -1,7 +1,13 @@
 .img-moive {
-    max-width: 100px;
+  max-width: 100px;
 }
 
 .pagination {
-    justify-content: end !important;
+  justify-content: end !important;
+}
+.listAction .btnAction {
+  color: #5738af;
+}
+.listAction .btnAction:hover {
+  color: #cfd4fc;
 }
