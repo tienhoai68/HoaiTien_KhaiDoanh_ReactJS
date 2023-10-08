@@ -1,13 +1,7 @@
 .header-admin {
   display: flex;
   justify-content: end;
-  .dropdown-menu {
-    padding: 0 !important;
-    margin: 0 !important;
-    background-color: #092bff;
-  }
-  .dropdown-item {
-    font-size: 1.2rem;
-    color: #ffffff;
+  .btn-Logout{
+    margin: 0 10px;
   }
 }

@@ -4,7 +4,7 @@ import {
   PieChartOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, theme } from "antd";
+import { Button, Layout, Menu, theme } from "antd";
 
 import { Outlet, useNavigate } from "react-router-dom";
 import "./AdminLayout.scss";
@@ -74,14 +74,14 @@ export default function AdminLayout() {
           }}
         >
           <div className="header-admin">
-            <a class="dropdown-toggle" data-toggle="dropdown">
-              <i className="fa-solid fa-circle-user" />
-            </a>
-            <div class="dropdown-menu">
-              <button className="dropdown-item" onClick={handleLogOut}>
-                LogOut
-              </button>
-            </div>
+            <Button
+              size="large"
+              type="primary"
+              className="btn-Logout"
+              onClick={handleLogOut}
+            >
+              logout
+            </Button>
           </div>
         </Header>
         <Content
