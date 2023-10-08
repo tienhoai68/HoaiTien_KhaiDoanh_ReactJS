@@ -17,6 +17,7 @@ import AddFilm from "../pages/AdminFilmAddnew/AddFilm";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import AdminGuard from "../guards/AdminGuard";
 import AdminShowTime from "../pages/AdminFilm/components/AdminShowTime";
+import AdminHome from "../pages/AdminHome/AdminHome";
 
 export default function Router() {
   const routing = useRoutes([
@@ -64,7 +65,7 @@ export default function Router() {
       children: [
         {
           path: "/admin",
-          element: <AdminFilm />,
+          element: <AdminHome />,
         },
         {
           path: "/admin/user",
@@ -76,7 +77,6 @@ export default function Router() {
         },
         {
           path: "/admin/films/addnew",
-          // element: <AddnewFilm />,
           element: <AddFilm />,
         },
         {

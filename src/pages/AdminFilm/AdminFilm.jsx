@@ -20,8 +20,12 @@ export default function AdminFilm() {
   }, []);
 
   const fetchFilmList = async () => {
+    document.getElementById("loader").style.display = "block";
     const result = await filmService.fetchFilmsListApi();
-    setFilmList(result.data.content);
+    if (result.data.content) {
+      document.getElementById("loader").style.display = "none";
+      setFilmList(result.data.content);
+    }
   };
 
   const handleDelete = async (id) => {
@@ -107,7 +111,7 @@ export default function AdminFilm() {
           </div>
         </div>
       </div>
-
+      <div className="spinner-border adminloading" id="loader" />
       <table className="table">
         <thead>
           <th>Mã phim</th>
@@ -116,6 +120,7 @@ export default function AdminFilm() {
           <th>Mô tả</th>
           <th>Hành động</th>
         </thead>
+
         <tbody>{renderFilm()}</tbody>
       </table>
       <nav>
