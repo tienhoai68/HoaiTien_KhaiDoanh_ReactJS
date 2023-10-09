@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Form, InputNumber, DatePicker, Cascader } from 'antd';
+import { Form, InputNumber, DatePicker, Cascader, notification } from 'antd';
 import { filmService } from '../../../services/Films';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import moment from 'moment';
 
 export default function AdminShowTime() {
     const params = useParams();
+    const navigate = useNavigate();
     const [listHeThongRap, setListHeThongRap] = useState([]);
     const [listCumRap, setListCumRap] = useState([]);
     const [lichChieu, setLichChieu] = useState({
@@ -64,11 +66,27 @@ export default function AdminShowTime() {
     }
     const handleSubmit = async () => {
         if (lichChieu.maPhim === ':filmId') {
-            alert('Thiếu Mã phim !!!')
+            notification.warning({
+                message: "Bạn Thiếu Mã phim !!!",
+                placement: "bottomLeft",
+            });
         } else {
-            const result = await filmService.fetchTaoLichChieuApi(lichChieu);
-            if (result.data.content) {
-                alert("Thêm lịch chiếu thành công !!!")
+            try {
+                const result = await filmService.fetchTaoLichChieuApi(lichChieu);
+                if (result.data.content) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: 'Thêm lịch chiếu thành công !',
+                    });
+                    navigate("/admin/films");
+                }
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${error.response.data.content}`,
+                })
             }
         }
 
@@ -102,7 +120,7 @@ export default function AdminShowTime() {
                 <InputNumber min={75000} max={200000} onChange={onChangeGiaVe} />
             </Form.Item>
             <Form.Item label="Chức Năng">
-                <button type='submit'>Tạo lịch chiếu</button>
+                <button className='btn btn-success' type='submit'>Tạo lịch chiếu</button>
             </Form.Item>
         </Form>
     );

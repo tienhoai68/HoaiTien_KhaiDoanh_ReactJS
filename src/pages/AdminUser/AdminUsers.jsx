@@ -1,11 +1,14 @@
-import React, { createRef, useEffect, useState } from "react";
+import React, { createRef, useContext, useEffect, useState } from "react";
 import { userAdminService } from "../../services/userAdmin";
 import { useDispatch } from "react-redux";
 import { addUserAction } from "../../store/actions/userAdminAction";
-
 import "./AdminUser.scss";
+import { LoadingContext } from "../../contexts/Loading/Loading";
+import Swal from 'sweetalert2';
+
 
 export default function AdminUsers() {
+  const [_, setIsLoading] = useContext(LoadingContext);
   const taiKhoanInputRef = createRef();
   const matKhauInputRef = createRef();
   const emailInputRef = createRef();
@@ -30,9 +33,10 @@ export default function AdminUsers() {
   }, []);
 
   const UserListApi = async () => {
+    setIsLoading({ isLoading: true });
     const result = await userAdminService.fecthUserAdminApi();
-
     setUserList(result.data.content);
+    setIsLoading({ isLoading: false });
   };
 
   const handleSearch = async (event) => {
@@ -154,8 +158,25 @@ export default function AdminUsers() {
     UserListApi();
   };
   const editUser = async (state) => {
-    const result = await userAdminService.fecthEditUserAdminApi(state);
-    UserListApi();
+    try {
+      const result = await userAdminService.fecthEditUserAdminApi(state);
+      if (result.data.content) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Success!',
+          text: 'Cập nhật thành công !',
+        });
+        UserListApi();
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `${error.response.data.content}`,
+      })
+    }
+
+
   };
 
   const handleSubmit = () => {
@@ -257,10 +278,36 @@ export default function AdminUsers() {
     });
   };
   const handleDelete = async (key) => {
-    const result = await userAdminService.fecthDeleteUserAdminApi(key);
-    if (result.data.content) {
-      alert("Xóa phim thành công !!!");
-      UserListApi();
+    try {
+      const confirmationResult = await Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Delete it!'
+      });
+
+      if (confirmationResult.isConfirmed) {
+        const result = await userAdminService.fecthDeleteUserAdminApi(key);
+        if (result.data.content) {
+          Swal.fire(
+            'Deleted!',
+            'User has been update.',
+            'success'
+          )
+          UserListApi();
+        } else {
+          Swal.fire('error');
+        }
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `${error.response.data.content}`,
+      })
     }
   };
 

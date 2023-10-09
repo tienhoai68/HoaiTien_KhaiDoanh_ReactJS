@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { DatePicker, Form, Input, InputNumber, Radio, Switch } from "antd";
+import { DatePicker, Form, Input, InputNumber, Radio, Switch, notification } from "antd";
 import { filmService } from "../../services/Films";
 import { useNavigate, useParams } from "react-router-dom";
+import Swal from 'sweetalert2';
 import dayjs from "dayjs";
 
 export default function AddFilm() {
@@ -98,11 +99,41 @@ export default function AddFilm() {
       }
     }
     if (formData.get("dangChieu") === formData.get("sapChieu")) {
-      alert("Sắp chiếu không thể hoạt động chung với đang chiếu");
+      notification.warning({
+        message: "Sắp chiếu không thể hoạt động chung với đang chiếu",
+        placement: "bottomLeft",
+      });
     } else {
-      const result = await filmService.fetchUpdateFilmApi(formData);
-      if (result.data.content) {
-        navigate("/admin/films");
+      try {
+        const confirmationResult = await Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, update it!'
+        });
+
+        if (confirmationResult.isConfirmed) {
+          const result = await filmService.fetchUpdateFilmApi(formData);
+          if (result.data.content) {
+            Swal.fire(
+              'Updated!',
+              'Your file has been update.',
+              'success'
+            )
+            navigate("/admin/films");
+          } else {
+            Swal.fire('error');
+          }
+        }
+      } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.response.data.content}`,
+        })
       }
     }
   };
@@ -191,8 +222,8 @@ export default function AddFilm() {
           />
         </Form.Item>
         <Form.Item label="Tác Vụ">
-          <button className="p-2" type="submit">
-            Cập nhật Phim
+          <button className="p-2 btn btn-success text-white" type="submit">
+            Update
           </button>
         </Form.Item>
       </Form>

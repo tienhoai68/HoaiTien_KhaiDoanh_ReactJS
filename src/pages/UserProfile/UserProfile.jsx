@@ -43,7 +43,6 @@ export default function UserProfile() {
       });
       resetForm();
     } catch (error) {
-      console.log(error);
       setFieldErrors(error.response.data.content);
       Swal.fire({
         icon: 'error',

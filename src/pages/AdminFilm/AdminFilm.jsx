@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { filmService } from "../../services/Films";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import Swal from 'sweetalert2';
 import "./AdminFilm.scss";
+import { LoadingContext } from "../../contexts/Loading/Loading";
 
 export default function AdminFilm() {
   const navigate = useNavigate();
@@ -14,26 +15,53 @@ export default function AdminFilm() {
   const records = filmList.slice(fistIndex, lastIndex);
   const npage = Math.ceil(filmList.length / recordsPerPage);
   const number = [...Array(npage + 1).keys()].slice(1);
+  const [_, setIsLoading] = useContext(LoadingContext);
 
   useEffect(() => {
     fetchFilmList();
   }, []);
 
   const fetchFilmList = async () => {
-    document.getElementById("loader").style.display = "block";
+    document.getElementById("loader").style.display = "none";
+    setIsLoading({ isLoading: true });
     const result = await filmService.fetchFilmsListApi();
     if (result.data.content) {
-      document.getElementById("loader").style.display = "none";
       setFilmList(result.data.content);
+      setIsLoading({ isLoading: false });
     }
   };
 
   const handleDelete = async (id) => {
-    const result = await filmService.fetchFilmDeleteApi(id);
-    console.log(result.data.content);
-    if (result.data.content) {
-      alert("Xóa phim thành công !!!");
-      fetchFilmList();
+    try {
+      const confirmationResult = await Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      });
+
+      if (confirmationResult.isConfirmed) {
+        const result = await filmService.fetchFilmDeleteApi(id);
+        if (result.data.content) {
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+          fetchFilmList();
+        } else {
+          Swal.fire('error');
+        }
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `${error.response.data.content}`,
+      })
     }
   };
 
@@ -53,7 +81,7 @@ export default function AdminFilm() {
           <td>{element.maPhim}</td>
           <td>
             {" "}
-            <img width={100} height={100} src={element.hinhAnh} alt="" />
+            <img className="img-admin" width={100} height={100} src={element.hinhAnh} alt="" />
           </td>
           <td>{element.tenPhim}</td>
           <td>
@@ -66,7 +94,7 @@ export default function AdminFilm() {
               onClick={() => navigate(`/admin/films/edit/${element.maPhim}`)}
               className="mr-2 btnAction1"
             >
-              <i className="fa-solid fa-magnifying-glass " />
+              <i className="fa-regular fa-pen-to-square"></i>
             </button>
             <button
               className="mr-2 btnAction2"
