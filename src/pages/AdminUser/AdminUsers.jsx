@@ -92,14 +92,7 @@ export default function AdminUsers() {
     ref.innerHTML = mes;
     return false;
   };
-  const validateText = (value, ref, mes) => {
-    if (value.match("^[A-Za-z]+$")) {
-      ref.innerHTML = "";
-      return true;
-    }
-    ref.innerHTML = mes;
-    return false;
-  };
+
   const validateCheck = (value, ref, mes, letter) => {
     if (letter.test(value)) {
       ref.innerHTML = "";
@@ -158,11 +151,11 @@ export default function AdminUsers() {
   const addUser = async (state) => {
     const result = await userAdminService.fecthAddUserAdminApi(state);
     dispatch(addUserAction(result.data.content));
-    console.log(result.data.content);
+    UserListApi();
   };
   const editUser = async (state) => {
     const result = await userAdminService.fecthEditUserAdminApi(state);
-    console.log(result.data.content);
+    UserListApi();
   };
 
   const handleSubmit = () => {
@@ -235,13 +228,11 @@ export default function AdminUsers() {
         10
       );
 
-    isValid &=
-      validateRequired(
-        state.hoTen,
-        hoTenInputRef.current,
-        "Chưa nhập họ tên"
-      ) &&
-      validateText(state.hoTen, hoTenInputRef.current, "Họ tên gì kì vậy ?");
+    isValid &= validateRequired(
+      state.hoTen,
+      hoTenInputRef.current,
+      "Chưa nhập họ tên"
+    );
 
     isValid &= validateRequired(
       state.maLoaiNguoiDung,
@@ -269,6 +260,7 @@ export default function AdminUsers() {
     const result = await userAdminService.fecthDeleteUserAdminApi(key);
     if (result.data.content) {
       alert("Xóa phim thành công !!!");
+      UserListApi();
     }
   };
 
@@ -301,7 +293,7 @@ export default function AdminUsers() {
                 type="text"
                 onChange={handleSearch}
                 className="form-control"
-                placeholder="Tìm kiếm theo tài khoản"
+                placeholder="Tìm kiếm theo Họ tên"
                 id="searchName"
               />
               <div className="input-group-prepend">

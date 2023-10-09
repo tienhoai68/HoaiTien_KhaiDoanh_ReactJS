@@ -5,11 +5,33 @@
 .pagination {
   justify-content: end !important;
 }
-.listAction .btnAction {
-  color: #5738af;
+.listAction .btnAction1 {
+  color: blue;
+  background-color: aqua;
+  border: none;
 }
-.listAction .btnAction:hover {
-  color: #cfd4fc;
+.listAction .btnAction1:hover {
+  color: black;
+  border: 2px solid blueviolet;
+}
+.listAction .btnAction2 {
+  background-color: white;
+  color: red;
+  border: none;
+}
+.listAction .btnAction2:hover {
+  color: white;
+  background-color: red;
+}
+.listAction .btnAction3 {
+  color: green;
+  background-color: aqua;
+  border: none;
+}
+.listAction .btnAction3:hover {
+  color: bisque;
+  background-color: green;
+  border: 2px solid black;
 }
 .adminloading {
   position: relative;

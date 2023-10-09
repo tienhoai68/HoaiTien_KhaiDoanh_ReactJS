@@ -33,6 +33,7 @@ export default function AdminFilm() {
     console.log(result.data.content);
     if (result.data.content) {
       alert("Xóa phim thành công !!!");
+      fetchFilmList();
     }
   };
 
@@ -61,24 +62,26 @@ export default function AdminFilm() {
               : element.moTa}
           </td>
           <td className="listAction">
-            <NavLink
-              to={`/admin/films/edit/${element.maPhim}`}
-              className="mr-2 btnAction"
+            <button
+              onClick={() => navigate(`/admin/films/edit/${element.maPhim}`)}
+              className="mr-2 btnAction1"
             >
               <i className="fa-solid fa-magnifying-glass " />
-            </NavLink>
-            <NavLink
-              className="mr-2 btnAction"
+            </button>
+            <button
+              className="mr-2 btnAction2"
               onClick={() => handleDelete(element.maPhim)}
             >
               <i className="fa-solid fa-trash" />
-            </NavLink>
-            <NavLink
-              className="mr-2 btnAction"
-              to={`/admin/films/showtime/${element.maPhim}`}
+            </button>
+            <button
+              className="mr-2 btnAction3"
+              onClick={() =>
+                navigate(`/admin/films/showtime/${element.maPhim}`)
+              }
             >
               <i className="fa-solid fa-calendar-days" />
-            </NavLink>
+            </button>
           </td>
         </tr>
       );
