@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Pagination } from "antd";
 import { movieService } from "../../../services/movie";
 import "./ListMoviePage.scss";
@@ -54,7 +54,7 @@ export default function ListMoviePage() {
       }
     }
     );
-    return filteredMovies.slice(2, 10).map((element) => {
+    return filteredMovies.map((element) => {
       return (
         <div key={element.maPhim} className="movie-page col-9 col-sm-6 col-md-4 col-lg-3 my-3">
           <div onClick={() => handleBooking(element.maPhim)} className="movie-card-page">

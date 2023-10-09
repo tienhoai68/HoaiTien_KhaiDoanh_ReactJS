@@ -61,7 +61,7 @@ export default function SlickMovie() {
   }, []);
 
   const fetchMovieList = async () => {
-    const result = await movieService.fecthMovieListApi("GP08");
+    const result = await movieService.fecthMovieListApi("GP11");
     setMovieList(result.data.content);
   };
   const handleBooking = (codeMovie) => {

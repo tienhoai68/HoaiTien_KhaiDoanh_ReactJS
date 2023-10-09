@@ -73,7 +73,7 @@ export default function MovieDetail() {
       </div>
       <Modal
         title="TRAILER"
-        open={isModalVisible}
+        visible={isModalVisible}
         // onOk={() => setIsModalVisible(false)}
         onCancel={() => handleModalClose()}
         width={800}

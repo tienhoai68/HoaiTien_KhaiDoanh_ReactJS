@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { DatePicker, Form, Input, InputNumber, Radio, Switch } from "antd";
 import moment from "moment";
 import { filmService } from "../../services/Films";
+import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
 
 export default function AddFilm() {
@@ -72,12 +73,24 @@ export default function AddFilm() {
         formData.append("File", state.hinhAnh, state.hinhAnh.name);
       }
     }
-    const result = await filmService.fetchAddNewFilmApi(formData);
-    console.log(result.data.content);
-    if (result.data.content) {
-      alert("Thêm phim thành công");
-      navigate("/admin/films");
+    try {
+      const result = await filmService.fetchAddNewFilmApi(formData);
+      if (result.data.content) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Success!',
+          text: 'Bạn đã thêm phim thành công',
+        });
+        navigate("/admin/films");
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `${error.response.data.content}`,
+      })
     }
+
   };
 
   return (
@@ -147,7 +160,7 @@ export default function AddFilm() {
           <img style={{ width: 150, height: 150 }} src={img} alt="..." />
         </Form.Item>
         <Form.Item label="Tác Vụ">
-          <button className="p-2" type="submit">
+          <button className="p-2 btn btn-success" type="submit">
             Thêm Phim
           </button>
         </Form.Item>
