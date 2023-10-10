@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { DatePicker, Form, Input, InputNumber, Radio, Switch, notification } from "antd";
+import {
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Switch,
+  notification,
+} from "antd";
 import { filmService } from "../../services/Films";
 import { useNavigate, useParams } from "react-router-dom";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import dayjs from "dayjs";
 
 export default function AddFilm() {
@@ -106,34 +114,30 @@ export default function AddFilm() {
     } else {
       try {
         const confirmationResult = await Swal.fire({
-          title: 'Are you sure?',
+          title: "Are you sure?",
           text: "You won't be able to revert this!",
-          icon: 'warning',
+          icon: "warning",
           showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, update it!'
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, update it!",
         });
 
         if (confirmationResult.isConfirmed) {
           const result = await filmService.fetchUpdateFilmApi(formData);
           if (result.data.content) {
-            Swal.fire(
-              'Updated!',
-              'Your file has been update.',
-              'success'
-            )
+            Swal.fire("Updated!", "Your file has been update.", "success");
             navigate("/admin/films");
           } else {
-            Swal.fire('error');
+            Swal.fire("error");
           }
         }
       } catch (error) {
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
+          icon: "error",
+          title: "Oops...",
           text: `${error.response.data.content}`,
-        })
+        });
       }
     }
   };
