@@ -12,7 +12,7 @@ export default function MovieDetail() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [videoUrl, setVideoUrl] = useState('');
   const [iframeKey, setIframeKey] = useState(1);
-  const [loadingState, setLoadingState] = useContext(LoadingContext);
+  const [_, setLoadingState] = useContext(LoadingContext);
 
 
   const fetchMovieDetail = async () => {
@@ -74,7 +74,6 @@ export default function MovieDetail() {
       <Modal
         title="TRAILER"
         visible={isModalVisible}
-        // onOk={() => setIsModalVisible(false)}
         onCancel={() => handleModalClose()}
         width={800}
         footer={null}
