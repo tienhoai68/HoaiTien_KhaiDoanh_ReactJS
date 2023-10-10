@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { filmService } from "../../services/Films";
-import { NavLink, useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import "./AdminFilm.scss";
 import { LoadingContext } from "../../contexts/Loading/Loading";
 
@@ -34,34 +34,30 @@ export default function AdminFilm() {
   const handleDelete = async (id) => {
     try {
       const confirmationResult = await Swal.fire({
-        title: 'Are you sure?',
+        title: "Are you sure?",
         text: "You won't be able to revert this!",
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
       });
 
       if (confirmationResult.isConfirmed) {
         const result = await filmService.fetchFilmDeleteApi(id);
         if (result.data.content) {
-          Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          )
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
           fetchFilmList();
         } else {
-          Swal.fire('error');
+          Swal.fire("error");
         }
       }
     } catch (error) {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
+        icon: "error",
+        title: "Oops...",
         text: `${error.response.data.content}`,
-      })
+      });
     }
   };
 
@@ -81,7 +77,13 @@ export default function AdminFilm() {
           <td>{element.maPhim}</td>
           <td>
             {" "}
-            <img className="img-admin" width={100} height={100} src={element.hinhAnh} alt="" />
+            <img
+              className="img-admin"
+              width={100}
+              height={100}
+              src={element.hinhAnh}
+              alt=""
+            />
           </td>
           <td>{element.tenPhim}</td>
           <td>
