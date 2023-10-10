@@ -42,7 +42,6 @@ export default function ListMoviePage() {
     fetchMovieListPage();
   }, []);
 
-  // console.log(movieListPage.items)
   const renderMovieList = () => {
     const filteredMovies = movieListPage.filter((element) => {
       if (isNowPlaying) {
