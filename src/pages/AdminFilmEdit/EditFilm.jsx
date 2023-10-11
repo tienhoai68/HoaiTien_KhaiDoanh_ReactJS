@@ -5,6 +5,7 @@ import {
   Input,
   InputNumber,
   Radio,
+  Select,
   Switch,
   notification,
 } from "antd";
@@ -32,7 +33,7 @@ export default function AddFilm() {
 
   const [state, setState] = useState({
     maPhim: params,
-    maNhom: "GP01",
+    maNhom: "",
     tenPhim: "",
     trailer: "",
     moTa: "",
@@ -172,6 +173,16 @@ export default function AddFilm() {
         </Form.Item>
         <Form.Item label="Tên Phim">
           <Input value={state.tenPhim} name="tenPhim" onChange={handleChange} />
+        </Form.Item>
+        <Form.Item label="Mã nhóm">
+          <Select
+            style={{
+              width: 120,
+            }}
+            disabled
+            name="maNhom"
+            value={state.maNhom}
+          />
         </Form.Item>
         <Form.Item label="Trailer">
           <Input value={state.trailer} name="trailer" onChange={handleChange} />

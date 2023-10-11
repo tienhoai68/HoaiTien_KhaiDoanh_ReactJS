@@ -1,9 +1,9 @@
 import { requestApi } from "../configs/callApi";
 
 class FimlService {
-  fetchFilmsListApi() {
+  fetchFilmsListApi(maNhom) {
     return requestApi({
-      url: `/QuanLyPhim/LayDanhSachPhim?maNhom=GP01`,
+      url: `/QuanLyPhim/LayDanhSachPhim?maNhom=${maNhom}`,
       method: "GET",
     });
   }

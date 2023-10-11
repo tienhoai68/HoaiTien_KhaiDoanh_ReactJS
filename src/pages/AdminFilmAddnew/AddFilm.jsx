@@ -1,8 +1,16 @@
 import React, { useState } from "react";
-import { DatePicker, Form, Input, InputNumber, Radio, Switch } from "antd";
+import {
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Select,
+  Switch,
+} from "antd";
 import moment from "moment";
 import { filmService } from "../../services/Films";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 export default function AddFilm() {
@@ -11,6 +19,18 @@ export default function AddFilm() {
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
+  const maNhom = [
+    { value: "GP01", label: "GP01" },
+    { value: "GP02", label: "GP02" },
+    { value: "GP03", label: "GP03" },
+    { value: "GP04", label: "GP04" },
+    { value: "GP05", label: "GP05" },
+    { value: "GP06", label: "GP06" },
+    { value: "GP07", label: "GP07" },
+    { value: "GP08", label: "GP08" },
+    { value: "GP09", label: "GP09" },
+  ];
+
   const [img, setImg] = useState("");
 
   const [state, setState] = useState({
@@ -51,6 +71,12 @@ export default function AddFilm() {
       danhGia: value,
     });
   };
+  const handleChangSelect = (value) => {
+    setState({
+      ...state,
+      maNhom: value,
+    });
+  };
 
   const handleChangeImg = (event) => {
     let file = event.target.files[0];
@@ -77,20 +103,19 @@ export default function AddFilm() {
       const result = await filmService.fetchAddNewFilmApi(formData);
       if (result.data.content) {
         Swal.fire({
-          icon: 'success',
-          title: 'Success!',
-          text: 'Bạn đã thêm phim thành công',
+          icon: "success",
+          title: "Success!",
+          text: "Bạn đã thêm phim thành công",
         });
         navigate("/admin/films");
       }
     } catch (error) {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
+        icon: "error",
+        title: "Oops...",
         text: `${error.response.data.content}`,
-      })
+      });
     }
-
   };
 
   return (
@@ -123,6 +148,16 @@ export default function AddFilm() {
         </Form.Item>
         <Form.Item label="Tên Phim">
           <Input name="tenPhim" onChange={handleChange} />
+        </Form.Item>
+        <Form.Item label="Mã nhóm">
+          <Select
+            style={{
+              width: 120,
+            }}
+            name="maNhom"
+            options={maNhom}
+            onChange={handleChangSelect}
+          />
         </Form.Item>
         <Form.Item label="Trailer">
           <Input name="trailer" onChange={handleChange} />
