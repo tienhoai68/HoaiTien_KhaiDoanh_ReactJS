@@ -29,6 +29,7 @@ export default function AddFilm() {
     { value: "GP07", label: "GP07" },
     { value: "GP08", label: "GP08" },
     { value: "GP09", label: "GP09" },
+    { value: "GP10", label: "GP10" },
   ];
 
   const [img, setImg] = useState("");
