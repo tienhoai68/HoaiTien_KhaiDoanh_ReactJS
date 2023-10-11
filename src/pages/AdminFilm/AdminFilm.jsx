@@ -28,6 +28,7 @@ export default function AdminFilm() {
     { value: "GP07", label: "GP07" },
     { value: "GP08", label: "GP08" },
     { value: "GP09", label: "GP09" },
+    { value: "GP10", label: "GP10" },
   ];
   const handleChangeSelect = (value) => {
     setMaNhom(value);
@@ -138,18 +139,23 @@ export default function AdminFilm() {
     <div>
       <h1>Quản lý phim</h1>
       <button
-        className="btn btn-info mb-3 mr-3"
+        className="btn btn-info mb-3 mr-5"
         onClick={() => navigate(`/admin/films/addnew`)}
       >
         Thêm phim
       </button>
+
       <Select
+        popupClassName="selectMaNhom"
+        size="large"
+        placeholder="Mã nhóm"
         style={{
           width: 120,
         }}
         options={option}
         onChange={handleChangeSelect}
       />
+
       <div className="row mb-3">
         <div className="col">
           <div className="input-group">
