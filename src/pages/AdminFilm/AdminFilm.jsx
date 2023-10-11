@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./AdminFilm.scss";
 import { LoadingContext } from "../../contexts/Loading/Loading";
+import { Select } from "antd";
 
 export default function AdminFilm() {
   const navigate = useNavigate();
@@ -16,15 +17,30 @@ export default function AdminFilm() {
   const npage = Math.ceil(filmList.length / recordsPerPage);
   const number = [...Array(npage + 1).keys()].slice(1);
   const [_, setIsLoading] = useContext(LoadingContext);
+  const [maNhom, setMaNhom] = useState("GP01");
+  const option = [
+    { value: "GP01", label: "GP01" },
+    { value: "GP02", label: "GP02" },
+    { value: "GP03", label: "GP03" },
+    { value: "GP04", label: "GP04" },
+    { value: "GP05", label: "GP05" },
+    { value: "GP06", label: "GP06" },
+    { value: "GP07", label: "GP07" },
+    { value: "GP08", label: "GP08" },
+    { value: "GP09", label: "GP09" },
+  ];
+  const handleChangeSelect = (value) => {
+    setMaNhom(value);
+  };
 
   useEffect(() => {
     fetchFilmList();
-  }, []);
+  }, [maNhom]);
 
   const fetchFilmList = async () => {
     document.getElementById("loader").style.display = "none";
     setIsLoading({ isLoading: true });
-    const result = await filmService.fetchFilmsListApi();
+    const result = await filmService.fetchFilmsListApi(maNhom);
     if (result.data.content) {
       setFilmList(result.data.content);
       setIsLoading({ isLoading: false });
@@ -122,11 +138,18 @@ export default function AdminFilm() {
     <div>
       <h1>Quản lý phim</h1>
       <button
-        className="btn btn-info mb-3"
+        className="btn btn-info mb-3 mr-3"
         onClick={() => navigate(`/admin/films/addnew`)}
       >
         Thêm phim
       </button>
+      <Select
+        style={{
+          width: 120,
+        }}
+        options={option}
+        onChange={handleChangeSelect}
+      />
       <div className="row mb-3">
         <div className="col">
           <div className="input-group">
