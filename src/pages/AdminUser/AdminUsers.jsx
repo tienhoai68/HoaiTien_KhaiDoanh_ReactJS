@@ -152,9 +152,22 @@ export default function AdminUsers() {
     setState(result.data.content);
   };
   const addUser = async (state) => {
-    const result = await userAdminService.fecthAddUserAdminApi(state);
-    dispatch(addUserAction(result.data.content));
-    UserListApi();
+    try {
+      const result = await userAdminService.fecthAddUserAdminApi(state);
+        dispatch(addUserAction(result.data.content));
+        Swal.fire({
+          icon: "success",
+          title: "Success!",
+          text: "thêm User thành công !",
+        });
+        UserListApi();    
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.content}`,
+      });
+    }
   };
   const editUser = async (state) => {
     try {
@@ -415,7 +428,7 @@ export default function AdminUsers() {
                     <input
                       value={state.matKhau}
                       onChange={handleChange}
-                      type="text"
+                      type="password"
                       name="matKhau"
                       className="form-control input-sm"
                       placeholder="Mật Khẩu"

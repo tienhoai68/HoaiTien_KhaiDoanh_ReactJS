@@ -72,12 +72,16 @@ export default function Login() {
                 <Field name='taiKhoan' type='text' placeholder='Tài khoản' />
                 <span></span>
               </div>
-              <ErrorMessage name='taiKhoan' component='label' className='form-label form-label-login text-danger' />
+              <div className="error-login w-100">
+              <ErrorMessage name='taiKhoan' component='label' className='form-label error-login form-label-login text-danger' />
+              </div>
               <div className="form-control2">
                 <Field name='matKhau' type='password' placeholder='Mật khẩu' />
                 <span></span>
               </div>
-              <ErrorMessage name='matKhau' component='label' className='form-label form-label-login text-danger' />
+              <div className="error-login w-100">
+              <ErrorMessage name='matKhau' component='label' className='form-label  form-label-login text-danger' />
+              </div>
               <button type='submit'>Login</button>
             </Form>
           </div>
