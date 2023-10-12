@@ -136,10 +136,10 @@ export default function AdminFilm() {
   };
 
   return (
-    <div>
-      <h1>Quản lý phim</h1>
+    <div >
+      <h1 className="mb-3 font-weight-bold">Quản Lý Phim</h1>
       <button
-        className="btn btn-info mb-3 mr-5"
+        className="btn btn-info button-addfilm"
         onClick={() => navigate(`/admin/films/addnew`)}
       >
         Thêm phim
@@ -156,7 +156,7 @@ export default function AdminFilm() {
         onChange={handleChangeSelect}
       />
 
-      <div className="row mb-3">
+      <div className="row mt-3 mb-3">
         <div className="col">
           <div className="input-group">
             <input
