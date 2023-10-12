@@ -4,8 +4,7 @@ import { useDispatch } from "react-redux";
 import { addUserAction } from "../../store/actions/userAdminAction";
 import "./AdminUser.scss";
 import { LoadingContext } from "../../contexts/Loading/Loading";
-import Swal from 'sweetalert2';
-
+import Swal from "sweetalert2";
 
 export default function AdminUsers() {
   const [_, setIsLoading] = useContext(LoadingContext);
@@ -162,21 +161,19 @@ export default function AdminUsers() {
       const result = await userAdminService.fecthEditUserAdminApi(state);
       if (result.data.content) {
         Swal.fire({
-          icon: 'success',
-          title: 'Success!',
-          text: 'Cập nhật thành công !',
+          icon: "success",
+          title: "Success!",
+          text: "Cập nhật thành công !",
         });
         UserListApi();
       }
     } catch (error) {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
+        icon: "error",
+        title: "Oops...",
         text: `${error.response.data.content}`,
-      })
+      });
     }
-
-
   };
 
   const handleSubmit = () => {
@@ -263,51 +260,58 @@ export default function AdminUsers() {
     if (isValid) {
       if (document.getElementById("taiKhoan").disabled === false) {
         addUser(state);
+        document.getElementById("btnDong").click();
+        setState({
+          taiKhoan: "",
+          matKhau: "",
+          email: "",
+          soDT: "",
+          maNhom: "GP01",
+          hoTen: "",
+          maLoaiNguoiDung: "",
+        });
       } else {
         editUser(state);
+        document.getElementById("btnDong").click();
+        setState({
+          taiKhoan: "",
+          matKhau: "",
+          email: "",
+          soDT: "",
+          maNhom: "GP01",
+          hoTen: "",
+          maLoaiNguoiDung: "",
+        });
       }
     }
-    setState({
-      taiKhoan: "",
-      matKhau: "",
-      email: "",
-      soDT: "",
-      maNhom: "GP01",
-      hoTen: "",
-      maLoaiNguoiDung: "",
-    });
   };
   const handleDelete = async (key) => {
     try {
       const confirmationResult = await Swal.fire({
-        title: 'Are you sure?',
+        title: "Are you sure?",
         text: "You won't be able to revert this!",
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, Delete it!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Delete it!",
       });
 
       if (confirmationResult.isConfirmed) {
         const result = await userAdminService.fecthDeleteUserAdminApi(key);
         if (result.data.content) {
-          Swal.fire(
-            'Deleted!',
-            'User has been update.',
-            'success'
-          )
+          Swal.fire("Deleted!", "User has been update.", "success");
           UserListApi();
         } else {
-          Swal.fire('error');
+          Swal.fire("error");
         }
       }
     } catch (error) {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
+        icon: "error",
+        title: "Oops...",
         text: `${error.response.data.content}`,
-      })
+      });
     }
   };
 
@@ -387,7 +391,7 @@ export default function AdminUsers() {
               <h2 id="header-title">Thêm người dùng</h2>
             </header>
             <div className="modal-body">
-              <form>
+              <form role="form" id="modalUser">
                 <div className="form-group">
                   <div className="input-group">
                     <input
