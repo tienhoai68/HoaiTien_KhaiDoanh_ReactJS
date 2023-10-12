@@ -121,7 +121,7 @@ export default function AddFilm() {
 
   return (
     <div>
-      <h1 className="md-5">Thêm phim</h1>
+      <h1 className="mb-3 font-weight-bold">Thêm Phim</h1>
       <Form
         onSubmitCapture={handleSubmit}
         labelCol={{
